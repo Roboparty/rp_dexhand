@@ -44,7 +44,7 @@ The SDK documentation targets an Ubuntu 24.04 / Python 3.12 image; the current R
 
 ## Resources and Maintenance
 
-Dimensions and connector drawings are available locally in this repository. Large vendor applications and CAD/model archives have not yet been mirrored here; their original locations and access requirements are explicit in [Downloads](docs/downloads.md). Existing RoboParty driver releases are linked directly.
+Dimensions and connector drawings are available locally in this repository. Twelve original software, model, CAD and protocol attachments are archived in the private prerelease [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05), with source records, file sizes and SHA-256 checksums in [Downloads](docs/downloads.md). Repository access is required. This resource snapshot is not a new SDK release or a hardware-validation result; maintained RoboParty driver releases are linked directly.
 
 Report product-documentation issues in [this repository](https://github.com/Roboparty/rp_dexhand/issues), driver issues in [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand/issues), and ROS integration issues in [roboparty_dexhand_ros](https://github.com/Roboparty/roboparty_dexhand_ros/issues).
 

@@ -1,0 +1,202 @@
+{
+  "snapshot_date": "2026-10-05",
+  "release_tag": "resources-2026.10.05",
+  "limitations": [
+    "No application execution, installation or hardware motion.",
+    "No antivirus scan or publisher-signature verification.",
+    "No CAD geometry, model mesh paths, simulation or physical joint mapping validation.",
+    "No public redistribution rights inferred from source access."
+  ],
+  "files": [
+    {
+      "filename": "RP_Hand_Protocols_EtherCAT_CAN-FD_RS485.xlsx",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "all ZIP entry CRCs passed"
+      ],
+      "details": {
+        "entries": 48,
+        "sheets": [
+          "协议地址与对象字典",
+          "ECAT协议",
+          "CAN-FD协议",
+          "RS485协议",
+          "RS485协议_V0.01"
+        ],
+        "file_type": "Microsoft Excel 2007+"
+      }
+    },
+    {
+      "filename": "RP_Hand_SDK-API-Linux-20260727.tar.gz",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "full gzip CRC passed",
+        "tar headers parsed"
+      ],
+      "details": {
+        "entries": 901,
+        "top_level_directories": [
+          "aarch64",
+          "i386",
+          "x86_64"
+        ],
+        "file_type": "gzip compressed data, from Unix, original size modulo 2^32 42711040"
+      }
+    },
+    {
+      "filename": "RP_Hand_SDK-API-Windows-20260727.7z",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "7z integrity test passed"
+      ],
+      "details": {
+        "entries": 734,
+        "file_type": "7-zip archive data, version 0.4"
+      }
+    },
+    {
+      "filename": "DH116_URDF_MJCF_Files_2026_4_9.7z",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "7z integrity test passed"
+      ],
+      "details": {
+        "entries": 67,
+        "model_files": [
+          "DH116_URDF_MJCF_Files/DH116-L000-A1/mjcf/DH116-L000-A1.xml",
+          "DH116_URDF_MJCF_Files/DH116-L000-A1/urdf/DH116-L000-A1.urdf",
+          "DH116_URDF_MJCF_Files/DH116-R000-A1/mjcf/DH116-R000-A1.xml",
+          "DH116_URDF_MJCF_Files/DH116-R000-A1/urdf/DH116-R000-A1.urdf"
+        ],
+        "file_type": "7-zip archive data, version 0.4"
+      }
+    },
+    {
+      "filename": "DH116S_URDF_MJCF_Files_2026_4_9.7z",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "7z integrity test passed"
+      ],
+      "details": {
+        "entries": 67,
+        "model_files": [
+          "DH116S_URDF_MJCF_Files_2026_4_9/DH116S-L000-A1/mjcf/DH116S-L000-A1.xml",
+          "DH116S_URDF_MJCF_Files_2026_4_9/DH116S-L000-A1/urdf/DH116S-L000-A1.urdf",
+          "DH116S_URDF_MJCF_Files_2026_4_9/DH116S-R000-A1/mjcf/DH116S-R000-A1.xml",
+          "DH116S_URDF_MJCF_Files_2026_4_9/DH116S-R000-A1/urdf/DH116S-R000-A1.urdf"
+        ],
+        "file_type": "7-zip archive data, version 0.4"
+      }
+    },
+    {
+      "filename": "hand_control_ws_rp_hand.zip",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "all ZIP entry CRCs passed"
+      ],
+      "details": {
+        "entries": 349,
+        "file_type": "Zip archive data, at least v2.0 to extract, compression method=deflate"
+      }
+    },
+    {
+      "filename": "RP_Hand_Host_changelog.txt",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "text header inspected"
+      ],
+      "details": {
+        "file_type": "Unicode text, UTF-8 text"
+      }
+    },
+    {
+      "filename": "RP_Hand-v1.4.0-2026-08-25.zip",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "all ZIP entry CRCs passed"
+      ],
+      "details": {
+        "entries": 681,
+        "file_type": "Zip archive data, at least v2.0 to extract, compression method=store"
+      }
+    },
+    {
+      "filename": "RP-Hand-Gesture-Setup-1.1.1.exe",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "MZ header present; no execution or signature validation"
+      ],
+      "details": {
+        "file_type": "PE32 executable (GUI) Intel 80386, for MS Windows, Nullsoft Installer self-extracting archive, 5 sections"
+      }
+    },
+    {
+      "filename": "RP-Hand-Gesture-1.1.1-amd64.deb",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "Debian control metadata parsed",
+        "Debian data archive decompressed/listed"
+      ],
+      "details": {
+        "control_metadata": [
+          "Package: rp-hand-gesture",
+          "Version: 1.1.1",
+          "Architecture: amd64"
+        ],
+        "file_type": "Debian binary package (format 2.0), with control.tar.zst, data compression zst"
+      }
+    },
+    {
+      "filename": "DH116S-L000-A1_RP_Left_White_A.x_t",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "header inspected only; CAD geometry not loaded"
+      ],
+      "details": {
+        "header_excerpt": [
+          "**ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz**************************",
+          "**PARASOLID !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~0123456789**************************",
+          "**PART1;",
+          "MC=AMD64;",
+          "MC_MODEL=Intel64 Family 6 Model 151 Stepping 2, GenuineIntel;",
+          "MC_ID=unknown;",
+          "OS=Windows_NT;",
+          "OS_RELEASE=unknown;"
+        ],
+        "file_type": "ISO-8859 text"
+      }
+    },
+    {
+      "filename": "DH116S-R000-A1_RP_Right_White_A.x_t",
+      "checks": [
+        "source byte size matched",
+        "SHA-256 independently recalculated",
+        "header inspected only; CAD geometry not loaded"
+      ],
+      "details": {
+        "header_excerpt": [
+          "**ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz**************************",
+          "**PARASOLID !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~0123456789**************************",
+          "**PART1;",
+          "MC=AMD64;",
+          "MC_MODEL=Intel64 Family 6 Model 151 Stepping 2, GenuineIntel;",
+          "MC_ID=unknown;",
+          "OS=Windows_NT;",
+          "OS_RELEASE=unknown;"
+        ],
+        "file_type": "ISO-8859 text"
+      }
+    }
+  ]
+}

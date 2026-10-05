@@ -42,7 +42,7 @@ RP Hand 是面向中小尺寸人形机器人的紧凑型灵巧手，具有 **11 
 
 ## 资料与维护
 
-尺寸图、引脚图已存入仓库，可以直接查看。大型厂商软件和 CAD/模型附件尚未镜像到本仓库，下载表会明确原始入口和访问条件；已发布的 RoboParty 驱动直接链接其 Release。
+尺寸图、引脚图已存入仓库，可以直接查看。12 个原始软件、模型、CAD 和协议附件已归档到私有预发布版 [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)，[下载表](docs/downloads.md) 提供版本、大小、来源和 SHA-256。访问需要 GitHub 仓库权限；这不是新版 SDK，也不代表实机验收通过。持续维护的 RoboParty 驱动仍直接链接其上游 Release。
 
 产品文档问题提交到 [本仓库 Issues](https://github.com/Roboparty/rp_dexhand/issues)，驱动问题提交到 [SDK Issues](https://github.com/Roboparty/roboparty_dexhand/issues)，ROS 问题提交到 [ROS Issues](https://github.com/Roboparty/roboparty_dexhand_ros/issues)。
 

@@ -4,7 +4,7 @@
 
 ## 当前基线
 
-整理日期：2026-10-05。仓库名称为 `rp_dexhand`，产品名称为 RP Hand，维护的 SDK 为 `roboparty_dexhand`。本版建立资料入口；大型软件/模型镜像、关节映射和完整 ROS 组合验收仍有后续工作。
+资料快照日期：2026-10-05。仓库名称为 `rp_dexhand`，产品名称为 RP Hand，维护的 SDK 为 `roboparty_dexhand`。资料入口和 12 个原始附件的版本化归档已完成；关节映射、公开发布许可和完整 ROS 组合验收仍有后续工作。
 
 | 来源 | 版本 | 使用位置 |
 | --- | --- | --- |
@@ -32,6 +32,14 @@
 
 仓库内三份素材的校验值见 [SHA256SUMS.txt](../assets/SHA256SUMS.txt)。在仓库根目录执行 `sha256sum -c assets/SHA256SUMS.txt` 可核验文件完整性。
 
+## 资源归档
+
+[resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 是私有资料预发布版，包含 12 个原始附件，共 1,409,480,165 字节。该标签表示资料快照日期，不覆盖各附件的独立版本。已计算 SHA-256 并逐项核对飞书记录的字节数。
+
+Git 中的 [manifest.json](../resources/resources-2026.10.05/manifest.json)、[SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt) 和 [validation.json](../resources/resources-2026.10.05/validation.json) 与 Release 同名附件一致。大文件不进入 Git 历史，SDK v0.5.0 二进制仍由 SDK 仓库维护。
+
+后续资料更新创建新快照，不覆盖已发布附件；同步更新来源 revision、文件大小、哈希和检查记录。解压与格式检查不代表软件安全性、目标系统兼容性或真实硬件动作验收。
+
 ## 更新流程
 
 1. 在飞书完成产品内容核对，记录文档 revision 和附件版本。
@@ -46,7 +54,7 @@
 - 确认公开发布的资料范围和仓库可见性，并补齐适用的文档/素材许可声明。
 - 核验六主动轴、左右手、DH116/DH116S 与模型的对应关系。
 - 确定发布的镜像/SDK/ROS 组合，修正上游安装入口与回零行为差异。
-- 将确认发布的软件和模型转为版本化 Release，计算并提供校验值。
+- 维护后续资源快照，确认新版本适用范围后更新清单与校验值。
 - 补全详细英文手册，依据实际测试记录更新兼容状态。
 
 本版没有进行真实硬件运动测试，不以文档检查代替设备验收。
