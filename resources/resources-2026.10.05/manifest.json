@@ -5,7 +5,7 @@
   "repository": "Roboparty/rp_dexhand",
   "visibility_at_creation": "private",
   "redistribution_status": "Internal snapshot; public redistribution not approved by this record.",
-  "verification_scope": "Original bytes downloaded; source sizes matched; SHA-256 calculated. See validation report for container checks. No runtime or hardware validation.",
+  "verification_scope": "Original source sizes matched; CAD wrapped losslessly in XZ and decompressed SHA-256 checked against original. Release-asset SHA-256 calculated. See validation report for container checks. No runtime or hardware validation.",
   "assets": [
     {
       "filename": "RP_Hand_Protocols_EtherCAT_CAN-FD_RS485.xlsx",
@@ -128,28 +128,37 @@
       "download_url": "https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP-Hand-Gesture-1.1.1-amd64.deb"
     },
     {
-      "filename": "DH116S-L000-A1_RP_Left_White_A.x_t",
+      "filename": "DH116S-L000-A1_RP_Left_White_A.x_t.xz",
       "original_filename": "DH116S-L000-A1-结构件 RP左手DH116S-LW1-RP1套装  白色_A.x_t",
-      "size_bytes": 260959468,
-      "sha256": "9bef3829388f3739a8ac03a519c4140b94bac9299b6729b76058d0e42abbd6a2",
+      "size_bytes": 45285532,
+      "sha256": "36949139e70582ddcf285f00cc3496c63ef111e756ee5c7d612604de62a05f55",
       "category": "cad",
       "source_version": "A",
       "target": "DH116S-L000-A1 / DH116S-LW1-RP1; left, white",
       "source_url": "https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb",
       "source_revision": 13,
-      "download_url": "https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-L000-A1_RP_Left_White_A.x_t"
+      "download_url": "https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-L000-A1_RP_Left_White_A.x_t.xz",
+      "packaging": "xz; decompress to recover the original Parasolid X_T bytes",
+      "original_size_bytes": 260959468,
+      "original_sha256": "9bef3829388f3739a8ac03a519c4140b94bac9299b6729b76058d0e42abbd6a2",
+      "unpacked_filename": "DH116S-L000-A1_RP_Left_White_A.x_t"
     },
     {
-      "filename": "DH116S-R000-A1_RP_Right_White_A.x_t",
+      "filename": "DH116S-R000-A1_RP_Right_White_A.x_t.xz",
       "original_filename": "DH116S-R000-A1-结构件 RP右手DH116S-RW1-RP1套装  白色_A.x_t",
-      "size_bytes": 262261691,
-      "sha256": "c5d912b23252b479a09ad1da86b55bd3fa944dcc7b31b8cd59119397352fe370",
+      "size_bytes": 43559368,
+      "sha256": "1477405dc52472b1a4f5bf785aac0ba789ae8a044388b0ddcfdc27d10ddd9a44",
       "category": "cad",
       "source_version": "A",
       "target": "DH116S-R000-A1 / DH116S-RW1-RP1; right, white",
       "source_url": "https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb",
       "source_revision": 13,
-      "download_url": "https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-R000-A1_RP_Right_White_A.x_t"
+      "download_url": "https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-R000-A1_RP_Right_White_A.x_t.xz",
+      "packaging": "xz; decompress to recover the original Parasolid X_T bytes",
+      "original_size_bytes": 262261691,
+      "original_sha256": "c5d912b23252b479a09ad1da86b55bd3fa944dcc7b31b8cd59119397352fe370",
+      "unpacked_filename": "DH116S-R000-A1_RP_Right_White_A.x_t"
     }
-  ]
+  ],
+  "cad_packaging_date": "2026-10-06"
 }

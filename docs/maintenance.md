@@ -34,7 +34,7 @@
 
 ## 资源归档
 
-[resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 是私有资料预发布版，包含 12 个原始附件，共 1,409,480,165 字节。该标签表示资料快照日期，不覆盖各附件的独立版本。已计算 SHA-256 并逐项核对飞书记录的字节数。
+[resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 是私有资料预发布版，对应 12 个飞书原件，原始合计 1,409,480,165 字节。2026-10-06 将尚未发布的左右手 CAD 无损封装为 XZ，下载文件合计缩减到 975,103,906 字节。该标签表示资料快照日期，不覆盖各附件的独立版本。已逐项核对原件大小；清单同时记录 CAD 压缩包与原件的大小和 SHA-256，并验证解压后字节一致。
 
 Git 中的 [manifest.json](../resources/resources-2026.10.05/manifest.json)、[SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt) 和 [validation.json](../resources/resources-2026.10.05/validation.json) 与 Release 同名附件一致。大文件不进入 Git 历史，SDK v0.5.0 二进制仍由 SDK 仓库维护。
 

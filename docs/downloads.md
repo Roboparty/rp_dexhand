@@ -2,9 +2,9 @@
 
 [返回首页](../README.zh-CN.md) · [SDK 选择](sdk.md) · [模型说明](models.md)
 
-资料快照日期：2026-10-05。12 个飞书原始附件已归档至 [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)，合计 1,409,480,165 字节（约 1.41 GB）。这是资料预发布版，不是新版 SDK，也不代表实机验收通过。
+资料快照日期：2026-10-05。12 份飞书资料已归档至 [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)。原件合计 1,409,480,165 字节；CAD 无损压缩后，12 个下载文件合计 975,103,906 字节（约 975.10 MB）。这是资料预发布版，不是新版 SDK，也不代表实机验收通过。
 
-本仓库及 Release 当前为私有，需要具有仓库访问权限的 GitHub 账号；未登录或无权限时可能返回 404。原始飞书链接仍需要对应的飞书权限。文件内容保持原样，仅部分下载文件名改为 ASCII。
+本仓库及 Release 当前为私有，需要具有仓库访问权限的 GitHub 账号；未登录或无权限时可能返回 404。原始飞书链接仍需要对应的飞书权限。软件和模型保持原包，部分下载文件名改为 ASCII；CAD 使用 XZ 无损压缩，已核对解压后与飞书原件的 SHA-256 一致。
 
 ## RoboParty 维护的驱动
 
@@ -39,8 +39,8 @@
 | --- | --- | --- |
 | DH116 URDF / MJCF，左右手 | 2026-04-09 / 7.22 MB | [7z](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116_URDF_MJCF_Files_2026_4_9.7z) |
 | DH116S URDF / MJCF，左右手 | 2026-04-09 / 9.56 MB | [7z](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S_URDF_MJCF_Files_2026_4_9.7z) |
-| DH116S 左手白色 CAD | L000-A1 / A / 260.96 MB | [X_T](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-L000-A1_RP_Left_White_A.x_t) |
-| DH116S 右手白色 CAD | R000-A1 / A / 262.26 MB | [X_T](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-R000-A1_RP_Right_White_A.x_t) |
+| DH116S 左手白色 CAD | L000-A1 / A / 45.29 MB（解压后 260.96 MB） | [X_T.xz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-L000-A1_RP_Left_White_A.x_t.xz) |
+| DH116S 右手白色 CAD | R000-A1 / A / 43.56 MB（解压后 262.26 MB） | [X_T.xz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-R000-A1_RP_Right_White_A.x_t.xz) |
 | EtherCAT / CAN-FD / RS485 协议表格 | 来源手册 revision 13 / 0.37 MB | [XLSX](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_Protocols_EtherCAT_CAN-FD_RS485.xlsx) |
 
 原始来源：[模型下载页](https://roboparty.feishu.cn/docx/E4pUdKUfWoplqHxbR9CcnNUfn4d)、[产品手册附件](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb)。[在线 CAN-FD 协议](https://roboparty.feishu.cn/docx/NofXd7ZqKovElLxfgr8cWMegnxg)为 revision 14；不能仅凭文档 revision 比较它与附件表格的协议版本。
@@ -50,7 +50,7 @@
 ## 清单与完整性校验
 
 - [完整清单](../resources/resources-2026.10.05/manifest.json)：原始名称、版本、适用型号/平台、来源文档与 revision、精确字节数、SHA-256。
-- [SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt)：12 个原始附件的完整校验值；Release 中有同名副本。
+- [SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt)：12 个下载文件的完整校验值（CAD 对应压缩包）；Release 中有同名副本。
 - [检查记录](../resources/resources-2026.10.05/validation.json)：逐文件结果和验证边界。
 
 下载全部 12 个附件和 `SHA256SUMS.txt` 到同一目录后，在该目录运行：
@@ -67,4 +67,13 @@ sha256sum DH116S_URDF_MJCF_Files_2026_4_9.7z
 
 将输出的完整哈希与校验表中同名记录比较。校验值用于确认字节一致性，不替代来源身份、签名或安全性检查。
 
-本次完成了 ZIP/7z/gzip 完整性检查和 Debian 包元数据/内容列表检查。EXE 与 X_T 仅核对文件类型及头部，没有执行安装程序、加载 CAD 几何、运行仿真或驱动实机。公开再分发范围仍需按 [第三方说明](../NOTICE.md) 确认。
+CAD 下载后先核对压缩包哈希，再解压。例如 Linux 下保留压缩包并恢复左手原始文件：
+
+```bash
+xz -dk DH116S-L000-A1_RP_Left_White_A.x_t.xz
+sha256sum DH116S-L000-A1_RP_Left_White_A.x_t
+```
+
+解压后哈希与清单中的 `original_sha256` 比较，原始大小见 `original_size_bytes`。右手同理；Windows 可用支持 XZ 的解压工具。
+
+本次完成了 ZIP/7z/gzip 完整性检查、XZ 解压还原哈希检查和 Debian 包元数据/内容列表检查。EXE 与 X_T 内容仅核对文件类型及头部，没有执行安装程序、加载 CAD 几何、运行仿真或驱动实机。公开再分发范围仍需按 [第三方说明](../NOTICE.md) 确认。

@@ -8,8 +8,8 @@
 | --- | --- | --- |
 | DH116 URDF / MJCF | `DH116_URDF_MJCF_Files_2026_4_9.7z` | 已归档；7z 完整性检查通过 |
 | DH116S URDF / MJCF | `DH116S_URDF_MJCF_Files_2026_4_9.7z` | 已归档；7z 完整性检查通过 |
-| 左手 CAD | `DH116S-L000-A1-结构件 RP左手DH116S-LW1-RP1套装  白色_A.x_t` | 已归档，260,959,468 字节；只检查头部和哈希 |
-| 右手 CAD | `DH116S-R000-A1-结构件 RP右手DH116S-RW1-RP1套装  白色_A.x_t` | 已归档，262,261,691 字节；只检查头部和哈希 |
+| 左手 CAD | `DH116S-L000-A1-结构件 RP左手DH116S-LW1-RP1套装  白色_A.x_t` | XZ 下载 45,285,532 字节；还原后 260,959,468 字节 |
+| 右手 CAD | `DH116S-R000-A1-结构件 RP右手DH116S-RW1-RP1套装  白色_A.x_t` | XZ 下载 43,559,368 字节；还原后 262,261,691 字节 |
 
 [私有资源 Release](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 需要本仓库的 GitHub 访问权限，具体下载与校验方式见 [下载清单](downloads.md)。[原始 URDF/MJCF 下载页](https://roboparty.feishu.cn/docx/E4pUdKUfWoplqHxbR9CcnNUfn4d) 与 [产品手册中的 CAD 附件](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb) 仍保留作来源记录。
 
@@ -35,6 +35,6 @@ DH116 和 DH116S 不是可无条件互换的文件名。当前 RoboParty SDK 公
 
 ## 后续文件组织
 
-大型 CAD 和模型原始归档已经采用版本化 Release，Git 中只保留文档、清单和校验值。模型文本和配套 mesh 在核对引用路径及适用版本后再决定是否直接放入 Git。
+大型 CAD 和模型原始归档已经采用版本化 Release，Git 中只保留文档、清单和校验值。CAD 使用无损 XZ 压缩，解压后原件哈希已验证；几何内容仍只检查文件头部，没有加载 CAD 软件验收。模型文本和配套 mesh 在核对引用路径及适用版本后再决定是否直接放入 Git。
 
 当前运行时建议仍以 [SDK 单手验收](quickstart.md) 为基础；模型可视化不替代实际设备的状态反馈。

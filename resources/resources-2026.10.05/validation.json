@@ -157,11 +157,12 @@
       }
     },
     {
-      "filename": "DH116S-L000-A1_RP_Left_White_A.x_t",
+      "filename": "DH116S-L000-A1_RP_Left_White_A.x_t.xz",
       "checks": [
         "source byte size matched",
         "SHA-256 independently recalculated",
-        "header inspected only; CAD geometry not loaded"
+        "header inspected only; CAD geometry not loaded",
+        "Full XZ decompression SHA-256 equals original source SHA-256"
       ],
       "details": {
         "header_excerpt": [
@@ -174,15 +175,19 @@
           "OS=Windows_NT;",
           "OS_RELEASE=unknown;"
         ],
-        "file_type": "ISO-8859 text"
+        "original_file_type": "ISO-8859 text",
+        "file_type": "XZ compressed data containing one original Parasolid X_T file",
+        "original_sha256": "9bef3829388f3739a8ac03a519c4140b94bac9299b6729b76058d0e42abbd6a2",
+        "original_size_bytes": 260959468
       }
     },
     {
-      "filename": "DH116S-R000-A1_RP_Right_White_A.x_t",
+      "filename": "DH116S-R000-A1_RP_Right_White_A.x_t.xz",
       "checks": [
         "source byte size matched",
         "SHA-256 independently recalculated",
-        "header inspected only; CAD geometry not loaded"
+        "header inspected only; CAD geometry not loaded",
+        "Full XZ decompression SHA-256 equals original source SHA-256"
       ],
       "details": {
         "header_excerpt": [
@@ -195,7 +200,10 @@
           "OS=Windows_NT;",
           "OS_RELEASE=unknown;"
         ],
-        "file_type": "ISO-8859 text"
+        "original_file_type": "ISO-8859 text",
+        "file_type": "XZ compressed data containing one original Parasolid X_T file",
+        "original_sha256": "c5d912b23252b479a09ad1da86b55bd3fa944dcc7b31b8cd59119397352fe370",
+        "original_size_bytes": 262261691
       }
     }
   ]
