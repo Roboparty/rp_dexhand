@@ -18,6 +18,22 @@ class Trial:
     events: tuple
 
 
+    def __post_init__(self):
+        self.samples = np.asarray(self.samples, dtype=float)
+        if self.samples.ndim != 1 or not len(self.samples) or np.isinf(self.samples).any():
+            raise ValueError("samples must be a nonempty vector; NaN alone denotes missing")
+        if not np.isfinite(self.sample_rate_hz) or self.sample_rate_hz <= 0:
+            raise ValueError("sample rate must be finite and positive")
+        previous_end = 0
+        for event in self.events:
+            if len(event) != 2 or any(isinstance(v, bool) or not isinstance(v, (int, np.integer)) for v in event):
+                raise ValueError("event bounds must be integer pairs")
+            start, end = event
+            if not previous_end <= start < end <= len(self.samples):
+                raise ValueError("events must be ordered, disjoint, and within the recording")
+            previous_end = end
+
+
 def generate_dataset(seed=42, trials_per_scenario=8, sample_rate_hz=200.0):
     if isinstance(seed, bool) or not isinstance(seed, int) or seed < 0:
         raise ValueError('seed must be a nonnegative integer')
