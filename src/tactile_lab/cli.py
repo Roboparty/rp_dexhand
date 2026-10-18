@@ -18,7 +18,15 @@ def main(argv=None):
     replay.add_argument("--mode", choices=("raw","fixed","adaptive"), default="fixed")
     replay.add_argument("--unit", required=True)
     replay.add_argument("--source", choices=("synthetic","measured"), required=True)
+    sweep = commands.add_parser("sweep")
+    sweep.add_argument("--seeds", type=int, nargs="+", default=[42,43,44])
+    sweep.add_argument("--output", type=Path, default=Path("runs/robustness"))
     args=parser.parse_args(argv)
+    if args.command == "sweep":
+        from .sweep import run_sweep
+        run_sweep(args.seeds,args.output)
+        print(f"Robustness results: {args.output}")
+        return 0
     if args.command == "replay":
         from .replay import replay_csv
         result=replay_csv(args.input,args.output,args.mode,args.unit,args.source)
