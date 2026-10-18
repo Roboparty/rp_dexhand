@@ -3,7 +3,7 @@ from dataclasses import replace, asdict
 import numpy as np
 from .pathways import sensor_grid, spatial_graph, pathway_graph, diffuse
 from .receivers import generate_dataset, CausalReceiver
-from .receivers.training import fit_config, select_threshold
+from .receivers.training import fit_config, select_threshold, threshold_candidates
 from .receivers.metrics import evaluate_trial, aggregate
 from .evaluation import validate_splits, content_hash
 
@@ -43,7 +43,7 @@ def run_benchmark(seed=42, trials_per_scenario=4):
             scores = [_scores(a, graph, mode, config) for a in arrays]
             train = np.concatenate([s for t, s in zip(trials, scores) if t.split == "train"])
             finite = train[np.isfinite(train)]
-            candidates = sorted(set([0., *np.quantile(finite, np.linspace(.2, .999, 28)).tolist(), float(finite.max()*10+1)]))
+            candidates = threshold_candidates(finite)
             val = [(t,s) for t,s in zip(trials,scores) if t.split == "validation"]
             threshold, tuning = select_threshold([t for t,s in val], [s for t,s in val], candidates)
             test = [(t,s) for t,s in zip(trials,scores) if t.split == "test"]

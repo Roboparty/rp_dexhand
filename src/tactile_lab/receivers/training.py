@@ -38,3 +38,19 @@ def select_threshold(trials, score_arrays, candidates, false_alarms_per_minute=3
                                           r["mean_detected_latency_ms"] if r["mean_detected_latency_ms"] is not None else float("inf"),
                                           r["threshold"]))
     return chosen["threshold"], choices
+
+
+def threshold_candidates(training_scores, resolution=64):
+    """Equal-budget quantile and amplitude grids, from training scores only."""
+    values = np.asarray(training_scores, float)
+    if values.ndim != 1 or np.isinf(values).any():
+        raise ValueError("training scores must be a vector without infinity")
+    values = values[np.isfinite(values)]
+    if not len(values) or (values < 0).any():
+        raise ValueError("need nonnegative finite training scores")
+    if isinstance(resolution, bool) or not isinstance(resolution, int) or resolution < 2:
+        raise ValueError("resolution must be an integer >= 2")
+    maximum = float(values.max())
+    return sorted(set([*np.linspace(0, maximum, resolution).tolist(),
+                       *np.quantile(values, np.linspace(0, 1, resolution)).tolist(),
+                       maximum*10+1]))

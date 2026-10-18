@@ -6,7 +6,7 @@ from tactile_lab.evaluation.artifacts import content_hash
 from .synthetic import generate_dataset
 from .detectors import CausalReceiver
 from .metrics import evaluate_trial, aggregate
-from .training import fit_config, select_threshold
+from .training import fit_config, select_threshold, threshold_candidates
 
 def run_benchmark(seed=42, trials_per_scenario=8):
     trials = generate_dataset(seed, trials_per_scenario)
@@ -19,8 +19,7 @@ def run_benchmark(seed=42, trials_per_scenario=8):
         training_scores = np.concatenate(score_groups["train"])
         finite = training_scores[np.isfinite(training_scores)]
         # A finite no-alarm candidate is based on training only; no test score is inspected.
-        candidates = sorted(set([0., *np.quantile(finite, np.linspace(.2, .999, 28)).tolist(),
-                                 float(finite.max()*10+1)]))
+        candidates = threshold_candidates(finite)
         threshold, validation = select_threshold(groups["validation"], score_groups["validation"], candidates)
         rows = [evaluate_trial(t, scores, threshold) for t, scores in zip(groups["test"], score_groups["test"])]
         modes[mode] = {"threshold": threshold, "validation_candidates": validation, "summary": aggregate(rows),
