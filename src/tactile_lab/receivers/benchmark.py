@@ -26,7 +26,7 @@ def run_benchmark(seed=42, trials_per_scenario=8):
                        "by_scenario": {scenario: aggregate([r for r in rows if r["scenario"] == scenario])
                                        for scenario in sorted({r["scenario"] for r in rows})}, "trials": rows}
     settings = {"seed": seed, "trials_per_scenario_per_split": trials_per_scenario,
-                "receiver": asdict(config), "false_alarm_budget_per_minute": 3., "sample_rate_hz": 200.}
+                "receiver": asdict(config), "threshold_resolution": 64, "refractory_samples": 20, "false_alarm_budget_per_minute": 3., "sample_rate_hz": 200.}
     return {"experiment": "adaptive_receiver", "evidence": "synthetic step events, not measured physical slip",
             "config": settings, "config_sha256": content_hash(settings), "splits": splits, "models": modes,
             "limitations": ["Test false-alarm rate is measured, not guaranteed by validation calibration.",

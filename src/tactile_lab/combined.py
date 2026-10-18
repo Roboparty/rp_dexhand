@@ -53,7 +53,7 @@ def run_benchmark(seed=42, trials_per_scenario=4):
     r = {k:v["summary"]["recall"] for k,v in models.items()}
     settings = {"seed": seed, "trials_per_scenario_per_split": trials_per_scenario,
                 "diffusion_strength": .35, "steps": 1, "edge_budget": 24,
-                "receiver": asdict(config), "fusion": "maximum channel score", "false_alarm_budget_per_minute": 3.}
+                "receiver": asdict(config), "fusion": "maximum channel score", "threshold_resolution": 64, "refractory_samples": 20, "false_alarm_budget_per_minute": 3.}
     return {"experiment": "combined", "evidence": "synthetic 16-channel signals; no physical validation",
             "config": settings, "config_sha256": content_hash(settings), "splits": split_counts, "models": models,
             "recall_effects": {"pathway_at_fixed": r["pathway_fixed"]-r["spatial_fixed"],
