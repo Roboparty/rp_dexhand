@@ -19,7 +19,9 @@ class CausalReceiver:
 
     def update(self, sample):
         x = float(sample)
-        if not np.isfinite(x):
+        if np.isinf(x):
+            raise ValueError("infinity is invalid; use NaN for missing samples")
+        if np.isnan(x):
             # Missing data produce no decision and never update the state.
             return float('nan')
         c = self.config

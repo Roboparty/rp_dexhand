@@ -16,3 +16,10 @@ def test_reset_reproduces_first_run():
     r=CausalReceiver(); x=np.arange(80)
     a=r.replay(x); r.reset(); b=r.replay(x)
     np.testing.assert_allclose(a,b,equal_nan=True)
+
+
+def test_infinity_is_rejected_without_updating():
+    import pytest
+    r=CausalReceiver()
+    with pytest.raises(ValueError): r.update(np.inf)
+    assert r.valid_samples==0
