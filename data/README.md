@@ -14,3 +14,7 @@ timestamp_s,value
 0.010,
 0.015,0.11
 ```
+
+## Included example
+
+[example-synthetic.csv](example-synthetic.csv) contains 240 samples at 200 Hz. A 10 Hz sinusoid of amplitude 0.05 is combined with a unit step during [0.5,0.7) seconds. Samples 130 and 131 are missing. Values are arbitrary units. This is a mathematical teaching signal, not a physical slip recording.
