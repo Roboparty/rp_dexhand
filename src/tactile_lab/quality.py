@@ -3,7 +3,7 @@ import numpy as np
 
 def quality_report(timestamps_s, samples):
     t,x=np.asarray(timestamps_s,float),np.asarray(samples,float)
-    if t.ndim!=1 or len(t)<2 or x.shape[0]!=len(t) or not np.isfinite(t).all():
+    if t.ndim!=1 or len(t)<2 or x.ndim not in (1,2) or x.shape[0]!=len(t) or (x.ndim==2 and x.shape[1]==0) or not np.isfinite(t).all():
         raise ValueError("require matching samples and finite timestamps")
     dt=np.diff(t)
     if (dt<=0).any() or np.isinf(x).any():

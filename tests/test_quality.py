@@ -10,3 +10,7 @@ def test_jitter_is_reported():
     assert quality_report([0,.1,.21],[1,2,3])["max_relative_jitter"]>0
 def test_backwards_time():
     with pytest.raises(ValueError): quality_report([0,-1],[1,2])
+
+@pytest.mark.parametrize("samples",[1,[],[[],[]]])
+def test_bad_sample_shapes(samples):
+    with pytest.raises(ValueError): quality_report([0,1],samples)
