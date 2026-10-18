@@ -1,40 +1,40 @@
-# URDF、MJCF 与 CAD
+# URDF, MJCF and CAD
 
-[返回首页](../README.zh-CN.md) · [硬件尺寸](hardware.md) · [下载清单](downloads.md)
+[Home](../README.md) · [Hardware dimensions](hardware.md) · [Downloads](downloads.md)
 
-## 现有资源
+## Available resources
 
-| 资源 | 来源版本 | 当前状态 |
+| Resource | Source version | Recorded status |
 | --- | --- | --- |
-| DH116 URDF / MJCF | `DH116_URDF_MJCF_Files_2026_4_9.7z` | 已归档；7z 完整性检查通过 |
-| DH116S URDF / MJCF | `DH116S_URDF_MJCF_Files_2026_4_9.7z` | 已归档；7z 完整性检查通过 |
-| 左手 CAD | `DH116S-L000-A1-结构件 RP左手DH116S-LW1-RP1套装  白色_A.x_t` | XZ 下载 45,285,532 字节；还原后 260,959,468 字节 |
-| 右手 CAD | `DH116S-R000-A1-结构件 RP右手DH116S-RW1-RP1套装  白色_A.x_t` | XZ 下载 43,559,368 字节；还原后 262,261,691 字节 |
+| DH116 URDF/MJCF | `DH116_URDF_MJCF_Files_2026_4_9.7z` | Archived; 7z integrity check passed |
+| DH116S URDF/MJCF | `DH116S_URDF_MJCF_Files_2026_4_9.7z` | Archived; 7z integrity check passed |
+| Left-hand CAD | DH116S-L000-A1 structural component, RP left-hand DH116S-LW1-RP1 kit, white, revision A; exact original filename is in the manifest | XZ download: 45,285,532 bytes; restored: 260,959,468 bytes |
+| Right-hand CAD | DH116S-R000-A1 structural component, RP right-hand DH116S-RW1-RP1 kit, white, revision A; exact original filename is in the manifest | XZ download: 43,559,368 bytes; restored: 262,261,691 bytes |
 
-[私有资源 Release](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 需要本仓库的 GitHub 访问权限，具体下载与校验方式见 [下载清单](downloads.md)。[原始 URDF/MJCF 下载页](https://roboparty.feishu.cn/docx/E4pUdKUfWoplqHxbR9CcnNUfn4d) 与 [产品手册中的 CAD 附件](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb) 仍保留作来源记录。
+The upstream [resource release](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) was recorded as private and requires appropriate GitHub access. See [Downloads](downloads.md) for retrieval and verification. The [original URDF/MJCF page](https://roboparty.feishu.cn/docx/E4pUdKUfWoplqHxbR9CcnNUfn4d) and [CAD attachments in the product manual](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb) remain source records.
 
-两个模型归档均包含对应型号的 `L000-A1`、`R000-A1` 目录；每侧有 `urdf/*.urdf`、`mjcf/*.xml` 和 mesh。完整路径记录在 [检查报告](../resources/resources-2026.10.05/validation.json)。目前只验证归档完整性并列出目录，尚未验证 mesh 引用、仿真加载或实际关节映射。
+Both model archives include corresponding `L000-A1` and `R000-A1` directories, with `urdf/*.urdf`, `mjcf/*.xml` and meshes for each side. Full paths are in the [inspection report](../resources/resources-2026.10.05/validation.json). Only archive integrity and directory listings were checked; mesh references, simulation loading and physical joint mapping were not validated.
 
-DH116 和 DH116S 不是可无条件互换的文件名。当前 RoboParty SDK 公共模型 0 内部映射到 Dof6S，但这不能替代对实际交付硬件和模型版本的核对。
+DH116 and DH116S filenames are not unconditionally interchangeable. The current RoboParty SDK's public model 0 maps internally to Dof6S, but this does not replace checking the delivered hardware and model version.
 
-## 映射要求
+## Mapping requirements
 
-将模型接到实机前，需要逐轴确认以下信息：
+Before connecting a model to hardware, verify each axis:
 
-| 字段 | 要记录的内容 |
+| Field | Record |
 | --- | --- |
-| SDK 主动轴 | ID 1～6 |
-| 物理含义 | 对应手指、侧摆或屈伸动作 |
-| 左右手 | 模型侧别、方向与安装坐标系 |
-| 模型关节 | URDF/MJCF 中的实际 joint 名称 |
-| 零位与正方向 | SDK 零位与模型零位的对应关系 |
-| 单位和范围 | 设备位置值/角度到模型弧度的转换、各轴限位 |
-| 被动/联动关节 | 五个额外自由度的耦合关系或 mimic 定义 |
+| SDK active axis | ID 1–6 |
+| Physical meaning | Finger and lateral-swing or flexion/extension motion |
+| Left/right hand | Model side, direction and mounting coordinate frame |
+| Model joint | Actual URDF/MJCF joint name |
+| Zero and positive direction | Relationship between SDK and model zero positions |
+| Units and range | Conversion from device position/angle to model radians, plus per-axis limits |
+| Passive/coupled joints | Coupling relationships or mimic definitions for the five additional DOF |
 
-目前尚未发布经过核验的对应表。不能按名字猜测 joint 顺序，或把六个输入值直接填入模型全部 11 个关节；也不能把通用行程系数当作所有轴相同的角度换算。
+A verified mapping table has not been published. Do not guess joint order from names, assign six inputs directly to all 11 model joints, or assume a common travel coefficient means the same angular conversion for every axis.
 
-## 后续文件组织
+## Future file organization
 
-大型 CAD 和模型原始归档已经采用版本化 Release，Git 中只保留文档、清单和校验值。CAD 使用无损 XZ 压缩，解压后原件哈希已验证；几何内容仍只检查文件头部，没有加载 CAD 软件验收。模型文本和配套 mesh 在核对引用路径及适用版本后再决定是否直接放入 Git。
+Large CAD and original model archives use versioned releases; Git stores only documentation, inventories and checksums. CAD uses lossless XZ compression and the restored original hashes were verified. Geometry was only inspected at the file-header level, not accepted in CAD software. Decide whether to store model text and meshes directly in Git after checking reference paths and applicable versions.
 
-当前运行时建议仍以 [SDK 单手验收](quickstart.md) 为基础；模型可视化不替代实际设备的状态反馈。
+Continue to use [single-hand SDK acceptance](quickstart.md) as the runtime foundation. Model visualization is not a substitute for actual device feedback.

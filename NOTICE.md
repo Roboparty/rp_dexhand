@@ -1,7 +1,11 @@
-# 资料与第三方说明
+# Resources and Third-Party Notices
 
-本仓库整理 RoboParty 的 RP Hand 产品资料与集成入口。尺寸图、引脚图来自产品手册，产品动图来自公司首页，具体来源见 [维护记录](docs/maintenance.md)。
+This repository organizes RoboParty RP Hand product information and integration entry points. Dimension and pinout drawings come from the product manual; the product animation comes from the company homepage. See the [maintenance record](docs/maintenance.md) for sources.
 
-链接或归档的 SDK、上位机、模型和其他软件保留各自的许可证及适用说明。`roboparty_dexhand` 的 RoboParty 自有源码与厂商二进制许可边界见其 [第三方说明](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/thirdparty/README.md)。本仓库不因链接、归档或整理而重新授权这些外部资源。
+Linked or archived SDKs, host applications, models and other software retain their respective licenses and applicable notices. The licensing boundary between RoboParty-owned `roboparty_dexhand` source and vendor binaries is described in its [third-party notice](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/thirdparty/README.md). Linking, archiving or organizing these external resources does not relicense them.
 
-本版作为组织内资料整理稿。对外公开前应补齐本仓库原创文档和收录素材的适用许可；不将公司首页的 GPL 标识自动套用到全部厂商附件、模型或产品素材。
+The upstream edition was prepared as an internal organizational resource collection. Its notice requires applicable licenses for original documentation and included assets to be completed before public release. The GPL label on the company homepage must not automatically be applied to all vendor attachments, models or product assets.
+
+## English translation
+
+This derivative translates repository documentation and adds proposed research plans. It preserves the upstream licensing notice and does not grant new rights to vendor resources. External release attachments have not been republished by this translation. See [translation scope](docs/translation-status.md).

@@ -1,50 +1,50 @@
-# SDK 接入
+# SDK Integration
 
-[返回首页](../README.zh-CN.md) · [快速开始](quickstart.md) · [下载](downloads.md)
+[Home](../README.md) · [Quick start](quickstart.md) · [Downloads](downloads.md)
 
-## 选择哪套 SDK
+## Choose an SDK
 
-| 路线 | 使用场景 | 入口 |
+| Route | Use case | Entry point |
 | --- | --- | --- |
-| RoboParty 维护的封装 | Linux CAN-FD、RP Hand 六主动轴、C++ / Python 应用和机器人集成 | [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand) |
-| 厂商原版 SDK | 使用厂商 Windows/Linux 包及其 EtherCAT、CAN-FD、RS485 示例；具体组合以原版说明为准 | [原版资源列表](downloads.md) |
+| RoboParty-maintained wrapper | Linux CAN-FD, six active RP Hand axes, C++/Python applications and robot integration | [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand) |
+| Original vendor SDK | Vendor Windows/Linux packages and their EtherCAT, CAN-FD and RS485 examples; consult the original instructions for supported combinations | [Original resources](downloads.md) |
 
-本项目默认推荐第一条路线。旧 `roboparty_hand` 的 `hand_py`、`connect_by_config()` 与当前 `dexhand_py` 不是同一套接口，不应混用教程。
+This project recommends the first route by default. The older `roboparty_hand` interfaces `hand_py` and `connect_by_config()` are different from the current `dexhand_py`; do not mix their tutorials.
 
-## 封装结构
+## Wrapper structure
 
-Python 应用通过 `dexhand_py` 调用公共 `HandDriver`；C++ 应用直接使用 `HandDriver`。私有 `LHandProDriver` 将厂商 SDK 适配器、SocketCAN 传输、回调和生命周期管理连接起来。厂商 `libLHandProLib.so` 仍属于底层依赖。
+Python applications access the public `HandDriver` through `dexhand_py`; C++ applications use `HandDriver` directly. The private `LHandProDriver` connects the vendor SDK adapter, SocketCAN transport, callbacks and lifecycle management. The vendor `libLHandProLib.so` remains an underlying dependency.
 
-| 名称 | 含义 |
+| Name | Meaning |
 | --- | --- |
-| `roboparty_dexhand` | SDK 源码项目 |
-| `roboparty-dexhand` | Debian 软件包 |
-| `dexhand_py` | Python 扩展模块 |
-| `HandDriver` | 公共 C++ / Python 驱动接口 |
-| `roboparty-dexhand-config` | 反馈参数配置工具 |
-| `roboparty-base` | 提供 `/opt/roboparty/setup.bash` 的基础环境包 |
+| `roboparty_dexhand` | SDK source project |
+| `roboparty-dexhand` | Debian package |
+| `dexhand_py` | Python extension module |
+| `HandDriver` | Public C++/Python driver interface |
+| `roboparty-dexhand-config` | Feedback-parameter configuration tool |
+| `roboparty-base` | Base environment package providing `/opt/roboparty/setup.bash` |
 
-## API 与使用边界
+## API and boundaries
 
-- 新程序使用产品名 `RP_Hand`、接口 `canfd` 和 `HandModel.RP_HAND_6DOF`。
-- 构造工厂不执行通信；`init_hand()` 才建立设备会话，可明确选择是否使能、回零。
-- 成功创建后使用 `try/finally` 或对应 C++ 异常处理调用 `deinit_hand()`。
-- 同一进程仅允许一个活动手实例，双手部署为两个进程。
-- 读取轴 ID 为 `1..6`；允许广播的控制方法中 `0` 代表全部轴，不能将其当作第一个手指。
-- `get_now_*()` 读取缓存，`check_health()` 不能替代带时间信息的反馈新鲜度判断。
-- 当前公共 API 没有触觉读取，也不能由保留的旧枚举推断 RP Hand 支持 16 个主动轴。
+- New programs use product name `RP_Hand`, interface `canfd` and `HandModel.RP_HAND_6DOF`.
+- The factory does not communicate with the device. `init_hand()` establishes the session, with explicit choices for enabling and homing.
+- After successful creation, call `deinit_hand()` using `try/finally` or corresponding C++ exception handling.
+- Only one active hand instance is allowed per process. Use two processes for two hands.
+- Read axis IDs are `1..6`. In control methods supporting broadcast, `0` means all axes, not the first finger.
+- `get_now_*()` reads cached data. `check_health()` does not replace timestamp-based feedback freshness checks.
+- The current public API has no tactile readout. Retained legacy enum values do not imply that RP Hand supports 16 active axes.
 
-SDK 接口将位置标注为编码器计数、速度为计数/秒、角度为度、电流为 mA。原始 CAN-FD 协议另有“总行程系数，默认 10000”的表述。将其接入弧度制模型前，应核验具体设备的转换和逐轴范围，不能直接使用通用线性换算假设。
+The SDK labels position in encoder counts, speed in counts/second, angle in degrees and current in mA. The raw CAN-FD protocol separately describes a total-travel coefficient with a default of 10000. Before connecting to a model using radians, verify the conversion and range for each axis on the actual device; do not assume a universal linear conversion.
 
-## 权威文档
+## Authoritative documentation
 
-本版接入说明基于 SDK commit `046108e7ba800763a096ca1c99b04a8414797105`。完整内容维护在 SDK 仓库中：
+This integration guide is based on SDK commit `046108e7ba800763a096ca1c99b04a8414797105`. Full documentation lives in the SDK repository:
 
-- [Python / C++ API 与示例](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/api.md)
-- [CAN-FD 与反馈配置](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md)
-- [源码构建与 Debian 打包](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/build.md)
-- [硬件验收](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/VALIDATION.md)
-- [已发布软件包](https://github.com/Roboparty/roboparty_dexhand/releases)
-- [厂商二进制版本和许可说明](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/thirdparty/README.md)
+- [Python/C++ API and examples](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/api.md)
+- [CAN-FD and feedback configuration](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md)
+- [Source build and Debian packaging](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/build.md)
+- [Hardware acceptance](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/VALIDATION.md)
+- [Released packages](https://github.com/Roboparty/roboparty_dexhand/releases)
+- [Vendor binary versions and licensing](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/thirdparty/README.md)
 
-源码文档基线与 Release 是不同的版本标识。安装时同时记录包版本、目标系统和 Python ABI，不用 main 分支日期替代软件包的兼容信息。
+Source-documentation baselines and releases are distinct version identifiers. Record package version, target operating system and Python ABI when installing. The date of the main branch is not package compatibility information.

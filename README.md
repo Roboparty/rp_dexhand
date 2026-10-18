@@ -1,6 +1,6 @@
 # RP Hand
 
-[English](README.md) | [简体中文](README.zh-CN.md)
+[English documentation](README.md) | [Project plans](PROJECT_PLANS.md) | [Translation scope](docs/translation-status.md)
 
 ![RP Hand quick-swap attachment on RP1](assets/rp-hand.gif)
 
@@ -18,7 +18,7 @@ Specifications are transcribed from the product manual. Confirm the hardware rev
 
 ## Start Here
 
-The detailed guides below are currently in Simplified Chinese.
+The detailed guides below are translated into English. This fork also contains two proposed tactile-sensing research projects; see [PROJECT_PLANS.md](PROJECT_PLANS.md).
 
 | Task | Guide |
 | --- | --- |
@@ -44,7 +44,7 @@ The SDK documentation targets an Ubuntu 24.04 / Python 3.12 image; the current R
 
 ## Resources and Maintenance
 
-Dimensions and connector drawings are available locally in this repository. Twelve original software, model, CAD and protocol attachments are archived in the private prerelease [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05), with source records, file sizes and SHA-256 checksums in [Downloads](docs/downloads.md). Repository access is required. This resource snapshot is not a new SDK release or a hardware-validation result; maintained RoboParty driver releases are linked directly.
+Dimensions and connector drawings are available locally in this repository. Twelve original software, model, CAD and protocol attachments are recorded upstream as archived in the private prerelease [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05), with source records, file sizes and SHA-256 checksums in [Downloads](docs/downloads.md). Upstream access may be required; release attachments are not included in this fork. This resource snapshot is not a new SDK release or a hardware-validation result; maintained RoboParty driver releases are linked directly.
 
 Report product-documentation issues in [this repository](https://github.com/Roboparty/rp_dexhand/issues), driver issues in [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand/issues), and ROS integration issues in [roboparty_dexhand_ros](https://github.com/Roboparty/roboparty_dexhand_ros/issues).
 
