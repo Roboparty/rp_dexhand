@@ -18,7 +18,7 @@ Specifications are transcribed from the product manual. Confirm the hardware rev
 
 ## Start Here
 
-The detailed guides below are translated into English. This fork also contains two proposed tactile-sensing research projects; see [PROJECT_PLANS.md](PROJECT_PLANS.md).
+The detailed guides below are translated into English. This fork implements two synthetic tactile-sensing research prototypes: pathway graphs and causal adaptive receivers. Start with the [research quickstart](RESEARCH_QUICKSTART.md), [40-chapter knowledge folder](knowledge/README.md), and [implementation status](IMPLEMENTATION_STATUS.md). The [project plans](PROJECT_PLANS.md) describe the path from these experiments to measured hardware trials.
 
 | Task | Guide |
 | --- | --- |
