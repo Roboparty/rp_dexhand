@@ -1,6 +1,6 @@
 # Tactile Intelligence: Two Project Plans
 
-Status: proposed research and learning plan, not implemented or hardware-validated.
+Status: synthetic software prototypes, evaluation tools and learning materials implemented; physical integration and hardware validation pending.
 Prepared: 2026-10-18.
 
 [Documentation](README.md) · [Hardware](docs/hardware.md) · [SDK](docs/sdk.md) · [ROS limitations](docs/ros2.md)
@@ -18,7 +18,7 @@ This project concerns the robot's tactile perception. Human sensory feedback, el
 
 ## Repository and hardware scope
 
-This repository contains documentation and resource inventories, not the driver implementation. Implementation would use the separate upstream [SDK](https://github.com/Roboparty/roboparty_dexhand), with ROS integration optional and later.
+This repository contains documentation, resource inventories and the Python tactile research package. It does not implement the robot driver. Physical integration would use the separate upstream [SDK](https://github.com/Roboparty/roboparty_dexhand), with ROS integration optional and later.
 
 The pinned documentation baseline describes:
 - Six active axes and eleven mechanical DOF.
@@ -194,22 +194,18 @@ For each speculative reading, record: exact source/page, proposed claim, establi
 
 There is no claim that motor position commands provide force control. If direct force control is unavailable, validate a conservative position-based grip adjustment against independent force measurements. Do not infer load safety from motor current alone.
 
-## Suggested future implementation layout
+## Implemented research layout
 
-These are planned outputs, not files claimed to exist:
+- [Quickstart](RESEARCH_QUICKSTART.md): installation, tests, benchmarks and CSV replay.
+- [Knowledge](knowledge/README.md): definitions, equations, assumptions and worked examples.
+- [Status](IMPLEMENTATION_STATUS.md): completed software and remaining physical milestones.
+- [Experiments](experiments/README.md): protocols for both plans and their combined comparison.
+- [Configuration](configs/README.md): actual code defaults and parameter roles.
+- [Data contract](data/README.md): synthetic examples and future measured recordings.
+- `src/tactile_lab/`: executable prototypes, calibration, diagnostics and evaluation.
+- `tests/`: analytical, causal, split-isolation and integration checks.
 
-```text
-experiments/
-  calibration/
-  pathway_graph/
-  adaptive_receiver/
-  combined/
-configs/
-data/README.md
-reports/
-```
-
-Keep large datasets outside Git with hashes and retrieval instructions. Commit configurations, small examples, analysis and reports. Record package versions and upstream commits. Publish results whether positive or negative, with limitations and enough detail to reproduce the comparison.
+Keep large datasets outside Git with hashes and retrieval instructions. Commit configurations, small examples, analysis and reports. Record package versions and upstream commits. Publish positive and negative results with enough detail to reproduce them. The implementation is a learning/research foundation; the hardware gates above remain open.
 
 ## Reading and source roles
 
