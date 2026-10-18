@@ -1,6 +1,6 @@
 # RP Hand
 
-[English documentation](README.md) | [Project plans](PROJECT_PLANS.md) | [Translation scope](docs/translation-status.md)
+[English documentation](README.md) | [Project plans](PROJECT_PLANS.md) | [Translation scope](docs/translation-status.md) | [Research results](reports/README.md) | [Validation](VALIDATION.md)
 
 ![RP Hand quick-swap attachment on RP1](assets/rp-hand.gif)
 
