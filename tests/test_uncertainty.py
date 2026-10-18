@@ -9,7 +9,7 @@ def test_no_successes_still_has_upper_uncertainty():
     assert low==0 and .27<high<.29
 def test_all_successes_not_certainty():
     low,high=wilson_interval(10,10)
-    assert .71<low<.73 and high==1
+    assert .71<low<.73 and high==pytest.approx(1)
 @pytest.mark.parametrize("a,b", [([],[]),([1],[1]),([1,2],[1]),([1,float("nan")],[1,2])])
 def test_invalid_pairs(a,b):
     with pytest.raises(ValueError): paired_interval(a,b)
