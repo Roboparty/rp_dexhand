@@ -9,7 +9,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Synthetic tactile research; no hardware commands")
     commands = parser.add_subparsers(dest="command", required=True)
     benchmark = commands.add_parser("benchmark")
-    benchmark.add_argument("--experiment", choices=("pathways","receivers","combined","all"), default="all")
+    benchmark.add_argument("--experiment", choices=("pathways","receivers","combined","ablation","all"), default="all")
     benchmark.add_argument("--seed", type=int, default=42)
     benchmark.add_argument("--output", type=Path, default=Path("runs/latest"))
     replay = commands.add_parser("replay")
@@ -29,7 +29,8 @@ def main(argv=None):
     from .pathways import run_benchmark as pathways
     from .receivers import run_benchmark as receivers
     from .combined import run_benchmark as combined
-    jobs={"pathways":pathways,"receivers":receivers,"combined":combined}
+    from .ablation import run_benchmark as ablation
+    jobs={"pathways":pathways,"receivers":receivers,"combined":combined,"ablation":ablation}
     names=list(jobs) if args.experiment == "all" else [args.experiment]
     args.output.mkdir(parents=True,exist_ok=True)
     for name in names:

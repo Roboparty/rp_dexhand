@@ -3,6 +3,7 @@ import numpy as np
 from tactile_lab.evaluation.splits import validate_splits
 from tactile_lab.evaluation.artifacts import content_hash
 from .geometry import sensor_grid
+from .topology import describe_topology
 from .graphs import independent_graph, spatial_graph, pathway_graph, graph_summary
 from .synthetic import generate_trials
 from .evaluation import evaluate, summarize, paired_comparison
@@ -20,7 +21,7 @@ def run_benchmark(seed=42, count=120):
         validation = [{"strength": a, **summarize(evaluate(dataset["validation"], coordinates, graph, a))} for a in candidates]
         chosen = min(validation, key=lambda row: (row["mean_error_mm"], row["strength"]))["strength"]
         rows = evaluate(dataset["test"], coordinates, graph, chosen)
-        models[name] = {"strength": chosen, "steps": 1, "graph": graph_summary(graph),
+        models[name] = {"strength": chosen, "steps": 1, "graph": graph_summary(graph), "topology": describe_topology(graph, coordinates),
                         "validation_candidates": validation, "summary": summarize(rows), "trials": rows,
                         "by_condition": {c: summarize([r for r in rows if r["condition"] == c])
                                          for c in sorted({r["condition"] for r in rows})}}
