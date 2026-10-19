@@ -11,7 +11,7 @@
 
 ![RP Hand quick-change installation on RP1](assets/rp-hand.gif)
 
-RP Hand is designed for small and medium humanoid robots. This repository brings together product specifications, wiring, software setup and model resources. The maintained control code lives in [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand); this repository is its product and integration guide.
+RP Hand is a five-finger dexterous hand for small and medium humanoid robots, with CAN-FD connectivity for robot control. This repository provides wiring guides, software setup and model resources. Control code is maintained in [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand).
 
 **Maintainer:** RoboParty · **Support:** [GitHub Issues](https://github.com/Roboparty/rp_dexhand/issues) · **Platform:** [RP1](https://github.com/Roboparty/RP1)
 
@@ -62,7 +62,7 @@ Confirm the supplied hardware revision before integration. [Dimensions, power an
 
 ## Getting started
 
-The reviewed baseline is [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). It requires Linux, CMake ≥ 3.20 and a C++17 compiler; Python bindings require Python ≥ 3.9, development headers and pybind11. The bundled ROS build targets Jazzy. These are the build requirements for this guide, not a hardware-validation claim for every system combination.
+This guide uses [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). It requires Linux, CMake ≥ 3.20 and a C++17 compiler; Python bindings require Python ≥ 3.9, development headers and pybind11. The bundled ROS build targets Jazzy. See [compatibility](docs/en/compatibility.md) when selecting a version or upgrading an existing installation.
 
 ```bash
 git clone https://github.com/Roboparty/roboparty_dexhand.git
@@ -107,4 +107,4 @@ The SDK handles protocol encoding, feedback decoding and sessions. ROS adds peri
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for checks and issue routing. Source versions and validation boundaries are recorded in [maintenance](docs/maintenance.md).
 
-Product documents, original applications and linked SDKs have separate licensing scopes. This repository currently has no blanket license grant; see [LICENSES.md](LICENSES.md) and [NOTICE.md](NOTICE.md).
+See [LICENSES.md](LICENSES.md) for licensing information and [NOTICE.md](NOTICE.md) for source attribution.

@@ -58,6 +58,6 @@ Python 清理应分别调用并检查 `stop()`、`disable()`，再 `disconnect()
 
 只有连接正常且位置组、状态组均已接收、各自年龄小于 100 ms 时，`feedback_valid` 才为 true。两组并非同时采样，过期后数组可能保留旧值。`is_connected()` 不代表反馈仍在更新。
 
-ROS 发布对应状态，也提供采集入口，见 [ROS 2](ros2.md)。当前无触觉读取接口；状态中的电流、故障码也不构成接触传感器数据。
+ROS 发布对应状态，也提供采集入口，见 [ROS 2](ros2.md)。电流反馈采用协议值，使用时按设备定义解释。
 
 线程、重试次数、并发约束和完整方法签名由[上游架构](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/architecture.md)与 [API](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)维护。本仓库仅维护产品集成说明。

@@ -1,7 +1,7 @@
-# Source and third-party notices / 资料与第三方说明
+# Source attribution / 资料来源
 
-RP Hand documentation, dimensions and connector drawings originate from the product manual. The installation animation originates from the company project page. Exact source versions and file hashes are recorded in [maintenance](docs/maintenance.md) and the versioned resource manifests.
+RP Hand dimensions and connector drawings originate from the product manual. The installation animation originates from the RoboParty project page. Source versions and file hashes are listed in [maintenance](docs/maintenance.md) and the versioned resource manifests.
 
-Current software integration instructions reference [rphand SDK eb923ac](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). Legacy SDK packages, vendor applications, protocol files and model archives retain their own notices and applicable terms. Links and archived copies do not relicense them.
+Software integration guides reference [rphand SDK eb923ac](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). Applications, SDKs, protocol files and model packages retain their accompanying notices and applicable license terms. See [LICENSES.md](LICENSES.md) for details.
 
-本仓库和资源预发布版当前公开可访问。历史 manifest 中的 `visibility_at_creation` 与内部归档说明保留为原始记录，不代表今天的仓库可见性。适用许可及待确认事项见 [LICENSES.md](LICENSES.md)。
+尺寸图和引脚图来自 RP Hand 产品手册，安装动图来自 RoboParty 项目页面。来源版本和资源清单见[维护记录](docs/maintenance.md)，许可信息见 [LICENSES.md](LICENSES.md)。

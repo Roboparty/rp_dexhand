@@ -2,7 +2,7 @@
 
 [Home](../../README.md) · [中文](../software.md) · [Downloads](downloads.md)
 
-Companion applications support device setup and demonstrations. Use the current C++ / Python SDK or bundled ROS interface to develop robot applications. These are separately maintained software paths.
+RP Hand includes a configuration application and gesture-recognition demos for device setup and visual demonstrations. Use the C++ / Python SDK or ROS 2 interface to develop custom control applications.
 
 | Application | Resource version | Platform and purpose |
 | --- | --- | --- |
@@ -10,8 +10,8 @@ Companion applications support device setup and demonstrations. Use the current 
 | RP Hand Gesture | 1.1.1 | Windows EXE / Linux amd64 DEB; visual gesture-recognition demonstration |
 | Current rphand SDK | Source baseline eb923ac | Linux; C++ / Python / bundled Jazzy ROS development |
 
-Original packages and the host application's changelog are in [downloads](downloads.md). Follow each package's documentation for firmware, transport, OS, camera and dependencies. Do not apply original Windows/other-transport/legacy SDK instructions to the current source SDK.
+Download the applications and changelog from [downloads](downloads.md). Follow the package instructions to configure firmware, transport, OS dependencies and camera access.
 
-The applications were not installed or executed in this documentation update, and direct compatibility with the current rphand API is not asserted. The presence of a gesture demo does not mean the current ROS node implements visual hand retargeting: recognition/retargeting belongs to the operator-side application, while the node handles device commands and feedback.
+Recognition and retargeting run in the operator-side application; the robot SDK / ROS node receives targets and controls the hand. When integrating a custom gesture application, output targets using the documented [axis order and units](sdk.md).
 
 For custom control follow [quick start](quickstart.md); for published hand state/action recording see [ROS](ros2.md).

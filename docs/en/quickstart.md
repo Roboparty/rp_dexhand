@@ -35,7 +35,7 @@ cmake --build build/check --parallel 2
 ctest --test-dir build/check --output-on-failure
 ```
 
-The upstream tests use simulated responses or unavailable interface names. Passing them does not validate physical motion.
+These tests check SDK behavior using simulated responses or unavailable interface names. After they pass, continue with wiring, communication and motion checks.
 
 ## 3. Wiring and interface
 
@@ -82,4 +82,4 @@ Confirm mechanical clearance and stopping arrangements before using the upstream
 
 The normal sequence is `connect → disable → configure → enable → home → position control → stop / disable → disconnect`. Check every result, valid feedback and the actual device response. Disconnect only releases local resources; it does not stop or disable the hand.
 
-Continue with [ROS 2](ros2.md) for dual-hand integration. Record the hardware/firmware, hand side, interface/ID, SDK commit, target OS/Python and observed test results. This documentation update did not perform device-motion acceptance.
+Continue with [ROS 2](ros2.md) for dual-hand integration. Keep a record of hardware/firmware, hand side, interface/ID, SDK commit and target OS/Python for configuration management and troubleshooting.

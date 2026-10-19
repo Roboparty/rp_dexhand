@@ -11,7 +11,7 @@
 
 ![RP Hand 在 RP1 上的快换安装演示](assets/rp-hand.gif)
 
-RP Hand 面向中小尺寸人形机器人。本仓库汇集产品参数、硬件接线、软件接入和模型资源；持续维护的控制代码位于 [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand)，本仓库提供对应的产品与集成指南。
+RP Hand 是一款面向中小尺寸人形机器人的五指灵巧手，通过 CAN-FD 接入机器人控制系统。这里提供硬件接线、软件接入和模型资源，控制代码见 [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand)。
 
 **维护方：** RoboParty · **支持：** [GitHub Issues](https://github.com/Roboparty/rp_dexhand/issues) · **整机平台：** [RP1](https://github.com/Roboparty/RP1)
 
@@ -62,7 +62,7 @@ RP Hand 面向中小尺寸人形机器人。本仓库汇集产品参数、硬件
 
 ## 开始使用
 
-源码基线为 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)。需要 Linux、CMake ≥ 3.20 和 C++17 编译器；Python 绑定另需 Python ≥ 3.9、开发头文件和 pybind11。配套 ROS 构建入口面向 Jazzy。以上为本指南的构建环境要求，具体软硬件组合需按目标设备验证。
+源码基线为 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)。需要 Linux、CMake ≥ 3.20 和 C++17 编译器；Python 绑定另需 Python ≥ 3.9、开发头文件和 pybind11。配套 ROS 构建入口面向 Jazzy。版本选择与已有系统升级见[版本兼容](docs/compatibility.md)。
 
 ```bash
 git clone https://github.com/Roboparty/roboparty_dexhand.git
@@ -107,4 +107,4 @@ SDK 处理协议编解码、状态反馈与设备会话；ROS 层负责周期目
 
 文档检查和问题提交方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。资料版本和验证范围见[维护记录](docs/maintenance.md)。
 
-产品文档、原版软件和链接的 SDK 分别适用各自的许可说明。本仓库尚未提供覆盖全部内容的统一许可证，详见 [LICENSES.md](LICENSES.md) 和 [NOTICE.md](NOTICE.md)。
+许可信息见 [LICENSES.md](LICENSES.md)，资料来源见 [NOTICE.md](NOTICE.md)。

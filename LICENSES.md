@@ -1,6 +1,6 @@
 # License inventory / 许可范围
 
-This page records the current licensing status. It does not grant new rights.
+Licensing information for the documentation, SDK and companion resources is listed below.
 
 | Material | Current statement | Action before redistribution |
 | --- | --- | --- |
@@ -11,6 +11,6 @@ This page records the current licensing status. It does not grant new rights.
 | Legacy SDK and legacy ROS repositories | Refer to the exact version's license/third-party notices | Keep notices and do not extend their terms to this repository |
 | Vendor applications, protocol workbook, models and CAD | Original files retain applicable third-party terms | Check each package's notices and distribution scope |
 
-本仓库目前公开可访问。公开状态不替代软件、文档、模型或图片的授权声明，也不将 RP1 总入口或其他子仓库的 GPL 自动应用到本仓库全部内容。此轮整理不选择新的许可证或重新授权归档资料。
+各软件、文档和模型分别适用对应的许可说明。RP1 与其他子仓库的许可证适用范围以各自声明为准。
 
 资料来源见 [NOTICE.md](NOTICE.md) 与[维护记录](docs/maintenance.md)。报告授权问题可联系仓库维护方；请勿把未经授权的附件或凭据直接贴入公开 Issue。

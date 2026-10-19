@@ -58,10 +58,10 @@ With rosbag2 CLI and storage support installed, record published state/action to
 ros2 bag record -o rp_hand_session   /dexhand_left/cmd /dexhand_left/state   /dexhand_right/cmd /dexhand_right/state
 ```
 
-Cmd has no in-message timestamp; bag records receive time. State's `header.stamp` is ROS publication time, not hardware sampling time. The two feedback groups are asynchronous. Check message age as well as `feedback_valid`; this recording recipe does not establish synchronization with whole-body cameras.
+Cmd has no in-message timestamp; bag records receive time. State's `header.stamp` records ROS publication time rather than hardware sampling time. The two feedback groups are asynchronous. Check message age and `feedback_valid`, and align clock sources when recording alongside whole-body cameras.
 
 ## Runtime boundaries
 
 ROS repeatedly sends the last target at the configured rate. It has no command-timeout stop, no stop service and no automatic stop on invalid feedback. State publication targets 50 Hz but shares a thread with SDK calls and can pause during initialization, homing or blocking operations. Stopping the command publisher does not clear the device target. Normal node exit attempts stop/disable/disconnect; faults and forced termination can prevent cleanup.
 
-Full parameters, examples and offline lifecycle tests are in the [upstream ROS guide](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/ros2.md). This update reviewed code and interfaces; it did not validate physical Jazzy operation.
+Full parameters, examples and offline lifecycle tests are in the [upstream ROS guide](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/ros2.md).

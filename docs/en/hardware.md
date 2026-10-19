@@ -34,6 +34,6 @@ The manual lists input power as `12 V (-10%) .. 48 V (+10%)`. Confirm the suppli
 
 This guide covers CAN-FD firmware/configuration. Other transports require matching firmware and wiring. Reference bus rates are 1 Mbit/s arbitration, 5 Mbit/s data; node IDs are 1..127. Default integration examples use left can0/right can3 with ID 1 on separate buses.
 
-See [SDK](sdk.md) for source-defined axis order and units, and [models](models.md) for calibration boundaries. Tactile acquisition is not part of this integration path.
+See [SDK](sdk.md) for source-defined axis order and units, and [models](models.md) for calibration boundaries.
 
 Product source: RP Hand manual revision 13, archived 2026-10-05. Source records are in [maintenance](../maintenance.md); confirm the actual hardware revision before machining or assembly.

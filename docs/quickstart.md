@@ -38,7 +38,7 @@ cmake --build build/check --parallel 2
 ctest --test-dir build/check --output-on-failure
 ```
 
-这些是 SDK 提供的模拟 / 离线测试；运行成功后再检查设备接线与通信，不据此判断实机运动已通过验收。
+上述测试使用模拟设备检查 SDK 的控制流程。通过后，继续完成设备接线、通信与运动检查。
 
 ## 3. 接线与 CAN-FD
 
@@ -91,4 +91,4 @@ finally:
 
 双手推荐使用配套 [ROS 2 launch](ros2.md)。当前 SDK 不再依赖旧版进程级厂商回调；不要让多个进程同时控制同一个接口和节点 ID。
 
-记录硬件/固件版本、左右手、接口、节点 ID、SDK commit、系统与 Python 版本，再记录连接、回零、运动、反馈和退出结果。本次文档更新没有进行实机运动验收。
+完成接入后，记录硬件/固件版本、左右手、接口、节点 ID、SDK commit、系统与 Python 版本，便于后续复现配置和排查问题。

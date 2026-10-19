@@ -32,7 +32,7 @@ ros2 service call /dexhand_left/reset std_srvs/srv/Trigger '{}'
 ros2 topic echo /dexhand_left/state
 ```
 
-`success=true` 仅代表请求受理。等待日志 `Reset complete; waiting for a new target`，并检查本次最新反馈的有效性、六轴使能、回零和故障状态；reset 不是停止命令。
+`success=true` 仅代表请求受理。等待日志 `Reset complete; waiting for a new target`，再检查随后收到的反馈：状态有效、六轴已使能并完成回零、故障码为零。reset 会重新初始化设备并执行回零。
 
 初始化完成后可使用：
 
@@ -58,10 +58,10 @@ ros2 run rphand_ros command.py --side left 0 0 1000 1000 1000 1000
 ros2 bag record -o rp_hand_session   /dexhand_left/cmd /dexhand_left/state   /dexhand_right/cmd /dexhand_right/state
 ```
 
-`cmd` 没有消息内时间戳；bag 保存接收时刻。`state.header.stamp` 是 ROS 发布时间，不是设备采样时间。状态两组反馈异步，初始化及阻塞调用期间可能暂停发布；采集端同时检查反馈有效性、消息时效和记录频率。此命令提供记录方式，不代表已经与整机视频完成硬件同步。
+`cmd` 没有消息内时间戳，bag 保存接收时刻；`state.header.stamp` 记录 ROS 发布时间。状态两组反馈异步，初始化及阻塞调用期间可能暂停发布。采集端应检查反馈有效性、消息时效和记录频率；与整机视频联合采集时，还需统一时间基准。
 
 ## 运行边界
 
 节点按设置频率重复发送最新目标，未收到新命令时仍保持最后目标，没有命令超时自动停止。停止发布 cmd 不等于停止设备；正常退出节点会尝试停止、失能和断开，通信故障或强制终止不能保证清理完成。当前没有 stop 服务，也没有反馈失效后的自动停止流程。
 
-参数、清理流程和无硬件生命周期测试见[上游 ROS 文档](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/ros2.md)。本次更新核对源码与接口，未进行 Jazzy 实机验收。
+参数、清理流程和无硬件生命周期测试见[上游 ROS 文档](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/ros2.md)。

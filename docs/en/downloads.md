@@ -8,9 +8,9 @@ Build the [current source baseline](https://github.com/Roboparty/roboparty_dexha
 
 ## Applications and original resources
 
-The [resources-2026.10.05 prerelease](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) contains the configuration application, Windows/Linux gesture demos, vendor SDKs, original EtherCAT ROS example, models, CAD and protocol workbook. It is a resource snapshot, not a new SDK release.
+Download the configuration application, gesture demos, original SDK packages, models, CAD and protocol workbook from [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05). Choose a version below and verify its SHA-256 after downloading.
 
-The repository and release page are publicly accessible as checked on 2026-10-19. Historical manifests retain their creation-time private status. Original Feishu sources can still require separate access. Availability does not grant additional redistribution rights.
+Install each application using the instructions included in its package. For robot software development, use the current `rphand` source SDK above. The original EtherCAT ROS example is provided separately.
 
 | Resource | Source version | Download size, MB |
 | --- | --- | --- |
@@ -46,4 +46,4 @@ sha256sum DH116S-L000-A1_RP_Left_White_A.x_t
 
 Compare the expanded hash with `original_sha256` in [manifest.json](../../resources/resources-2026.10.05/manifest.json). Do not compare it with the compressed-file hash.
 
-Original archive checks are documented in [validation.json](../../resources/resources-2026.10.05/validation.json); additional model reference checks are documented [separately](../../resources/model-inspection-2026.10.19.json). No runtime or hardware acceptance is implied. See [LICENSES.md](../../LICENSES.md) and [source records](../maintenance.md).
+Resource versions and original filenames are listed in [manifest.json](../../resources/resources-2026.10.05/manifest.json). See [hardware](hardware.md) for wiring, [models](models.md) for model integration and [source records](../maintenance.md) for provenance.

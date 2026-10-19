@@ -1,10 +1,8 @@
-# 下载与可用状态
+# 软件与模型下载
 
 [返回首页](../README.zh-CN.md) · [English](en/downloads.md) · [SDK 选择](sdk.md) · [模型说明](models.md)
 
-资料快照日期：2026-10-05。12 份飞书资料已归档至 [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)。原件合计 1,409,480,165 字节；CAD 无损压缩后，12 个下载文件合计 975,103,906 字节（约 975.10 MB）。这是资料预发布版，不是新版 SDK，也不代表实机验收通过。
-
-截至 2026-10-19，本仓库与该预发布版页面均为公开可访问。历史资料清单中的 private 描述记录的是创建时状态；原始飞书链接仍需要对应权限。公开页面的可访问性不改变各软件和素材的许可。软件和模型保持原包，部分下载文件名改为 ASCII；CAD 使用 XZ 无损压缩，已核对解压后与飞书原件的 SHA-256 一致。
+配套软件、机器人模型和协议文件统一发布在 [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)。按下表选择版本，下载后可使用 SHA-256 校验文件完整性。
 
 ## 当前推荐 SDK
 
@@ -14,9 +12,9 @@
 | [快速开始](quickstart.md) | 目标 Linux 环境源码构建与单手连接 |
 | [版本兼容](compatibility.md) | 新旧 API 与环境区别 |
 
-当前源码使用 `rphand`，不从旧 v0.5.0 `.deb` 推断其 API 或 Python ABI。旧 `dexhand_py` 包仍保留在 [SDK 历史 Release](https://github.com/Roboparty/roboparty_dexhand/releases/tag/v0.5.0)，仅用于匹配的已有系统。下列原版应用与模型包是资料快照，不是当前源码 SDK 的构建产物。
+新项目按[快速开始](quickstart.md)构建 `rphand`。使用旧版 `dexhand_py` 的系统可在 [v0.5.0 Release](https://github.com/Roboparty/roboparty_dexhand/releases/tag/v0.5.0) 获取对应软件包，升级步骤见[版本兼容](compatibility.md)。
 
-## 厂商软件与配套应用
+## 配套应用与原版 SDK
 
 | 资源 | 版本 / 大小（十进制 MB） | Release 下载 |
 | --- | --- | --- |
@@ -24,13 +22,11 @@
 | 上位机原始更新日志 | 来源文档 revision 6 / 0.07 MB | [TXT](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_Host_changelog.txt) |
 | 手势软件 Windows | 1.1.1 / 299.84 MB | [EXE](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP-Hand-Gesture-Setup-1.1.1.exe) |
 | 手势软件 Linux amd64 | 1.1.1 / 309.22 MB | [DEB](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP-Hand-Gesture-1.1.1-amd64.deb) |
-| 厂商 Linux SDK | 2026-07-27 / 13.43 MB | [tar.gz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Linux-20260727.tar.gz) |
-| 厂商 Windows SDK | 2026-07-27 / 7.63 MB | [7z](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Windows-20260727.7z) |
-| 厂商 ROS 示例 | Humble / EtherCAT；来源文档 revision 4 / 33.35 MB | [ZIP](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/hand_control_ws_rp_hand.zip) |
+| 原版 Linux SDK | 2026-07-27 / 13.43 MB | [tar.gz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Linux-20260727.tar.gz) |
+| 原版 Windows SDK | 2026-07-27 / 7.63 MB | [7z](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Windows-20260727.7z) |
+| 原版 ROS 示例 | Humble / EtherCAT；来源文档 revision 4 / 33.35 MB | [ZIP](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/hand_control_ws_rp_hand.zip) |
 
-原始来源：[上位机](https://roboparty.feishu.cn/docx/VnbPdcs9toG7a1xe9l2cwVujnOe)、[手势软件](https://roboparty.feishu.cn/docx/UDyrdMlzyoJ1YaxHlb8cwkFenXg)、[厂商 SDK](https://roboparty.feishu.cn/docx/RIKJdBaQYoDGRfx4yDwcmBcpnwf)、[ROS 示例](https://roboparty.feishu.cn/docx/ZP7ldU3L9owd4BxRPXEcpclrnog)。Linux 原版 SDK 归档中包含 `aarch64`、`i386`、`x86_64` 目录；目录存在不代表在目标系统上已测试。
-
-厂商原版 SDK/ROS 示例与 RoboParty CAN-FD 封装是不同软件路线。不要将原版 `.so` 随意覆盖到已安装的驱动目录，也不要将原版示例能力直接视为当前 ROS 包的能力。
+上位机、手势软件和原版 SDK 按各自软件包内的说明安装。机器人程序开发使用上方的 `rphand` 源码入口；原版 EtherCAT 示例单独提供。
 
 ## 模型与协议
 
@@ -42,9 +38,7 @@
 | DH116S 右手白色 CAD | R000-A1 / A / 43.56 MB（解压后 262.26 MB） | [X_T.xz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/DH116S-R000-A1_RP_Right_White_A.x_t.xz) |
 | EtherCAT / CAN-FD / RS485 协议表格 | 来源手册 revision 13 / 0.37 MB | [XLSX](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_Protocols_EtherCAT_CAN-FD_RS485.xlsx) |
 
-原始来源：[模型下载页](https://roboparty.feishu.cn/docx/E4pUdKUfWoplqHxbR9CcnNUfn4d)、[产品手册附件](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb)。[在线 CAN-FD 协议](https://roboparty.feishu.cn/docx/NofXd7ZqKovElLxfgr8cWMegnxg)为 revision 14；不能仅凭文档 revision 比较它与附件表格的协议版本。
-
-尺寸与引脚图已经存入 [硬件手册](hardware.md)，不依赖飞书登录即可在本仓库查看。
+安装尺寸与接线见[硬件手册](hardware.md)，模型选择与关节说明见[模型文档](models.md)。
 
 ## 清单与完整性校验
 
@@ -64,7 +58,7 @@ sha256sum -c SHA256SUMS.txt
 sha256sum DH116S_URDF_MJCF_Files_2026_4_9.7z
 ```
 
-将输出的完整哈希与校验表中同名记录比较。校验值用于确认字节一致性，不替代来源身份、签名或安全性检查。
+将输出的完整哈希与校验表中同名记录比较。
 
 CAD 下载后先核对压缩包哈希，再解压。例如 Linux 下保留压缩包并恢复左手原始文件：
 
@@ -75,4 +69,4 @@ sha256sum DH116S-L000-A1_RP_Left_White_A.x_t
 
 解压后哈希与清单中的 `original_sha256` 比较，原始大小见 `original_size_bytes`。右手同理；Windows 可用支持 XZ 的解压工具。
 
-本次完成了 ZIP/7z/gzip 完整性检查、XZ 解压还原哈希检查和 Debian 包元数据/内容列表检查。EXE 与 X_T 内容仅核对文件类型及头部，没有执行安装程序、加载 CAD 几何、运行仿真或驱动实机。公开再分发范围仍需按 [第三方说明](../NOTICE.md) 确认。
+资源版本、原始文件名及来源见[维护记录](maintenance.md)与[完整清单](../resources/resources-2026.10.05/manifest.json)。

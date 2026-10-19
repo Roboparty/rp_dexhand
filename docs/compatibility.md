@@ -2,11 +2,11 @@
 
 [首页](../README.zh-CN.md) · [English](en/compatibility.md) · [快速开始](quickstart.md)
 
-核对日期：2026-10-19。新项目推荐从 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) 源码构建，并使用同仓库内的 ROS 适配。先按独立 SDK 完成单手接入，再按需加入 ROS。
+新项目推荐从 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) 源码构建，并使用同仓库内的 ROS 适配。先按独立 SDK 完成单手接入，再按需加入 ROS。
 
 | 路线 | 接口 / 环境 | 使用方式 |
 | --- | --- | --- |
-| 当前源码 SDK | `rphand::Hand` / `rphand.Hand`；Linux、C++17、CMake ≥ 3.20、Python ≥ 3.9 | 本文推荐基线，按目标计算机与解释器构建 |
+| 当前源码 SDK | `rphand::Hand` / `rphand.Hand`；Linux、C++17、CMake ≥ 3.20、Python ≥ 3.9 | 推荐用于新项目，按目标计算机与解释器构建 |
 | 当前配套 ROS | `rphand_ros`；ROS 2 Jazzy | 与当前 SDK 同仓库构建，已实现 state 发布 |
 | 旧版 SDK `046108e` / v0.5.0 包 | `HandDriver` / `dexhand_py`；Debian 包与镜像入口 | 仅用于已有系统维护，不与当前 API 混用 |
 | 旧 ROS `bfc325f` | `roboparty_dexhand_ros`；文档基线 Humble、Python 3.10 | 依赖旧版 SDK，只有命令和生命周期服务 |
@@ -27,8 +27,8 @@
 
 ## 验证状态
 
-本仓库核对了源码、消息定义、构建入口和资料记录。固定 SDK 基线已在 GitHub 托管的 Ubuntu 24.04 x86-64 环境完成 C++ / Python 构建、安装、离线测试及外部 CMake 工程链接检查，见 [CI 记录](https://github.com/Roboparty/rp_dexhand/actions/runs/39203726788)。
+SDK 在 Ubuntu 24.04 x86-64 的 C++ / Python 构建、安装、离线测试及外部 CMake 工程链接由 [CI](https://github.com/Roboparty/rp_dexhand/actions/runs/39203726788)检查。
 
-该检查不覆盖 ARM64、ROS 2 构建/运行、真实 CAN 总线或手部动作。产品硬件/固件、目标架构、Python ABI 和动作工况仍应记录在部署验收中。
+ARM64、ROS 2 和实机部署需在目标设备上完成对应检查，并记录硬件/固件、系统、Python ABI 与动作工况。
 
 旧版证据：[SDK `046108e`](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105)、[ROS `bfc325f`](https://github.com/Roboparty/roboparty_dexhand_ros/tree/bfc325f2d5d7bf33d3a64ebdc79b01ed3641f227)。旧 v0.5.0 软件包仍可从上游 Release 获取，但不提供当前 `rphand` API。
