@@ -21,7 +21,7 @@ add_executable(hand_app main.cpp)
 target_link_libraries(hand_app PRIVATE rphand::rphand)
 ```
 
-配置时把 `CMAKE_PREFIX_PATH` 指向 SDK 的 `install/cpp`。完整构建、安装和例程见[上游 API 文档](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)。
+配置时把 `CMAKE_PREFIX_PATH` 指向 SDK 的 `install/cpp`。完整构建、安装和例程见[上游 API 文档](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)。
 
 ## 六轴顺序与单位
 
@@ -60,4 +60,4 @@ Python 清理应分别调用并检查 `stop()`、`disable()`，再 `disconnect()
 
 ROS 发布对应状态，也提供采集入口，见 [ROS 2](ros2.md)。当前无触觉读取接口；状态中的电流、故障码也不构成接触传感器数据。
 
-线程、重试次数、并发约束和完整方法签名由[上游架构](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/architecture.md)与 [API](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)维护。本仓库仅维护产品集成说明。
+线程、重试次数、并发约束和完整方法签名由[上游架构](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/architecture.md)与 [API](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)维护。本仓库仅维护产品集成说明。

@@ -1,5 +1,6 @@
 """Regression checks for the offline documentation validator."""
 import subprocess
+import json
 import sys
 import tempfile
 import unittest
@@ -44,6 +45,40 @@ class DocumentationChecks(unittest.TestCase):
         result = self.run_check({"README.md": '```python\nif True\n    pass\n```\n'})
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('Python', result.stdout)
+
+    def resource_files(self, digest, sums):
+        return {
+            'README.md': '# Resources\n',
+            'resources/test/manifest.json': json.dumps({'assets': [
+                {'filename': 'sample.zip', 'sha256': digest}]}),
+            'resources/test/SHA256SUMS.txt': sums,
+        }
+
+    def test_valid_resource_records_pass(self):
+        digest = 'a' * 64
+        result = self.run_check(self.resource_files(digest, digest + '  sample.zip\n'))
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
+    def test_non_sha256_resource_digest_fails(self):
+        result = self.run_check(self.resource_files('oops', 'oops  sample.zip\n'))
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn('Invalid SHA-256', result.stdout)
+
+    def test_conflicting_duplicate_checksum_filename_fails(self):
+        digest = 'a' * 64
+        sums = 'b' * 64 + '  sample.zip\n' + digest + '  sample.zip\n'
+        result = self.run_check(self.resource_files(digest, sums))
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn('Duplicate checksum filename', result.stdout)
+
+    def test_model_inspection_archive_digest_must_match_manifest(self):
+        digest = 'a' * 64
+        files = self.resource_files(digest, digest + '  sample.zip\n')
+        files['resources/model-inspection-test.json'] = json.dumps({
+            'archive': 'sample.zip', 'archive_sha256': 'b' * 64})
+        result = self.run_check(files)
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn('Model inspection archive mismatch', result.stdout)
 
 
 if __name__ == '__main__':

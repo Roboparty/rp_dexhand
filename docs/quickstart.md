@@ -6,7 +6,7 @@
 
 ## 1. 准备与构建
 
-需要 Linux、CMake ≥ 3.16、C++17 编译器及 Git。Python 另需 Python ≥ 3.9、对应开发头文件与 pybind11。Ubuntu 可安装：
+需要 Linux、CMake ≥ 3.20、C++17 编译器及 Git。Python 另需 Python ≥ 3.9、对应开发头文件与 pybind11。Ubuntu 可安装：
 
 ```bash
 sudo apt update
@@ -24,6 +24,9 @@ RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
 ```
 
 若 CMake 未找到 pybind11，按目标环境安装其 CMake 包；使用 pip 安装时可通过 `pybind11_DIR` 指向 `python3 -m pybind11 --cmakedir` 的输出。构建和运行使用同一解释器，切勿混用旧版扩展文件。
+
+
+上游纯 C++ 工程声明的最低版本为 3.16，但本指南还使用了 Python Development.Module（CMake 3.18 起）和 `ctest --test-dir`（3.20 起），完整流程需使用 CMake 3.20 或以上版本。参见 [CMake 3.20 发布说明](https://cmake.org/cmake/help/v3.20/release/3.20.html#ctest)。
 
 ## 2. 无硬件检查
 

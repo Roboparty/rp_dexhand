@@ -10,6 +10,27 @@ from urllib.parse import unquote, urlsplit
 
 FENCES = re.compile(r"^```([^\n]*)\n(.*?)^```\s*$", re.M | re.S)
 LINKS = re.compile(r'\]\(([^\s)]+)(?:\s+"[^"]*")?\)|(?:href|src)="([^"]+)"')
+SHA256 = re.compile(r"[0-9a-fA-F]{64}")
+
+
+def checksum_records(path, root, errors):
+    records = {}
+    if not path.is_file():
+        errors.append(f"Missing checksum file: {path.relative_to(root)}")
+        return records
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        match = re.fullmatch(r"([0-9a-fA-F]{64}) [ *](.+)", line)
+        if match is None:
+            errors.append(f"Invalid SHA-256 record: {path.relative_to(root)}:{number}")
+            continue
+        digest, name = match.groups()
+        if name in records:
+            errors.append(f"Duplicate checksum filename: {name}")
+            continue
+        records[name] = digest.lower()
+    return records
 
 
 def anchors(text):
@@ -52,23 +73,33 @@ def check(root):
                 if unquote(parsed.fragment) not in anchors(FENCES.sub("", target.read_text(encoding="utf-8"))):
                     errors.append(f"{path.relative_to(root)}: missing heading: {link}")
     for sums in root.glob("assets/SHA256SUMS.txt"):
-        for line in sums.read_text(encoding="utf-8").splitlines():
-            digest, name = line.split(maxsplit=1)
+        for name, digest in checksum_records(sums, root, errors).items():
             asset = root / name
             if not asset.is_file() or hashlib.sha256(asset.read_bytes()).hexdigest() != digest:
                 errors.append(f"Asset checksum mismatch: {name}")
+    archive_records = {}
     for manifest in root.glob("resources/*/manifest.json"):
         data = json.loads(manifest.read_text(encoding="utf-8"))
-        sums = dict(line.split(maxsplit=1)[::-1] for line in
-                    manifest.with_name("SHA256SUMS.txt").read_text(encoding="utf-8").splitlines() if line.strip())
+        sums = checksum_records(manifest.with_name("SHA256SUMS.txt"), root, errors)
         names = set()
         for asset in data["assets"]:
             name = asset["filename"]
-            if name in names or sums.get(name) != asset["sha256"]:
+            digest = asset["sha256"]
+            valid = isinstance(digest, str) and SHA256.fullmatch(digest) is not None
+            if not valid:
+                errors.append(f"Invalid SHA-256 in manifest: {name}")
+            if name in names or not valid or sums.get(name) != digest.lower():
                 errors.append(f"Resource manifest/checksum mismatch: {name}")
             names.add(name)
+            if valid:
+                archive_records.setdefault(name, set()).add(digest.lower())
         if names != set(sums):
             errors.append(f"Resource file list differs: {manifest.parent.name}")
+    for inspection in root.glob("resources/model-inspection-*.json"):
+        data = json.loads(inspection.read_text(encoding="utf-8"))
+        digest = data.get("archive_sha256", "")
+        if not isinstance(digest, str) or digest.lower() not in archive_records.get(data.get("archive"), set()):
+            errors.append(f"Model inspection archive mismatch: {inspection.name}")
     return documents, errors
 
 

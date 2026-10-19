@@ -6,7 +6,7 @@
 
 | 路线 | 接口 / 环境 | 使用方式 |
 | --- | --- | --- |
-| 当前源码 SDK | `rphand::Hand` / `rphand.Hand`；Linux、C++17、CMake ≥ 3.16、Python ≥ 3.9 | 本文推荐基线，按目标计算机与解释器构建 |
+| 当前源码 SDK | `rphand::Hand` / `rphand.Hand`；Linux、C++17、CMake ≥ 3.20、Python ≥ 3.9 | 本文推荐基线，按目标计算机与解释器构建 |
 | 当前配套 ROS | `rphand_ros`；ROS 2 Jazzy | 与当前 SDK 同仓库构建，已实现 state 发布 |
 | 旧版 SDK `046108e` / v0.5.0 包 | `HandDriver` / `dexhand_py`；Debian 包与镜像入口 | 仅用于已有系统维护，不与当前 API 混用 |
 | 旧 ROS `bfc325f` | `roboparty_dexhand_ros`；文档基线 Humble、Python 3.10 | 依赖旧版 SDK，只有命令和生命周期服务 |

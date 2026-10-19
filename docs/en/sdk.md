@@ -21,7 +21,7 @@ add_executable(hand_app main.cpp)
 target_link_libraries(hand_app PRIVATE rphand::rphand)
 ```
 
-Set `CMAKE_PREFIX_PATH` to the SDK's `install/cpp`. The [upstream API](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md) documents complete signatures and examples.
+Set `CMAKE_PREFIX_PATH` to the SDK's `install/cpp`. The [upstream API](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md) documents complete signatures and examples.
 
 ## Axis order and units
 
@@ -52,4 +52,4 @@ Use `connect → disable → configure → enable → home → position control 
 
 For Python cleanup, attempt and check both `stop()` and `disable()` before `disconnect()`, even if stop fails. C++ additionally offers `prepare_disconnect()` with one stop and one disable attempt. Disconnect and destruction release local resources without sending a stop.
 
-The current API does not expose tactile sensing. See [architecture](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/architecture.md) for threads, cancellation and retry behavior, and [ROS](ros2.md) for state publication and recording.
+The current API does not expose tactile sensing. See [architecture](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/architecture.md) for threads, cancellation and retry behavior, and [ROS](ros2.md) for state publication and recording.

@@ -6,7 +6,7 @@ Reviewed on 2026-10-19. For new integrations, build [SDK eb923ac](https://github
 
 | Route | Interface / environment | Status |
 | --- | --- | --- |
-| Current source SDK | `rphand::Hand`, `rphand.Hand`; Linux, C++17, CMake ≥ 3.16, Python ≥ 3.9 | Recommended documentation baseline |
+| Current source SDK | `rphand::Hand`, `rphand.Hand`; Linux, C++17, CMake ≥ 3.20, Python ≥ 3.9 | Recommended documentation baseline |
 | Bundled ROS | `rphand_ros`; Jazzy | Includes state publication; same SDK source tree |
 | Legacy SDK `046108e` / v0.5.0 packages | `HandDriver`, `dexhand_py` | Maintain existing matching installations only |
 | Legacy ROS `bfc325f` | `roboparty_dexhand_ros`; Humble/Python 3.10 documentation | Commands and lifecycle services; legacy SDK dependency |

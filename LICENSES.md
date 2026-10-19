@@ -7,6 +7,7 @@ This page records the current licensing status. It does not grant new rights.
 | Original documentation and checker code in rp_dexhand | No standalone repository license has been selected | Obtain a license decision from the rights holder |
 | Product drawings and installation animation | Product/company source assets; provenance in maintenance | Confirm permitted use and redistribution |
 | Current rphand SDK source, baseline eb923ac | Its README says no standalone license file is provided | Confirm terms with the SDK maintainer |
+| Bundled rphand_ros at the same baseline | Its package.xml declares `Proprietary` | Confirm the intended ROS/source distribution terms with the rights holder; do not assume a permissive or GPL grant |
 | Legacy SDK and legacy ROS repositories | Refer to the exact version's license/third-party notices | Keep notices and do not extend their terms to this repository |
 | Vendor applications, protocol workbook, models and CAD | Original files retain applicable third-party terms | Check each package's notices and distribution scope |
 

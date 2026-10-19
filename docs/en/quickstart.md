@@ -6,7 +6,7 @@ Use the current [rphand source SDK](https://github.com/Roboparty/roboparty_dexha
 
 ## 1. Dependencies and build
 
-Requirements: Linux, Git, CMake ≥ 3.16 and a C++17 compiler. Python bindings additionally require Python ≥ 3.9, matching development headers and pybind11. On Ubuntu:
+Requirements: Linux, Git, CMake ≥ 3.20 and a C++17 compiler. Python bindings additionally require Python ≥ 3.9, matching development headers and pybind11. On Ubuntu:
 
 ```bash
 sudo apt update
@@ -21,6 +21,9 @@ RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
 ```
 
 Build and run with the same Python interpreter. If CMake cannot locate pybind11, install its CMake package for that environment or set `pybind11_DIR` to the output of `python3 -m pybind11 --cmakedir` when using a pip installation. Do not copy old native extensions into the new package.
+
+
+The core C++ project declares a 3.16 minimum, but this guide uses Python Development.Module (available from CMake 3.18) and `ctest --test-dir` (3.20). Use CMake 3.20 or later for the complete workflow. See the [CMake 3.20 release notes](https://cmake.org/cmake/help/v3.20/release/3.20.html#ctest).
 
 ## 2. Offline checks
 

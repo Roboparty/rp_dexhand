@@ -16,3 +16,34 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Check links, examples and resource records
         run: python tools/check_docs.py
+  sdk-smoke:
+    name: Pinned SDK offline build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: Roboparty/roboparty_dexhand
+          ref: eb923acf61a02febabc9db90ad4d5eed84ffbc39
+      - name: Install documented build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake git python3-dev pybind11-dev can-utils
+      - name: Build and install C++ and Python components
+        run: |
+          bash build.sh cpp
+          RPHAND_PYTHON=/usr/bin/python3 bash build.sh python
+          RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
+          /usr/bin/python3 -c 'from rphand import Hand; print(Hand)'
+      - name: Run C++ offline tests
+        run: |
+          cmake -S . -B build/check -DRPHAND_BUILD_SMOKE=ON -DRPHAND_BUILD_DEMO=ON
+          cmake --build build/check --parallel 2
+          ctest --test-dir build/check --output-on-failure
+      - name: Verify external CMake consumer and Python bindings
+        run: |
+          cmake -S tests/cmake_consumer -B build/consumer -DCMAKE_PREFIX_PATH="$PWD/install/cpp"
+          cmake --build build/consumer --parallel 2
+          ./build/consumer/rphand_install_check
+          RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
+          /usr/bin/python3 -m unittest discover -s tests -p test_python_sdk.py -v

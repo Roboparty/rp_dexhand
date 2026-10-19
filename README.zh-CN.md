@@ -62,7 +62,7 @@ RP Hand 面向中小尺寸人形机器人。本仓库汇集产品参数、硬件
 
 ## 开始使用
 
-源码基线为 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)。需要 Linux、CMake ≥ 3.16 和 C++17 编译器；Python 绑定另需 Python ≥ 3.9、开发头文件和 pybind11。配套 ROS 构建入口面向 Jazzy。以上为源码要求，具体软硬件组合需按目标设备验证。
+源码基线为 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)。需要 Linux、CMake ≥ 3.20 和 C++17 编译器；Python 绑定另需 Python ≥ 3.9、开发头文件和 pybind11。配套 ROS 构建入口面向 Jazzy。以上为本指南的构建环境要求，具体软硬件组合需按目标设备验证。
 
 ```bash
 git clone https://github.com/Roboparty/roboparty_dexhand.git

@@ -62,7 +62,7 @@ Confirm the supplied hardware revision before integration. [Dimensions, power an
 
 ## Getting started
 
-The reviewed baseline is [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). It requires Linux, CMake ≥ 3.16 and a C++17 compiler; Python bindings require Python ≥ 3.9, development headers and pybind11. The bundled ROS build targets Jazzy. These are source requirements, not a hardware-validation claim for every system combination.
+The reviewed baseline is [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). It requires Linux, CMake ≥ 3.20 and a C++17 compiler; Python bindings require Python ≥ 3.9, development headers and pybind11. The bundled ROS build targets Jazzy. These are the build requirements for this guide, not a hardware-validation claim for every system combination.
 
 ```bash
 git clone https://github.com/Roboparty/roboparty_dexhand.git
