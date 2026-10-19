@@ -1,0 +1,121 @@
+{
+  "checked_on": "2026-10-19",
+  "archive": "DH116S_URDF_MJCF_Files_2026_4_9.7z",
+  "archive_sha256": "8143715828fe7196ff2906aee25f929c1b5b15127d6b6c45c66fd93e60560617",
+  "scope": "Static XML, joint graph, mimic references and local mesh references only.",
+  "limitations": [
+    "No simulator loading or dynamics test.",
+    "No physical axis calibration, sign or travel-to-radian validation.",
+    "DH116 archive not inspected in this update."
+  ],
+  "models": [
+    {
+      "robot": "DH116S-L000-A1",
+      "link_count": 17,
+      "fixed_joint_count": 5,
+      "movable_joint_count": 11,
+      "independent_joints": [
+        "finger11",
+        "finger12",
+        "finger21",
+        "finger31",
+        "finger41",
+        "finger51"
+      ],
+      "mimic_joints": [
+        {
+          "name": "finger13",
+          "joint": "finger12",
+          "multiplier": "0.929",
+          "offset": "-0.015082"
+        },
+        {
+          "name": "finger22",
+          "joint": "finger21",
+          "multiplier": "0.8847",
+          "offset": "0.038265"
+        },
+        {
+          "name": "finger32",
+          "joint": "finger31",
+          "multiplier": "0.8485",
+          "offset": "0.035946"
+        },
+        {
+          "name": "finger42",
+          "joint": "finger41",
+          "multiplier": "0.8321",
+          "offset": "0.043170"
+        },
+        {
+          "name": "finger52",
+          "joint": "finger51",
+          "multiplier": "0.7349",
+          "offset": "0.035218"
+        }
+      ],
+      "mesh_reference_count": 34,
+      "all_mesh_references_exist": true,
+      "errors": [],
+      "mjcf": {
+        "mesh_reference_count": 17,
+        "missing_meshes": [],
+        "xml_parsed": true
+      }
+    },
+    {
+      "robot": "DH116S-R000-A1",
+      "link_count": 17,
+      "fixed_joint_count": 5,
+      "movable_joint_count": 11,
+      "independent_joints": [
+        "finger11",
+        "finger12",
+        "finger21",
+        "finger31",
+        "finger41",
+        "finger51"
+      ],
+      "mimic_joints": [
+        {
+          "name": "finger13",
+          "joint": "finger12",
+          "multiplier": "0.929",
+          "offset": "-0.015082"
+        },
+        {
+          "name": "finger22",
+          "joint": "finger21",
+          "multiplier": "0.8847",
+          "offset": "0.038265"
+        },
+        {
+          "name": "finger32",
+          "joint": "finger31",
+          "multiplier": "0.8485",
+          "offset": "0.035946"
+        },
+        {
+          "name": "finger42",
+          "joint": "finger41",
+          "multiplier": "0.8321",
+          "offset": "0.043170"
+        },
+        {
+          "name": "finger52",
+          "joint": "finger51",
+          "multiplier": "0.7349",
+          "offset": "0.035218"
+        }
+      ],
+      "mesh_reference_count": 34,
+      "all_mesh_references_exist": true,
+      "errors": [],
+      "mjcf": {
+        "mesh_reference_count": 17,
+        "missing_meshes": [],
+        "xml_parsed": true
+      }
+    }
+  ]
+}

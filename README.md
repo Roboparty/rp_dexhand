@@ -1,51 +1,110 @@
 # RP Hand
 
+![CAN-FD](https://img.shields.io/badge/Transport-CAN--FD-2563eb)
+![C++17](https://img.shields.io/badge/C%2B%2B-17-64748b)
+![Python](https://img.shields.io/badge/Python-3.9%2B-64748b)
+![ROS 2](https://img.shields.io/badge/ROS_2-Jazzy-64748b)
+
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-![RP Hand quick-swap attachment on RP1](assets/rp-hand.gif)
+**A compact six-axis dexterous hand, with C++, Python and ROS 2 interfaces for robot integration.**
 
-RP Hand is a compact dexterous hand for small and medium humanoid robots, with **11 mechanical degrees of freedom and 6 actively controlled axes**. This repository provides product documentation and integration guides. The maintained Linux CAN-FD driver is [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand).
+![RP Hand quick-change installation on RP1](assets/rp-hand.gif)
 
-| Product specification | Value |
+RP Hand is designed for small and medium humanoid robots. This repository brings together product specifications, wiring, software setup and model resources. The maintained control code lives in [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand); this repository is its product and integration guide.
+
+**Maintainer:** RoboParty · **Support:** [GitHub Issues](https://github.com/Roboparty/rp_dexhand/issues) · **Platform:** [RP1](https://github.com/Roboparty/RP1)
+
+## Features
+
+- Five fingers, 11 mechanical degrees of freedom and 6 actively controlled axes.
+- CAN-FD integration with RP1, including internal cable routing through the matching platform connection.
+- Shared `rphand::Hand` / `rphand.Hand` control implementation for C++ and Python.
+- Bundled `rphand_ros` nodes with command topics, reset services and state feedback.
+- A Windows configuration application and Windows/Linux gesture-recognition demo packages.
+- Left/right CAD, URDF and MJCF resources with versioned downloads and checksums.
+
+The recommended path is **Linux + CAN-FD + the current source SDK**. Original attachments for other transports are archived separately. See [compatibility](docs/en/compatibility.md) for current and legacy APIs.
+
+## Companion tools
+
+| Tool | Development use | Guide |
+| --- | --- | --- |
+| Windows configuration application | Device setup and parameter configuration | [Applications](docs/en/software.md) |
+| Gesture-recognition demo | Visual gesture demonstration; Windows / Linux packages | [Gesture application](docs/en/software.md) |
+| C++ / Python / ROS 2 | Custom control, robot integration and feedback recording | [SDK](docs/en/sdk.md) · [ROS](docs/en/ros2.md) |
+| CAD / URDF / MJCF | Mechanical integration and robot-model development | [Models](docs/en/models.md) |
+
+## Product specifications
+
+| Property | Product manual |
 | --- | --- |
-| Dimensions | 147.54 x 73.53 x 26.35 mm |
-| Weight | 379 g +/- 10 g |
+| Dimensions | 147.54 × 73.53 × 26.35 mm |
+| Mass | 379 ± 10 g |
+| Actuation | 6 active axes; 5 additional passive/coupled DoF |
 | Transmission | Worm gear |
-| Active axes | 6, with 5 additional passive/coupled degrees of freedom |
-| Tactile sensing | Optional; not exposed by the current RoboParty driver API |
+| Integration | CAN-FD; mechanical/electrical details in the hardware guide |
 
-Specifications are transcribed from the product manual. Confirm the hardware revision and options of the supplied unit before integration.
+Confirm the supplied hardware revision before integration. [Dimensions, power and pinout →](docs/en/hardware.md)
 
-## Start Here
+## Documentation
 
-The detailed guides below are currently in Simplified Chinese.
-
-| Task | Guide |
+| Guide | Contents |
 | --- | --- |
-| Check dimensions, power and wiring | [Hardware](docs/hardware.md) |
-| Bring up one hand over CAN-FD | [Quick start](docs/quickstart.md) |
-| Choose and use the maintained C++/Python SDK | [SDK integration](docs/sdk.md) |
-| Integrate ROS 2 | [ROS 2 guide and compatibility](docs/ros2.md) |
-| Find models and understand joint mapping | [URDF, MJCF and CAD](docs/models.md) |
-| Download a versioned software package | [Downloads and availability](docs/downloads.md) |
-| Diagnose setup and communication issues | [Troubleshooting](docs/troubleshooting.md) |
+| [Quick start](docs/en/quickstart.md) | Dependencies, source build, CAN interface and first connection |
+| [C++ / Python SDK](docs/en/sdk.md) | API entry points, six-axis order, units and state validity |
+| [ROS 2 integration](docs/en/ros2.md) | Jazzy setup, commands, feedback and data recording |
+| [Hardware](docs/en/hardware.md) | Dimensions, power and CAN-FD pinout |
+| [Models](docs/en/models.md) | Left/right CAD, URDF/MJCF and mapping status |
+| [Downloads](docs/en/downloads.md) | Configuration application, gesture demo, SDK and original assets |
+| [Compatibility](docs/en/compatibility.md) | Current SDK baseline and migration from legacy interfaces |
+| [Troubleshooting](docs/en/troubleshooting.md) | Build, connection, motion and feedback checks |
 
-## Software Scope
+## Getting started
 
-| Component | Role and current scope |
+The reviewed baseline is [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). It requires Linux, CMake ≥ 3.16 and a C++17 compiler; Python bindings require Python ≥ 3.9, development headers and pybind11. The bundled ROS build targets Jazzy. These are source requirements, not a hardware-validation claim for every system combination.
+
+```bash
+git clone https://github.com/Roboparty/roboparty_dexhand.git
+cd roboparty_dexhand
+git checkout eb923acf61a02febabc9db90ad4d5eed84ffbc39
+bash build.sh cpp
+RPHAND_PYTHON=/usr/bin/python3 bash build.sh python
+RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
+/usr/bin/python3 -c 'from rphand import Hand; print(Hand)'
+```
+
+These commands build and import the SDK without connecting to a hand. Continue with [the quick start](docs/en/quickstart.md) before connecting hardware. Current source builds use `rphand`, not the older `dexhand_py` package.
+
+## Software architecture
+
+```text
+C++ application       Python application       ROS 2 Jazzy
+rphand::Hand          rphand.Hand               rphand_ros
+        \                  |                     /
+         +---------- shared C++ SDK ------------+
+                           |
+                    Linux SocketCAN
+                           |
+                         CAN-FD
+                           |
+                         RP Hand
+```
+
+The SDK handles protocol encoding, feedback decoding and sessions. ROS adds periodic target transmission and state publication. [SDK details →](docs/en/sdk.md)
+
+## Repository layout
+
+| Path | Responsibility |
 | --- | --- |
-| [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand) | Maintained Linux CAN-FD C++ driver, `dexhand_py` bindings and feedback configuration CLI; amd64 and arm64 packages |
-| [roboparty_dexhand_ros](https://github.com/Roboparty/roboparty_dexhand_ros) | One process per hand, command topics and initialization/reset services; see the ROS guide for version differences and current limitations |
-| Vendor SDK and applications | Separate packages and examples, including other operating systems and transports; see the download table for availability |
+| `docs/` | Chinese product and integration guides |
+| `docs/en/` | English getting-started and reference guides |
+| `assets/` | Installation animation, dimensions and connector drawings |
+| `resources/` | Versioned resource manifests, provenance and checksums |
+| `tools/`, `tests/` | Offline documentation checks and validator tests |
 
-The current RoboParty SDK route supports Linux CAN-FD and six active axes. Product-level Windows, EtherCAT, RS485 and tactile capabilities do not imply support in this wrapper. Two hands require separate OS processes. Driver getters return cached feedback.
+## Contributing and licensing
 
-The SDK documentation targets an Ubuntu 24.04 / Python 3.12 image; the current ROS README documents Ubuntu 22.04 / Python 3.10 / Humble. A combined Jazzy deployment is not presented here as verified. Use the [compatibility guide](docs/ros2.md) before combining packages.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for checks and issue routing. Source versions and validation boundaries are recorded in [maintenance](docs/maintenance.md).
 
-## Resources and Maintenance
-
-Dimensions and connector drawings are available locally in this repository. Twelve original software, model, CAD and protocol attachments are archived in the private prerelease [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05), with source records, file sizes and SHA-256 checksums in [Downloads](docs/downloads.md). Repository access is required. This resource snapshot is not a new SDK release or a hardware-validation result; maintained RoboParty driver releases are linked directly.
-
-Report product-documentation issues in [this repository](https://github.com/Roboparty/rp_dexhand/issues), driver issues in [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand/issues), and ROS integration issues in [roboparty_dexhand_ros](https://github.com/Roboparty/roboparty_dexhand_ros/issues).
-
-[Source records and update procedure](docs/maintenance.md) | [Third-party and asset notices](NOTICE.md)
+Product documents, original applications and linked SDKs have separate licensing scopes. This repository currently has no blanket license grant; see [LICENSES.md](LICENSES.md) and [NOTICE.md](NOTICE.md).

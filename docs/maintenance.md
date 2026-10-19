@@ -4,7 +4,17 @@
 
 ## 当前基线
 
-资料快照日期：2026-10-05。仓库名称为 `rp_dexhand`，产品名称为 RP Hand，维护的 SDK 为 `roboparty_dexhand`。资料入口和 12 个原始附件的版本化归档已完成；关节映射、公开发布许可和完整 ROS 组合验收仍有后续工作。
+资料快照日期：2026-10-05。仓库名称为 `rp_dexhand`，产品名称为 RP Hand，维护的 SDK 为 `roboparty_dexhand`。资料入口和 12 个原始附件的版本化归档已完成；实机轴映射、适用许可和完整硬件验收仍需维护。当前公开状态与源码基线见下节。
+
+## 2026-10-19 更新
+
+- 仓库和资源 Release 页面当前公开可访问；保留创建时的 manifest、SHA256SUMS 和 validation，不改写历史事实。
+- 推荐源码切换为 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)：`rphand::Hand`、`rphand.Hand` 及同仓库内 `rphand_ros`。
+- 根据公共头文件、Python 类型声明、ROS 消息、launch 与 API 文档核对轴顺序、单位、反馈有效性和运行行为。
+- 下载 DH116S 模型归档并核对原始哈希，解析左右手 URDF/MJCF，检查关节树、mimic 和 mesh 文件引用；结果见[静态检查记录](../resources/model-inspection-2026.10.19.json)。
+- 不声明本次在 Linux/Jazzy 上构建运行或完成真实设备动作验收。
+
+以下来源表记录 2026-10-05 资料快照；其中 SDK/旧 ROS 行已由当前源码路线替代，仍保留作来源追溯。
 
 | 来源 | 版本 | 使用位置 |
 | --- | --- | --- |
@@ -34,9 +44,9 @@
 
 ## 资源归档
 
-[resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 是私有资料预发布版，对应 12 个飞书原件，原始合计 1,409,480,165 字节。2026-10-06 将尚未发布的左右手 CAD 无损封装为 XZ，下载文件合计缩减到 975,103,906 字节。该标签表示资料快照日期，不覆盖各附件的独立版本。已逐项核对原件大小；清单同时记录 CAD 压缩包与原件的大小和 SHA-256，并验证解压后字节一致。
+[resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 是创建时为私有的资料预发布版，对应 12 个飞书原件，原始合计 1,409,480,165 字节。2026-10-06 将尚未发布的左右手 CAD 无损封装为 XZ，下载文件合计缩减到 975,103,906 字节。该标签表示资料快照日期，不覆盖各附件的独立版本。已逐项核对原件大小；清单同时记录 CAD 压缩包与原件的大小和 SHA-256，并验证解压后字节一致。
 
-Git 中的 [manifest.json](../resources/resources-2026.10.05/manifest.json)、[SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt) 和 [validation.json](../resources/resources-2026.10.05/validation.json) 与 Release 同名附件一致。大文件不进入 Git 历史，SDK v0.5.0 二进制仍由 SDK 仓库维护。
+Git 中的 [manifest.json](../resources/resources-2026.10.05/manifest.json)、[SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt) 和 [validation.json](../resources/resources-2026.10.05/validation.json) 与 Release 同名附件一致。大文件不进入 Git 历史，旧 SDK v0.5.0 二进制仍由 SDK 仓库历史 Release 维护。
 
 后续资料更新创建新快照，不覆盖已发布附件；同步更新来源 revision、文件大小、哈希和检查记录。解压与格式检查不代表软件安全性、目标系统兼容性或真实硬件动作验收。
 
@@ -51,10 +61,10 @@ Git 中的 [manifest.json](../resources/resources-2026.10.05/manifest.json)、[S
 
 ## 下一阶段
 
-- 确认公开发布的资料范围和仓库可见性，并补齐适用的文档/素材许可声明。
+- 由权利人确认文档、模型和归档软件的适用许可；公开状态与许可库存分开维护。
 - 核验六主动轴、左右手、DH116/DH116S 与模型的对应关系。
-- 确定发布的镜像/SDK/ROS 组合，修正上游安装入口与回零行为差异。
+- 在目标 Linux/Jazzy 与交付固件上运行当前 SDK，记录连接、回零、运动和状态时序验收。
 - 维护后续资源快照，确认新版本适用范围后更新清单与校验值。
-- 补全详细英文手册，依据实际测试记录更新兼容状态。
+- 保持中英文指南一致，依据实际测试记录更新兼容矩阵。
 
 本版没有进行真实硬件运动测试，不以文档检查代替设备验收。

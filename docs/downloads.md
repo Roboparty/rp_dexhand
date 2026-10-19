@@ -1,21 +1,20 @@
 # 下载与可用状态
 
-[返回首页](../README.zh-CN.md) · [SDK 选择](sdk.md) · [模型说明](models.md)
+[返回首页](../README.zh-CN.md) · [English](en/downloads.md) · [SDK 选择](sdk.md) · [模型说明](models.md)
 
 资料快照日期：2026-10-05。12 份飞书资料已归档至 [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)。原件合计 1,409,480,165 字节；CAD 无损压缩后，12 个下载文件合计 975,103,906 字节（约 975.10 MB）。这是资料预发布版，不是新版 SDK，也不代表实机验收通过。
 
-本仓库及 Release 当前为私有，需要具有仓库访问权限的 GitHub 账号；未登录或无权限时可能返回 404。原始飞书链接仍需要对应的飞书权限。软件和模型保持原包，部分下载文件名改为 ASCII；CAD 使用 XZ 无损压缩，已核对解压后与飞书原件的 SHA-256 一致。
+截至 2026-10-19，本仓库与该预发布版页面均为公开可访问。历史资料清单中的 private 描述记录的是创建时状态；原始飞书链接仍需要对应权限。公开页面的可访问性不改变各软件和素材的许可。软件和模型保持原包，部分下载文件名改为 ASCII；CAD 使用 XZ 无损压缩，已核对解压后与飞书原件的 SHA-256 一致。
 
-## RoboParty 维护的驱动
+## 当前推荐 SDK
 
-| 资源 | 版本/架构 | 下载入口 |
-| --- | --- | --- |
-| Linux Debian 包 | v0.5.0 / amd64 | [roboparty-dexhand_0.5.0-1_amd64.deb](https://github.com/Roboparty/roboparty_dexhand/releases/download/v0.5.0/roboparty-dexhand_0.5.0-1_amd64.deb) |
-| Linux Debian 包 | v0.5.0 / arm64 | [roboparty-dexhand_0.5.0-1_arm64.deb](https://github.com/Roboparty/roboparty_dexhand/releases/download/v0.5.0/roboparty-dexhand_0.5.0-1_arm64.deb) |
-| SDK 源码与其他 Release | 以选定 tag 为准 | [源码](https://github.com/Roboparty/roboparty_dexhand) · [Release 列表](https://github.com/Roboparty/roboparty_dexhand/releases) |
-| ROS 适配包源码 | 兼容性见 [ROS 指南](ros2.md) | [roboparty_dexhand_ros](https://github.com/Roboparty/roboparty_dexhand_ros) |
+| 入口 | 内容 |
+| --- | --- |
+| [源码基线 `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) | 当前 `rphand` C++ / Python SDK 与配套 Jazzy ROS 包 |
+| [快速开始](quickstart.md) | 目标 Linux 环境源码构建与单手连接 |
+| [版本兼容](compatibility.md) | 新旧 API 与环境区别 |
 
-这些 deb 是已确认存在的上游发布资产。本次没有安装运行或计算它们的校验值，不声明跨系统/Python ABI 兼容。安装前确认目标环境，并获取匹配的 `roboparty-base`；已有配套镜像的用户通常不需要重复安装。
+当前源码使用 `rphand`，不从旧 v0.5.0 `.deb` 推断其 API 或 Python ABI。旧 `dexhand_py` 包仍保留在 [SDK 历史 Release](https://github.com/Roboparty/roboparty_dexhand/releases/tag/v0.5.0)，仅用于匹配的已有系统。下列原版应用与模型包是资料快照，不是当前源码 SDK 的构建产物。
 
 ## 厂商软件与配套应用
 

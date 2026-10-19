@@ -1,40 +1,43 @@
 # URDF、MJCF 与 CAD
 
-[返回首页](../README.zh-CN.md) · [硬件尺寸](hardware.md) · [下载清单](downloads.md)
+[首页](../README.zh-CN.md) · [English](en/models.md) · [下载](downloads.md)
 
-## 现有资源
+## 资源选择
 
-| 资源 | 来源版本 | 当前状态 |
+| 资源 | 版本 | 用途 |
 | --- | --- | --- |
-| DH116 URDF / MJCF | `DH116_URDF_MJCF_Files_2026_4_9.7z` | 已归档；7z 完整性检查通过 |
-| DH116S URDF / MJCF | `DH116S_URDF_MJCF_Files_2026_4_9.7z` | 已归档；7z 完整性检查通过 |
-| 左手 CAD | `DH116S-L000-A1-结构件 RP左手DH116S-LW1-RP1套装  白色_A.x_t` | XZ 下载 45,285,532 字节；还原后 260,959,468 字节 |
-| 右手 CAD | `DH116S-R000-A1-结构件 RP右手DH116S-RW1-RP1套装  白色_A.x_t` | XZ 下载 43,559,368 字节；还原后 262,261,691 字节 |
+| DH116 URDF / MJCF | 2026-04-09，左右手归档 | 该型号的机器人模型 |
+| DH116S URDF / MJCF | 2026-04-09，左右手归档 | 该型号的机器人模型；本次完成静态检查 |
+| DH116S 左 / 右手 CAD | L000-A1 / R000-A1，白色，修订 A | 安装空间与结构适配；X_T 无损 XZ 压缩 |
 
-[私有资源 Release](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 需要本仓库的 GitHub 访问权限，具体下载与校验方式见 [下载清单](downloads.md)。[原始 URDF/MJCF 下载页](https://roboparty.feishu.cn/docx/E4pUdKUfWoplqHxbR9CcnNUfn4d) 与 [产品手册中的 CAD 附件](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb) 仍保留作来源记录。
+从[版本化资源](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05)下载，先核对 SHA-256 再解压。CAD 解压后的原件哈希另见资源清单，不能与 XZ 包哈希混用。DH116 与 DH116S 应按交付型号选择。
 
-两个模型归档均包含对应型号的 `L000-A1`、`R000-A1` 目录；每侧有 `urdf/*.urdf`、`mjcf/*.xml` 和 mesh。完整路径记录在 [检查报告](../resources/resources-2026.10.05/validation.json)。目前只验证归档完整性并列出目录，尚未验证 mesh 引用、仿真加载或实际关节映射。
+## DH116S 静态检查
 
-DH116 和 DH116S 不是可无条件互换的文件名。当前 RoboParty SDK 公共模型 0 内部映射到 Dof6S，但这不能替代对实际交付硬件和模型版本的核对。
+2026-10-19 下载原始 DH116S 模型包，确认包哈希与原始清单一致后解析 XML。左右手分别包含：
 
-## 映射要求
-
-将模型接到实机前，需要逐轴确认以下信息：
-
-| 字段 | 要记录的内容 |
+| 项目 | 每只手 |
 | --- | --- |
-| SDK 主动轴 | ID 1～6 |
-| 物理含义 | 对应手指、侧摆或屈伸动作 |
-| 左右手 | 模型侧别、方向与安装坐标系 |
-| 模型关节 | URDF/MJCF 中的实际 joint 名称 |
-| 零位与正方向 | SDK 零位与模型零位的对应关系 |
-| 单位和范围 | 设备位置值/角度到模型弧度的转换、各轴限位 |
-| 被动/联动关节 | 五个额外自由度的耦合关系或 mimic 定义 |
+| URDF link | 17 |
+| 可动关节 | 11 |
+| 独立关节 | 6 |
+| mimic 联动关节 | 5 |
+| 固定关节 | 5 |
+| URDF mesh 引用 | 34，均可解析到归档内文件 |
+| MJCF mesh 引用 | 17，均可解析到归档内文件 |
 
-目前尚未发布经过核验的对应表。不能按名字猜测 joint 顺序，或把六个输入值直接填入模型全部 11 个关节；也不能把通用行程系数当作所有轴相同的角度换算。
+独立关节名称为 `finger11`、`finger12`、`finger21`、`finger31`、`finger41`、`finger51`。关节树和 mimic 源引用检查通过，完整记录见[模型检查报告](../resources/model-inspection-2026.10.19.json)。DH116 此次未重复检查。
 
-## 后续文件组织
+URDF 使用 `package://DH116S-L000-A1/...` 或右手对应包路径；应让资源解析器能找到相应包和 meshes。MJCF 的相对 meshdir 需保持原始目录关系，不能只移动单个 XML。
 
-大型 CAD 和模型原始归档已经采用版本化 Release，Git 中只保留文档、清单和校验值。CAD 使用无损 XZ 压缩，解压后原件哈希已验证；几何内容仍只检查文件头部，没有加载 CAD 软件验收。模型文本和配套 mesh 在核对引用路径及适用版本后再决定是否直接放入 Git。
+## 接到真实设备前
 
-当前运行时建议仍以 [SDK 单手验收](quickstart.md) 为基础；模型可视化不替代实际设备的状态反馈。
+| 层级 | 已明确 | 仍需核对 |
+| --- | --- | --- |
+| SDK | 六轴顺序与通道名称见 SDK 指南 | 交付固件是否使用相同定义 |
+| URDF | 六独立关节、五 mimic 及几何引用 | 左右手物理轴对应、零位、正方向与行程比例 |
+| 运行时 | 当前 ROS 发布设备 state | 弧度转换、joint_states 和可视化适配 |
+
+静态文件检查不代表完成仿真加载、动力学验证或实机标定。URDF 中部分 effort/velocity 为 0，不能作为设备输出能力参数。模型限位也不自动等于手册行程或 SDK 的 0..10000 目标范围。
+
+CAD 原件尚未在 CAD 软件中加载验收；本仓库保留原始文件，不替换其质量、惯量、关节限位或联动参数。
