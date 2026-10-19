@@ -1,0 +1,9 @@
+{
+  "evidence": "synthetic and offline replay; no physical hand commands",
+  "git_revision": "b03df232adb34c894ff025946fcea2494d032cc7",
+  "numpy": "2.5.4",
+  "package_version": "0.1.0",
+  "platform": "Windows",
+  "python": "3.12.14",
+  "working_tree_dirty": true
+}

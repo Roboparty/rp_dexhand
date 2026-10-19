@@ -1,0 +1,6708 @@
+{
+  "config": {
+    "count_per_split": 120,
+    "edge_budget": 24,
+    "primary_endpoint": "mean localization error in mm",
+    "seed": 44,
+    "strength_candidates": [
+      0.0,
+      0.15,
+      0.35,
+      0.6
+    ],
+    "useful_margin_mm": 0.25
+  },
+  "config_sha256": "35214076ebeda27379d332807b464072b36beced47bb48935bc2e7ef8d495655",
+  "coordinates_mm": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      10.0,
+      0.0
+    ],
+    [
+      20.0,
+      0.0
+    ],
+    [
+      30.0,
+      0.0
+    ],
+    [
+      0.0,
+      10.0
+    ],
+    [
+      10.0,
+      10.0
+    ],
+    [
+      20.0,
+      10.0
+    ],
+    [
+      30.0,
+      10.0
+    ],
+    [
+      0.0,
+      20.0
+    ],
+    [
+      10.0,
+      20.0
+    ],
+    [
+      20.0,
+      20.0
+    ],
+    [
+      30.0,
+      20.0
+    ],
+    [
+      0.0,
+      30.0
+    ],
+    [
+      10.0,
+      30.0
+    ],
+    [
+      20.0,
+      30.0
+    ],
+    [
+      30.0,
+      30.0
+    ]
+  ],
+  "decision": "no_demonstrated_useful_gain",
+  "evidence": "synthetic Gaussian contacts, not real hardware",
+  "experiment": "pathway_graph",
+  "fixed_strength_ablation": {
+    "paired": {
+      "bootstrap_95pct_interval_mm": [
+        1.602570984828636,
+        2.2580659832327976
+      ],
+      "mean_delta_mm": 1.9270186527427768,
+      "negative_favors": "candidate",
+      "replicates": 2000,
+      "unit": "independent synthetic trial"
+    },
+    "pathway": {
+      "failures": 0,
+      "mean_error_mm": 5.671859345709051,
+      "median_error_mm": 5.632023113498754,
+      "p95_error_mm": 10.170702506521543,
+      "trials": 120
+    },
+    "spatial": {
+      "failures": 0,
+      "mean_error_mm": 3.7448406929662736,
+      "median_error_mm": 3.47944205692468,
+      "p95_error_mm": 7.140489266103728,
+      "trials": 120
+    },
+    "strength": 0.35
+  },
+  "limitations": [
+    "Longitudinal columns are an arbitrary pathway analogy, not anatomical meridians.",
+    "Gaussian footprint generator is not a validated contact-mechanics model.",
+    "Train split is reserved; this nonparametric model tunes strength on validation only.",
+    "A 0.25 mm margin is an illustrative prespecified benchmark criterion, not a hardware requirement."
+  ],
+  "models": {
+    "independent": {
+      "by_condition": {
+        "clean": {
+          "failures": 0,
+          "mean_error_mm": 2.9431554162460065,
+          "median_error_mm": 2.8240799018764093,
+          "p95_error_mm": 5.810990078479429,
+          "trials": 30
+        },
+        "noise": {
+          "failures": 0,
+          "mean_error_mm": 4.973193032474614,
+          "median_error_mm": 4.696072403140209,
+          "p95_error_mm": 7.876428179017285,
+          "trials": 30
+        },
+        "quarter_dropout": {
+          "failures": 0,
+          "mean_error_mm": 3.3684307044728783,
+          "median_error_mm": 2.95179947234822,
+          "p95_error_mm": 6.566653845672497,
+          "trials": 30
+        },
+        "single_dropout": {
+          "failures": 0,
+          "mean_error_mm": 2.8768086191374276,
+          "median_error_mm": 2.5528931391837695,
+          "p95_error_mm": 5.638974304822851,
+          "trials": 30
+        }
+      },
+      "graph": {
+        "degrees": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "edges": 0,
+        "isolated_nodes": 16,
+        "nodes": 16
+      },
+      "steps": 1,
+      "strength": 0.0,
+      "summary": {
+        "failures": 0,
+        "mean_error_mm": 3.5403969430827322,
+        "median_error_mm": 3.0961591630057317,
+        "p95_error_mm": 7.414995049757104,
+        "trials": 120
+      },
+      "topology": {
+        "component_count": 16,
+        "components": [
+          [
+            0
+          ],
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7
+          ],
+          [
+            8
+          ],
+          [
+            9
+          ],
+          [
+            10
+          ],
+          [
+            11
+          ],
+          [
+            12
+          ],
+          [
+            13
+          ],
+          [
+            14
+          ],
+          [
+            15
+          ]
+        ],
+        "laplacian_eigenvalues": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean_edge_length_mm": null,
+        "total_edge_length_mm": 0
+      },
+      "trials": [
+        {
+          "condition": "clean",
+          "error_mm": 4.227544766091337,
+          "estimate_mm": [
+            10.383217441257615,
+            23.05169151832098
+          ],
+          "failed": false,
+          "object_id": "test-object-0000",
+          "session_id": "test-session-0000",
+          "split": "test",
+          "target_mm": [
+            9.233231041800504,
+            27.11981959280068
+          ],
+          "trial_id": "test-0000"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.785724293147813,
+          "estimate_mm": [
+            6.629128105091871,
+            22.280088604567577
+          ],
+          "failed": false,
+          "object_id": "test-object-0001",
+          "session_id": "test-session-0001",
+          "split": "test",
+          "target_mm": [
+            3.218989574901551,
+            28.146689783063334
+          ],
+          "trial_id": "test-0001"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.0858989264071437,
+          "estimate_mm": [
+            19.485228213817006,
+            9.94424386452548
+          ],
+          "failed": false,
+          "object_id": "test-object-0002",
+          "session_id": "test-session-0002",
+          "split": "test",
+          "target_mm": [
+            21.515333683122986,
+            9.465029805173689
+          ],
+          "trial_id": "test-0002"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.13216999924207,
+          "estimate_mm": [
+            5.455847584419089,
+            27.436627486110297
+          ],
+          "failed": false,
+          "object_id": "test-object-0003",
+          "session_id": "test-session-0003",
+          "split": "test",
+          "target_mm": [
+            1.4540321271010526,
+            26.406917843440752
+          ],
+          "trial_id": "test-0003"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.6605307294607972,
+          "estimate_mm": [
+            15.245118155076254,
+            5.629944736711884
+          ],
+          "failed": false,
+          "object_id": "test-object-0004",
+          "session_id": "test-session-0004",
+          "split": "test",
+          "target_mm": [
+            14.942166239183535,
+            3.9972835838266505
+          ],
+          "trial_id": "test-0004"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.1107408165735224,
+          "estimate_mm": [
+            9.616791160931772,
+            11.69926590027613
+          ],
+          "failed": false,
+          "object_id": "test-object-0005",
+          "session_id": "test-session-0005",
+          "split": "test",
+          "target_mm": [
+            7.64588346858122,
+            9.292560414320292
+          ],
+          "trial_id": "test-0005"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.231654598527788,
+          "estimate_mm": [
+            3.961892283356124,
+            9.227846205530819
+          ],
+          "failed": false,
+          "object_id": "test-object-0006",
+          "session_id": "test-session-0006",
+          "split": "test",
+          "target_mm": [
+            0.46214155093856957,
+            6.849055451348315
+          ],
+          "trial_id": "test-0006"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.863564430360972,
+          "estimate_mm": [
+            23.52485317069878,
+            6.878060820579258
+          ],
+          "failed": false,
+          "object_id": "test-object-0007",
+          "session_id": "test-session-0007",
+          "split": "test",
+          "target_mm": [
+            26.997438980006567,
+            3.4728579242356905
+          ],
+          "trial_id": "test-0007"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 6.029289576710315,
+          "estimate_mm": [
+            20.692123701998018,
+            7.134275407161879
+          ],
+          "failed": false,
+          "object_id": "test-object-0008",
+          "session_id": "test-session-0008",
+          "split": "test",
+          "target_mm": [
+            24.49345815526045,
+            2.4542979313327837
+          ],
+          "trial_id": "test-0008"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.735656409769901,
+          "estimate_mm": [
+            11.393603281733007,
+            6.903059554810115
+          ],
+          "failed": false,
+          "object_id": "test-object-0009",
+          "session_id": "test-session-0009",
+          "split": "test",
+          "target_mm": [
+            8.499061962919958,
+            0.8210617067211856
+          ],
+          "trial_id": "test-0009"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 5.7935326542101535,
+          "estimate_mm": [
+            23.78434700722093,
+            21.405251899326302
+          ],
+          "failed": false,
+          "object_id": "test-object-0010",
+          "session_id": "test-session-0010",
+          "split": "test",
+          "target_mm": [
+            28.841087008202106,
+            24.232689109570988
+          ],
+          "trial_id": "test-0010"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.6533924251764913,
+          "estimate_mm": [
+            4.708629571835944,
+            26.685798259748957
+          ],
+          "failed": false,
+          "object_id": "test-object-0011",
+          "session_id": "test-session-0011",
+          "split": "test",
+          "target_mm": [
+            3.8875482867261857,
+            28.12090523655365
+          ],
+          "trial_id": "test-0011"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.028874507751455,
+          "estimate_mm": [
+            8.632831793172995,
+            23.859404628822258
+          ],
+          "failed": false,
+          "object_id": "test-object-0012",
+          "session_id": "test-session-0012",
+          "split": "test",
+          "target_mm": [
+            5.653766655081736,
+            27.910916657401433
+          ],
+          "trial_id": "test-0012"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.5099137939019776,
+          "estimate_mm": [
+            8.894784455696593,
+            7.5696563322373
+          ],
+          "failed": false,
+          "object_id": "test-object-0013",
+          "session_id": "test-session-0013",
+          "split": "test",
+          "target_mm": [
+            6.043016367688602,
+            5.5234614214718025
+          ],
+          "trial_id": "test-0013"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.6363000516293638,
+          "estimate_mm": [
+            11.374995161658752,
+            18.51254078567804
+          ],
+          "failed": false,
+          "object_id": "test-object-0014",
+          "session_id": "test-session-0014",
+          "split": "test",
+          "target_mm": [
+            10.647479482912244,
+            19.97821428142676
+          ],
+          "trial_id": "test-0014"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.8423974797927656,
+          "estimate_mm": [
+            22.688409740725852,
+            4.523184381224029
+          ],
+          "failed": false,
+          "object_id": "test-object-0015",
+          "session_id": "test-session-0015",
+          "split": "test",
+          "target_mm": [
+            24.575988791003745,
+            2.3980329131906855
+          ],
+          "trial_id": "test-0015"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.5429030700536757,
+          "estimate_mm": [
+            12.081843338407644,
+            9.177508844975424
+          ],
+          "failed": false,
+          "object_id": "test-object-0016",
+          "session_id": "test-session-0016",
+          "split": "test",
+          "target_mm": [
+            11.070655444379907,
+            6.8443018102997275
+          ],
+          "trial_id": "test-0016"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.582949560764204,
+          "estimate_mm": [
+            15.128064700531743,
+            7.239655007852076
+          ],
+          "failed": false,
+          "object_id": "test-object-0017",
+          "session_id": "test-session-0017",
+          "split": "test",
+          "target_mm": [
+            14.234337600605832,
+            0.7176555605641777
+          ],
+          "trial_id": "test-0017"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.6625518262234071,
+          "estimate_mm": [
+            16.892629319806524,
+            17.51860056920887
+          ],
+          "failed": false,
+          "object_id": "test-object-0018",
+          "session_id": "test-session-0018",
+          "split": "test",
+          "target_mm": [
+            16.301259962600383,
+            17.817360013895676
+          ],
+          "trial_id": "test-0018"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.09060102479152,
+          "estimate_mm": [
+            21.17193377596436,
+            12.067978554677437
+          ],
+          "failed": false,
+          "object_id": "test-object-0019",
+          "session_id": "test-session-0019",
+          "split": "test",
+          "target_mm": [
+            25.039017822633802,
+            10.734307785701782
+          ],
+          "trial_id": "test-0019"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.4743778779027394,
+          "estimate_mm": [
+            13.882882885547158,
+            13.859570435999748
+          ],
+          "failed": false,
+          "object_id": "test-object-0020",
+          "session_id": "test-session-0020",
+          "split": "test",
+          "target_mm": [
+            13.432387981407,
+            14.008193154274098
+          ],
+          "trial_id": "test-0020"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 4.33269080719182,
+          "estimate_mm": [
+            15.092908151344673,
+            6.194379292865785
+          ],
+          "failed": false,
+          "object_id": "test-object-0021",
+          "session_id": "test-session-0021",
+          "split": "test",
+          "target_mm": [
+            13.642302220150984,
+            2.111738962992211
+          ],
+          "trial_id": "test-0021"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.2567273407714232,
+          "estimate_mm": [
+            20.662714992873408,
+            7.958037674593404
+          ],
+          "failed": false,
+          "object_id": "test-object-0022",
+          "session_id": "test-session-0022",
+          "split": "test",
+          "target_mm": [
+            22.63526359897063,
+            6.861739226556028
+          ],
+          "trial_id": "test-0022"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.0612014649036743,
+          "estimate_mm": [
+            26.635208411090773,
+            26.481831569246534
+          ],
+          "failed": false,
+          "object_id": "test-object-0023",
+          "session_id": "test-session-0023",
+          "split": "test",
+          "target_mm": [
+            27.408487509751225,
+            29.443755579801714
+          ],
+          "trial_id": "test-0023"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.9796391824766912,
+          "estimate_mm": [
+            12.908579894929126,
+            12.771022597850342
+          ],
+          "failed": false,
+          "object_id": "test-object-0024",
+          "session_id": "test-session-0024",
+          "split": "test",
+          "target_mm": [
+            11.00449241261903,
+            12.229338047113494
+          ],
+          "trial_id": "test-0024"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 11.283819986824472,
+          "estimate_mm": [
+            20.208792773818978,
+            11.510973882459568
+          ],
+          "failed": false,
+          "object_id": "test-object-0025",
+          "session_id": "test-session-0025",
+          "split": "test",
+          "target_mm": [
+            29.77048529744736,
+            5.51942737269696
+          ],
+          "trial_id": "test-0025"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.8217140562180205,
+          "estimate_mm": [
+            16.4130295125606,
+            24.07780541065208
+          ],
+          "failed": false,
+          "object_id": "test-object-0026",
+          "session_id": "test-session-0026",
+          "split": "test",
+          "target_mm": [
+            16.138676823850602,
+            28.891707885996592
+          ],
+          "trial_id": "test-0026"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.6817256495198488,
+          "estimate_mm": [
+            6.976410236969233,
+            18.646679756645607
+          ],
+          "failed": false,
+          "object_id": "test-object-0027",
+          "session_id": "test-session-0027",
+          "split": "test",
+          "target_mm": [
+            6.519230163960399,
+            19.15238346639757
+          ],
+          "trial_id": "test-0027"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.916723132109118,
+          "estimate_mm": [
+            5.979003354390682,
+            18.88897579248439
+          ],
+          "failed": false,
+          "object_id": "test-object-0028",
+          "session_id": "test-session-0028",
+          "split": "test",
+          "target_mm": [
+            4.8223293980075255,
+            20.417351702981257
+          ],
+          "trial_id": "test-0028"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.059453999088598,
+          "estimate_mm": [
+            8.701193459137006,
+            23.12976429074513
+          ],
+          "failed": false,
+          "object_id": "test-object-0029",
+          "session_id": "test-session-0029",
+          "split": "test",
+          "target_mm": [
+            6.109564985874242,
+            27.475053305927815
+          ],
+          "trial_id": "test-0029"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.303036833774197,
+          "estimate_mm": [
+            19.266709776199075,
+            25.339231939155162
+          ],
+          "failed": false,
+          "object_id": "test-object-0030",
+          "session_id": "test-session-0030",
+          "split": "test",
+          "target_mm": [
+            19.599020673686027,
+            28.62550974127118
+          ],
+          "trial_id": "test-0030"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.589805772901675,
+          "estimate_mm": [
+            22.827784091150924,
+            18.603816534173934
+          ],
+          "failed": false,
+          "object_id": "test-object-0031",
+          "session_id": "test-session-0031",
+          "split": "test",
+          "target_mm": [
+            24.245507559760906,
+            19.323220844769843
+          ],
+          "trial_id": "test-0031"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.8314630116688613,
+          "estimate_mm": [
+            12.46927622518724,
+            4.180811399486036
+          ],
+          "failed": false,
+          "object_id": "test-object-0032",
+          "session_id": "test-session-0032",
+          "split": "test",
+          "target_mm": [
+            12.41392056222042,
+            1.3498895466214245
+          ],
+          "trial_id": "test-0032"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 1.1451534967000971,
+          "estimate_mm": [
+            14.492861522607182,
+            12.86485243655667
+          ],
+          "failed": false,
+          "object_id": "test-object-0033",
+          "session_id": "test-session-0033",
+          "split": "test",
+          "target_mm": [
+            13.885870738311716,
+            11.893802119227628
+          ],
+          "trial_id": "test-0033"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.0530620899322973,
+          "estimate_mm": [
+            10.423004224485023,
+            20.300244646420786
+          ],
+          "failed": false,
+          "object_id": "test-object-0034",
+          "session_id": "test-session-0034",
+          "split": "test",
+          "target_mm": [
+            10.055665205099832,
+            21.287159946783337
+          ],
+          "trial_id": "test-0034"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.7392497967156862,
+          "estimate_mm": [
+            7.661511891255853,
+            17.57238777399807
+          ],
+          "failed": false,
+          "object_id": "test-object-0035",
+          "session_id": "test-session-0035",
+          "split": "test",
+          "target_mm": [
+            7.92076160143651,
+            16.880087369754776
+          ],
+          "trial_id": "test-0035"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 4.412977215295227,
+          "estimate_mm": [
+            23.89288765630801,
+            10.54036619558324
+          ],
+          "failed": false,
+          "object_id": "test-object-0036",
+          "session_id": "test-session-0036",
+          "split": "test",
+          "target_mm": [
+            28.23327483615697,
+            9.74324196955721
+          ],
+          "trial_id": "test-0036"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.455646055640312,
+          "estimate_mm": [
+            24.574700791465844,
+            7.925326933747706
+          ],
+          "failed": false,
+          "object_id": "test-object-0037",
+          "session_id": "test-session-0037",
+          "split": "test",
+          "target_mm": [
+            29.20889690712969,
+            2.084874513896052
+          ],
+          "trial_id": "test-0037"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.529348700409737,
+          "estimate_mm": [
+            19.814911611049666,
+            5.9675375085079345
+          ],
+          "failed": false,
+          "object_id": "test-object-0038",
+          "session_id": "test-session-0038",
+          "split": "test",
+          "target_mm": [
+            20.453410407393797,
+            2.4964250735454776
+          ],
+          "trial_id": "test-0038"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.531174944853792,
+          "estimate_mm": [
+            16.488859549248623,
+            27.20195745720898
+          ],
+          "failed": false,
+          "object_id": "test-object-0039",
+          "session_id": "test-session-0039",
+          "split": "test",
+          "target_mm": [
+            18.671501510893847,
+            25.920192787419285
+          ],
+          "trial_id": "test-0039"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.836705733659134,
+          "estimate_mm": [
+            17.760835885822033,
+            10.816590243078215
+          ],
+          "failed": false,
+          "object_id": "test-object-0040",
+          "session_id": "test-session-0040",
+          "split": "test",
+          "target_mm": [
+            19.369573351261565,
+            8.480169222229062
+          ],
+          "trial_id": "test-0040"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.178517093502374,
+          "estimate_mm": [
+            15.214240290746076,
+            13.472378439474738
+          ],
+          "failed": false,
+          "object_id": "test-object-0041",
+          "session_id": "test-session-0041",
+          "split": "test",
+          "target_mm": [
+            15.286880572928274,
+            10.294691497201905
+          ],
+          "trial_id": "test-0041"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.577125202484266,
+          "estimate_mm": [
+            22.900070631295584,
+            14.92143167768639
+          ],
+          "failed": false,
+          "object_id": "test-object-0042",
+          "session_id": "test-session-0042",
+          "split": "test",
+          "target_mm": [
+            25.31693872886613,
+            14.026823993712407
+          ],
+          "trial_id": "test-0042"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.5112455417402795,
+          "estimate_mm": [
+            12.398279130847653,
+            11.80315409027668
+          ],
+          "failed": false,
+          "object_id": "test-object-0043",
+          "session_id": "test-session-0043",
+          "split": "test",
+          "target_mm": [
+            12.273378359970781,
+            14.31129164000253
+          ],
+          "trial_id": "test-0043"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 6.795832559164584,
+          "estimate_mm": [
+            5.847355547179775,
+            5.794465322734342
+          ],
+          "failed": false,
+          "object_id": "test-object-0044",
+          "session_id": "test-session-0044",
+          "split": "test",
+          "target_mm": [
+            2.1440657271277375,
+            0.09630906997148858
+          ],
+          "trial_id": "test-0044"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.0973889615249823,
+          "estimate_mm": [
+            16.991644795797747,
+            16.27588873428266
+          ],
+          "failed": false,
+          "object_id": "test-object-0045",
+          "session_id": "test-session-0045",
+          "split": "test",
+          "target_mm": [
+            18.98173549613758,
+            16.93814205465769
+          ],
+          "trial_id": "test-0045"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.40575561934881754,
+          "estimate_mm": [
+            24.59640380279977,
+            12.762885761274493
+          ],
+          "failed": false,
+          "object_id": "test-object-0046",
+          "session_id": "test-session-0046",
+          "split": "test",
+          "target_mm": [
+            24.85924610040866,
+            12.453771625038666
+          ],
+          "trial_id": "test-0046"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 6.896795963549082,
+          "estimate_mm": [
+            22.984327650472128,
+            19.443431543979692
+          ],
+          "failed": false,
+          "object_id": "test-object-0047",
+          "session_id": "test-session-0047",
+          "split": "test",
+          "target_mm": [
+            29.517348968120054,
+            21.65373175571218
+          ],
+          "trial_id": "test-0047"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.6008425579431076,
+          "estimate_mm": [
+            20.87384152173166,
+            7.61795818323205
+          ],
+          "failed": false,
+          "object_id": "test-object-0048",
+          "session_id": "test-session-0048",
+          "split": "test",
+          "target_mm": [
+            21.64627327800446,
+            6.215800532601014
+          ],
+          "trial_id": "test-0048"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.2854749249644377,
+          "estimate_mm": [
+            15.683999817265095,
+            19.693896391976075
+          ],
+          "failed": false,
+          "object_id": "test-object-0049",
+          "session_id": "test-session-0049",
+          "split": "test",
+          "target_mm": [
+            15.991277861789367,
+            21.958620621544554
+          ],
+          "trial_id": "test-0049"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.4949486927780704,
+          "estimate_mm": [
+            11.30875056113485,
+            22.787345956026012
+          ],
+          "failed": false,
+          "object_id": "test-object-0050",
+          "session_id": "test-session-0050",
+          "split": "test",
+          "target_mm": [
+            10.570949554487788,
+            26.203530383093984
+          ],
+          "trial_id": "test-0050"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.7471854426472495,
+          "estimate_mm": [
+            13.851211258577232,
+            22.943324010506117
+          ],
+          "failed": false,
+          "object_id": "test-object-0051",
+          "session_id": "test-session-0051",
+          "split": "test",
+          "target_mm": [
+            12.174396033194046,
+            26.2943968896764
+          ],
+          "trial_id": "test-0051"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.9960542325795374,
+          "estimate_mm": [
+            16.311675803971152,
+            6.863174797138964
+          ],
+          "failed": false,
+          "object_id": "test-object-0052",
+          "session_id": "test-session-0052",
+          "split": "test",
+          "target_mm": [
+            16.37835329329095,
+            2.867676887974845
+          ],
+          "trial_id": "test-0052"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.5316587802447197,
+          "estimate_mm": [
+            11.10175716733546,
+            11.540418283441122
+          ],
+          "failed": false,
+          "object_id": "test-object-0053",
+          "session_id": "test-session-0053",
+          "split": "test",
+          "target_mm": [
+            7.833652249352731,
+            10.201723402171787
+          ],
+          "trial_id": "test-0053"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.301777709545868,
+          "estimate_mm": [
+            10.064733636950946,
+            5.782308693814552
+          ],
+          "failed": false,
+          "object_id": "test-object-0054",
+          "session_id": "test-session-0054",
+          "split": "test",
+          "target_mm": [
+            8.097571413717237,
+            1.956663094725699
+          ],
+          "trial_id": "test-0054"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.7856785079655846,
+          "estimate_mm": [
+            4.798378630011529,
+            22.342664732523165
+          ],
+          "failed": false,
+          "object_id": "test-object-0055",
+          "session_id": "test-session-0055",
+          "split": "test",
+          "target_mm": [
+            5.54431702117138,
+            23.96507764248291
+          ],
+          "trial_id": "test-0055"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.0493956911752256,
+          "estimate_mm": [
+            17.227761985984515,
+            19.698588321295063
+          ],
+          "failed": false,
+          "object_id": "test-object-0056",
+          "session_id": "test-session-0056",
+          "split": "test",
+          "target_mm": [
+            18.508513984615696,
+            21.29849363630899
+          ],
+          "trial_id": "test-0056"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.2228524863267176,
+          "estimate_mm": [
+            18.50649389022049,
+            12.463986348028063
+          ],
+          "failed": false,
+          "object_id": "test-object-0057",
+          "session_id": "test-session-0057",
+          "split": "test",
+          "target_mm": [
+            18.768566059366513,
+            9.251806974645966
+          ],
+          "trial_id": "test-0057"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.5286610758832726,
+          "estimate_mm": [
+            5.024661004654983,
+            18.912525126150538
+          ],
+          "failed": false,
+          "object_id": "test-object-0058",
+          "session_id": "test-session-0058",
+          "split": "test",
+          "target_mm": [
+            2.635749224418192,
+            19.741516889036657
+          ],
+          "trial_id": "test-0058"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.9061072122570646,
+          "estimate_mm": [
+            23.475225543066575,
+            8.810156735902005
+          ],
+          "failed": false,
+          "object_id": "test-object-0059",
+          "session_id": "test-session-0059",
+          "split": "test",
+          "target_mm": [
+            25.38032327530311,
+            8.748129844591755
+          ],
+          "trial_id": "test-0059"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.54417958064168,
+          "estimate_mm": [
+            16.81316760630389,
+            23.47087437012704
+          ],
+          "failed": false,
+          "object_id": "test-object-0060",
+          "session_id": "test-session-0060",
+          "split": "test",
+          "target_mm": [
+            17.74431968972389,
+            28.936300521850868
+          ],
+          "trial_id": "test-0060"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.490051497696254,
+          "estimate_mm": [
+            22.372340585760536,
+            9.308478035127607
+          ],
+          "failed": false,
+          "object_id": "test-object-0061",
+          "session_id": "test-session-0061",
+          "split": "test",
+          "target_mm": [
+            28.389392654874836,
+            6.876225408380806
+          ],
+          "trial_id": "test-0061"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.0036647498943343,
+          "estimate_mm": [
+            23.49282828063375,
+            22.659724218258003
+          ],
+          "failed": false,
+          "object_id": "test-object-0062",
+          "session_id": "test-session-0062",
+          "split": "test",
+          "target_mm": [
+            24.487719352695645,
+            22.5273056209539
+          ],
+          "trial_id": "test-0062"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.611066860355882,
+          "estimate_mm": [
+            13.628702188459789,
+            16.003124622526453
+          ],
+          "failed": false,
+          "object_id": "test-object-0063",
+          "session_id": "test-session-0063",
+          "split": "test",
+          "target_mm": [
+            15.042739677117234,
+            15.231091974765814
+          ],
+          "trial_id": "test-0063"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.816696792083957,
+          "estimate_mm": [
+            16.941952851016666,
+            25.064606245307917
+          ],
+          "failed": false,
+          "object_id": "test-object-0064",
+          "session_id": "test-session-0064",
+          "split": "test",
+          "target_mm": [
+            17.86906949431791,
+            27.724349757049207
+          ],
+          "trial_id": "test-0064"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.546704073079444,
+          "estimate_mm": [
+            15.602058323214786,
+            15.952197878269535
+          ],
+          "failed": false,
+          "object_id": "test-object-0065",
+          "session_id": "test-session-0065",
+          "split": "test",
+          "target_mm": [
+            13.241795459308662,
+            14.995714292887595
+          ],
+          "trial_id": "test-0065"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 7.636062966841465,
+          "estimate_mm": [
+            20.991093986962902,
+            16.859684420996583
+          ],
+          "failed": false,
+          "object_id": "test-object-0066",
+          "session_id": "test-session-0066",
+          "split": "test",
+          "target_mm": [
+            28.588476418997836,
+            16.092066146738713
+          ],
+          "trial_id": "test-0066"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 9.65000233263859,
+          "estimate_mm": [
+            20.899160025206033,
+            7.363050912720466
+          ],
+          "failed": false,
+          "object_id": "test-object-0067",
+          "session_id": "test-session-0067",
+          "split": "test",
+          "target_mm": [
+            28.64685074651074,
+            1.610153077112818
+          ],
+          "trial_id": "test-0067"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.4282815012335925,
+          "estimate_mm": [
+            10.798819487130812,
+            8.277606479315402
+          ],
+          "failed": false,
+          "object_id": "test-object-0068",
+          "session_id": "test-session-0068",
+          "split": "test",
+          "target_mm": [
+            7.386672317582132,
+            4.055818735956464
+          ],
+          "trial_id": "test-0068"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.262145500261309,
+          "estimate_mm": [
+            18.876449747185763,
+            20.937300393061854
+          ],
+          "failed": false,
+          "object_id": "test-object-0069",
+          "session_id": "test-session-0069",
+          "split": "test",
+          "target_mm": [
+            20.76011297841621,
+            27.950899333568508
+          ],
+          "trial_id": "test-0069"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.5548531352442683,
+          "estimate_mm": [
+            11.857122607088957,
+            11.413972505764354
+          ],
+          "failed": false,
+          "object_id": "test-object-0070",
+          "session_id": "test-session-0070",
+          "split": "test",
+          "target_mm": [
+            12.406831182132986,
+            11.338590251795285
+          ],
+          "trial_id": "test-0070"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.170479231793946,
+          "estimate_mm": [
+            5.154633162603974,
+            24.7289736802497
+          ],
+          "failed": false,
+          "object_id": "test-object-0071",
+          "session_id": "test-session-0071",
+          "split": "test",
+          "target_mm": [
+            0.5838509254952418,
+            27.145956350304207
+          ],
+          "trial_id": "test-0071"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 4.191559877404691,
+          "estimate_mm": [
+            5.666492577699699,
+            4.77664776164461
+          ],
+          "failed": false,
+          "object_id": "test-object-0072",
+          "session_id": "test-session-0072",
+          "split": "test",
+          "target_mm": [
+            2.608285223096174,
+            1.910196648836694
+          ],
+          "trial_id": "test-0072"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.556854312397493,
+          "estimate_mm": [
+            18.594177360709324,
+            8.98496133454828
+          ],
+          "failed": false,
+          "object_id": "test-object-0073",
+          "session_id": "test-session-0073",
+          "split": "test",
+          "target_mm": [
+            19.414436579119975,
+            3.48898056094445
+          ],
+          "trial_id": "test-0073"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.8824099961378105,
+          "estimate_mm": [
+            22.19435378517684,
+            15.940310907635464
+          ],
+          "failed": false,
+          "object_id": "test-object-0074",
+          "session_id": "test-session-0074",
+          "split": "test",
+          "target_mm": [
+            27.074978008520286,
+            15.808270910287707
+          ],
+          "trial_id": "test-0074"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.85968795281509,
+          "estimate_mm": [
+            22.25272502681899,
+            22.526539721973883
+          ],
+          "failed": false,
+          "object_id": "test-object-0075",
+          "session_id": "test-session-0075",
+          "split": "test",
+          "target_mm": [
+            27.02241299166827,
+            23.457476732038508
+          ],
+          "trial_id": "test-0075"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.1034458221273344,
+          "estimate_mm": [
+            23.442773728700097,
+            15.418173687997195
+          ],
+          "failed": false,
+          "object_id": "test-object-0076",
+          "session_id": "test-session-0076",
+          "split": "test",
+          "target_mm": [
+            25.419665471424466,
+            16.13677188182539
+          ],
+          "trial_id": "test-0076"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.887264089220362,
+          "estimate_mm": [
+            16.322391371659897,
+            15.92913628996586
+          ],
+          "failed": false,
+          "object_id": "test-object-0077",
+          "session_id": "test-session-0077",
+          "split": "test",
+          "target_mm": [
+            20.71515824815019,
+            12.009509059599
+          ],
+          "trial_id": "test-0077"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.5795177647338738,
+          "estimate_mm": [
+            16.825251546462173,
+            16.231190046359526
+          ],
+          "failed": false,
+          "object_id": "test-object-0078",
+          "session_id": "test-session-0078",
+          "split": "test",
+          "target_mm": [
+            18.39966731945331,
+            16.358041703292383
+          ],
+          "trial_id": "test-0078"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.735799275530185,
+          "estimate_mm": [
+            7.859550197837349,
+            24.54071296474368
+          ],
+          "failed": false,
+          "object_id": "test-object-0079",
+          "session_id": "test-session-0079",
+          "split": "test",
+          "target_mm": [
+            3.3926476263157443,
+            28.13879227816998
+          ],
+          "trial_id": "test-0079"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.9553798756177274,
+          "estimate_mm": [
+            20.72290798803986,
+            14.137750073677115
+          ],
+          "failed": false,
+          "object_id": "test-object-0080",
+          "session_id": "test-session-0080",
+          "split": "test",
+          "target_mm": [
+            23.676688385612255,
+            14.04053087740745
+          ],
+          "trial_id": "test-0080"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.412855523131673,
+          "estimate_mm": [
+            8.157540085028874,
+            21.44449711438203
+          ],
+          "failed": false,
+          "object_id": "test-object-0081",
+          "session_id": "test-session-0081",
+          "split": "test",
+          "target_mm": [
+            3.244795532238487,
+            26.995656269536216
+          ],
+          "trial_id": "test-0081"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.669718888792541,
+          "estimate_mm": [
+            18.511737917091803,
+            10.000112279999197
+          ],
+          "failed": false,
+          "object_id": "test-object-0082",
+          "session_id": "test-session-0082",
+          "split": "test",
+          "target_mm": [
+            20.08064622912279,
+            9.428721103981687
+          ],
+          "trial_id": "test-0082"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.1691754329185198,
+          "estimate_mm": [
+            3.852699822611275,
+            3.408523936460336
+          ],
+          "failed": false,
+          "object_id": "test-object-0083",
+          "session_id": "test-session-0083",
+          "split": "test",
+          "target_mm": [
+            1.875812667512241,
+            2.5156413939152955
+          ],
+          "trial_id": "test-0083"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.832523708490143,
+          "estimate_mm": [
+            23.336611660870155,
+            9.189416531687106
+          ],
+          "failed": false,
+          "object_id": "test-object-0084",
+          "session_id": "test-session-0084",
+          "split": "test",
+          "target_mm": [
+            25.16381019072206,
+            9.049814688269832
+          ],
+          "trial_id": "test-0084"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.271531996195897,
+          "estimate_mm": [
+            23.183456977095716,
+            19.206220049991607
+          ],
+          "failed": false,
+          "object_id": "test-object-0085",
+          "session_id": "test-session-0085",
+          "split": "test",
+          "target_mm": [
+            28.767000575809444,
+            23.864462041662247
+          ],
+          "trial_id": "test-0085"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.729016034381202,
+          "estimate_mm": [
+            15.93846535613736,
+            7.727157545018669
+          ],
+          "failed": false,
+          "object_id": "test-object-0086",
+          "session_id": "test-session-0086",
+          "split": "test",
+          "target_mm": [
+            17.221454977011,
+            5.31853425595078
+          ],
+          "trial_id": "test-0086"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.9006292711582062,
+          "estimate_mm": [
+            23.929774596233536,
+            8.696724853646673
+          ],
+          "failed": false,
+          "object_id": "test-object-0087",
+          "session_id": "test-session-0087",
+          "split": "test",
+          "target_mm": [
+            24.541415827425634,
+            8.035643853789034
+          ],
+          "trial_id": "test-0087"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.395512992754157,
+          "estimate_mm": [
+            24.93148499105674,
+            13.553782231173056
+          ],
+          "failed": false,
+          "object_id": "test-object-0088",
+          "session_id": "test-session-0088",
+          "split": "test",
+          "target_mm": [
+            28.317448592298042,
+            13.299304383352593
+          ],
+          "trial_id": "test-0088"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.248608550080605,
+          "estimate_mm": [
+            10.360223223662548,
+            9.864392175932142
+          ],
+          "failed": false,
+          "object_id": "test-object-0089",
+          "session_id": "test-session-0089",
+          "split": "test",
+          "target_mm": [
+            9.74939415731787,
+            3.6457109118819475
+          ],
+          "trial_id": "test-0089"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.104087353770657,
+          "estimate_mm": [
+            14.812453325752205,
+            25.370575725918098
+          ],
+          "failed": false,
+          "object_id": "test-object-0090",
+          "session_id": "test-session-0090",
+          "split": "test",
+          "target_mm": [
+            12.744464325399328,
+            25.75865443793038
+          ],
+          "trial_id": "test-0090"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 6.16314681271223,
+          "estimate_mm": [
+            20.983283819111424,
+            10.8727694899916
+          ],
+          "failed": false,
+          "object_id": "test-object-0091",
+          "session_id": "test-session-0091",
+          "split": "test",
+          "target_mm": [
+            27.14018521121727,
+            10.595381885852472
+          ],
+          "trial_id": "test-0091"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.7027985013300962,
+          "estimate_mm": [
+            14.762062790055069,
+            4.057624783516545
+          ],
+          "failed": false,
+          "object_id": "test-object-0092",
+          "session_id": "test-session-0092",
+          "split": "test",
+          "target_mm": [
+            14.169417267237154,
+            3.679872195496674
+          ],
+          "trial_id": "test-0092"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.165789308305068,
+          "estimate_mm": [
+            14.747879361484703,
+            15.738808622860569
+          ],
+          "failed": false,
+          "object_id": "test-object-0093",
+          "session_id": "test-session-0093",
+          "split": "test",
+          "target_mm": [
+            16.883895023952526,
+            16.09669186871135
+          ],
+          "trial_id": "test-0093"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 5.450069655571705,
+          "estimate_mm": [
+            22.020884071849554,
+            9.745774336257893
+          ],
+          "failed": false,
+          "object_id": "test-object-0094",
+          "session_id": "test-session-0094",
+          "split": "test",
+          "target_mm": [
+            26.358396198363543,
+            6.445888307479387
+          ],
+          "trial_id": "test-0094"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.148503914333874,
+          "estimate_mm": [
+            12.891038351983077,
+            15.344375761831824
+          ],
+          "failed": false,
+          "object_id": "test-object-0095",
+          "session_id": "test-session-0095",
+          "split": "test",
+          "target_mm": [
+            13.920529105483599,
+            13.458582067292332
+          ],
+          "trial_id": "test-0095"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.287110836131552,
+          "estimate_mm": [
+            2.66442927433095,
+            13.213690677397047
+          ],
+          "failed": false,
+          "object_id": "test-object-0096",
+          "session_id": "test-session-0096",
+          "split": "test",
+          "target_mm": [
+            1.5058988286522845,
+            12.65292199877559
+          ],
+          "trial_id": "test-0096"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 8.219206727875818,
+          "estimate_mm": [
+            22.344155719883183,
+            8.87193320937691
+          ],
+          "failed": false,
+          "object_id": "test-object-0097",
+          "session_id": "test-session-0097",
+          "split": "test",
+          "target_mm": [
+            28.91266028778527,
+            3.931274652361607
+          ],
+          "trial_id": "test-0097"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.887620679916401,
+          "estimate_mm": [
+            9.042627202302496,
+            6.8686069617902685
+          ],
+          "failed": false,
+          "object_id": "test-object-0098",
+          "session_id": "test-session-0098",
+          "split": "test",
+          "target_mm": [
+            7.684095727903197,
+            2.173585327781228
+          ],
+          "trial_id": "test-0098"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.37172726442492,
+          "estimate_mm": [
+            18.333011511486955,
+            9.28092292905179
+          ],
+          "failed": false,
+          "object_id": "test-object-0099",
+          "session_id": "test-session-0099",
+          "split": "test",
+          "target_mm": [
+            19.30929132971895,
+            8.317328925085608
+          ],
+          "trial_id": "test-0099"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.320471047686262,
+          "estimate_mm": [
+            26.612257868595837,
+            11.607202405653991
+          ],
+          "failed": false,
+          "object_id": "test-object-0100",
+          "session_id": "test-session-0100",
+          "split": "test",
+          "target_mm": [
+            28.928167432442642,
+            11.461776220827877
+          ],
+          "trial_id": "test-0100"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.688384671549284,
+          "estimate_mm": [
+            18.938301762606894,
+            17.33744356199963
+          ],
+          "failed": false,
+          "object_id": "test-object-0101",
+          "session_id": "test-session-0101",
+          "split": "test",
+          "target_mm": [
+            17.922955740925016,
+            19.826717471893023
+          ],
+          "trial_id": "test-0101"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.4097620832744821,
+          "estimate_mm": [
+            20.27746027638928,
+            13.753465140153649
+          ],
+          "failed": false,
+          "object_id": "test-object-0102",
+          "session_id": "test-session-0102",
+          "split": "test",
+          "target_mm": [
+            20.611869586875525,
+            13.990267542906574
+          ],
+          "trial_id": "test-0102"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.7599051159364483,
+          "estimate_mm": [
+            26.73735130026526,
+            12.158072906164104
+          ],
+          "failed": false,
+          "object_id": "test-object-0103",
+          "session_id": "test-session-0103",
+          "split": "test",
+          "target_mm": [
+            27.56242518032211,
+            13.712588621603231
+          ],
+          "trial_id": "test-0103"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.0876236453439603,
+          "estimate_mm": [
+            7.511588049143084,
+            23.52485865197224
+          ],
+          "failed": false,
+          "object_id": "test-object-0104",
+          "session_id": "test-session-0104",
+          "split": "test",
+          "target_mm": [
+            5.224591027082239,
+            25.5992415472864
+          ],
+          "trial_id": "test-0104"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.196327677821905,
+          "estimate_mm": [
+            23.613342663351194,
+            13.45280629791797
+          ],
+          "failed": false,
+          "object_id": "test-object-0105",
+          "session_id": "test-session-0105",
+          "split": "test",
+          "target_mm": [
+            26.391461277435766,
+            15.03349209531326
+          ],
+          "trial_id": "test-0105"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.7758553309391634,
+          "estimate_mm": [
+            12.72980942773091,
+            9.085413432650851
+          ],
+          "failed": false,
+          "object_id": "test-object-0106",
+          "session_id": "test-session-0106",
+          "split": "test",
+          "target_mm": [
+            12.772546030287078,
+            7.310072412106629
+          ],
+          "trial_id": "test-0106"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.617999440642605,
+          "estimate_mm": [
+            6.811952950525522,
+            11.946877695404316
+          ],
+          "failed": false,
+          "object_id": "test-object-0107",
+          "session_id": "test-session-0107",
+          "split": "test",
+          "target_mm": [
+            4.159481777907283,
+            8.166624329265396
+          ],
+          "trial_id": "test-0107"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.7446203694227911,
+          "estimate_mm": [
+            19.921122663036023,
+            16.29739545416363
+          ],
+          "failed": false,
+          "object_id": "test-object-0108",
+          "session_id": "test-session-0108",
+          "split": "test",
+          "target_mm": [
+            20.42064930770906,
+            15.745188404388792
+          ],
+          "trial_id": "test-0108"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.457476619301306,
+          "estimate_mm": [
+            9.409587741740115,
+            16.65387835870382
+          ],
+          "failed": false,
+          "object_id": "test-object-0109",
+          "session_id": "test-session-0109",
+          "split": "test",
+          "target_mm": [
+            1.9563050120522762,
+            16.403810210466926
+          ],
+          "trial_id": "test-0109"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.0310939252622187,
+          "estimate_mm": [
+            7.071521799174798,
+            7.9254262168099565
+          ],
+          "failed": false,
+          "object_id": "test-object-0110",
+          "session_id": "test-session-0110",
+          "split": "test",
+          "target_mm": [
+            5.223616621901893,
+            7.082461811247609
+          ],
+          "trial_id": "test-0110"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.1443537180255157,
+          "estimate_mm": [
+            6.090809901673334,
+            17.35032655656127
+          ],
+          "failed": false,
+          "object_id": "test-object-0111",
+          "session_id": "test-session-0111",
+          "split": "test",
+          "target_mm": [
+            3.9161306088933956,
+            15.079262867975011
+          ],
+          "trial_id": "test-0111"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.39660941240294656,
+          "estimate_mm": [
+            13.05960339085619,
+            19.37106999157379
+          ],
+          "failed": false,
+          "object_id": "test-object-0112",
+          "session_id": "test-session-0112",
+          "split": "test",
+          "target_mm": [
+            13.186530848257318,
+            19.746820502637043
+          ],
+          "trial_id": "test-0112"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.6632657093235785,
+          "estimate_mm": [
+            14.074917271815856,
+            12.947729130678725
+          ],
+          "failed": false,
+          "object_id": "test-object-0113",
+          "session_id": "test-session-0113",
+          "split": "test",
+          "target_mm": [
+            12.426819699118669,
+            10.855658713764308
+          ],
+          "trial_id": "test-0113"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.5915280134714407,
+          "estimate_mm": [
+            20.35761784453279,
+            14.689201301037006
+          ],
+          "failed": false,
+          "object_id": "test-object-0114",
+          "session_id": "test-session-0114",
+          "split": "test",
+          "target_mm": [
+            22.939442139121986,
+            14.465146047859964
+          ],
+          "trial_id": "test-0114"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.142344775167473,
+          "estimate_mm": [
+            4.9815794336604124,
+            7.761538879524785
+          ],
+          "failed": false,
+          "object_id": "test-object-0115",
+          "session_id": "test-session-0115",
+          "split": "test",
+          "target_mm": [
+            2.0643407818658255,
+            3.5267509940259245
+          ],
+          "trial_id": "test-0115"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.1046946806675035,
+          "estimate_mm": [
+            13.044815324688454,
+            24.520408335731066
+          ],
+          "failed": false,
+          "object_id": "test-object-0116",
+          "session_id": "test-session-0116",
+          "split": "test",
+          "target_mm": [
+            13.409993983559872,
+            27.603551797730518
+          ],
+          "trial_id": "test-0116"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.8116832518325077,
+          "estimate_mm": [
+            9.17078985673458,
+            20.222509781294423
+          ],
+          "failed": false,
+          "object_id": "test-object-0117",
+          "session_id": "test-session-0117",
+          "split": "test",
+          "target_mm": [
+            10.460319683030175,
+            23.80943632631796
+          ],
+          "trial_id": "test-0117"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.316902617747451,
+          "estimate_mm": [
+            23.375287091488413,
+            7.094372767593251
+          ],
+          "failed": false,
+          "object_id": "test-object-0118",
+          "session_id": "test-session-0118",
+          "split": "test",
+          "target_mm": [
+            25.08238087442391,
+            3.129340734005406
+          ],
+          "trial_id": "test-0118"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.5758040793151094,
+          "estimate_mm": [
+            17.118747245090457,
+            21.149401797432613
+          ],
+          "failed": false,
+          "object_id": "test-object-0119",
+          "session_id": "test-session-0119",
+          "split": "test",
+          "target_mm": [
+            20.508244325990372,
+            22.28856129118998
+          ],
+          "trial_id": "test-0119"
+        }
+      ],
+      "validation_candidates": [
+        {
+          "failures": 0,
+          "mean_error_mm": 3.2903220628119785,
+          "median_error_mm": 2.781645358733729,
+          "p95_error_mm": 6.903514133960076,
+          "strength": 0.0,
+          "trials": 120
+        }
+      ]
+    },
+    "pathway": {
+      "by_condition": {
+        "clean": {
+          "failures": 0,
+          "mean_error_mm": 2.9431554162460065,
+          "median_error_mm": 2.8240799018764093,
+          "p95_error_mm": 5.810990078479429,
+          "trials": 30
+        },
+        "noise": {
+          "failures": 0,
+          "mean_error_mm": 4.973193032474614,
+          "median_error_mm": 4.696072403140209,
+          "p95_error_mm": 7.876428179017285,
+          "trials": 30
+        },
+        "quarter_dropout": {
+          "failures": 0,
+          "mean_error_mm": 3.3684307044728783,
+          "median_error_mm": 2.95179947234822,
+          "p95_error_mm": 6.566653845672497,
+          "trials": 30
+        },
+        "single_dropout": {
+          "failures": 0,
+          "mean_error_mm": 2.8768086191374276,
+          "median_error_mm": 2.5528931391837695,
+          "p95_error_mm": 5.638974304822851,
+          "trials": 30
+        }
+      },
+      "graph": {
+        "degrees": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "edges": 24,
+        "isolated_nodes": 0,
+        "nodes": 16
+      },
+      "steps": 1,
+      "strength": 0.0,
+      "summary": {
+        "failures": 0,
+        "mean_error_mm": 3.5403969430827322,
+        "median_error_mm": 3.0961591630057317,
+        "p95_error_mm": 7.414995049757104,
+        "trials": 120
+      },
+      "topology": {
+        "component_count": 4,
+        "components": [
+          [
+            0,
+            4,
+            8,
+            12
+          ],
+          [
+            1,
+            5,
+            9,
+            13
+          ],
+          [
+            2,
+            6,
+            10,
+            14
+          ],
+          [
+            3,
+            7,
+            11,
+            15
+          ]
+        ],
+        "laplacian_eigenvalues": [
+          -4.442223262368768e-16,
+          -4.440892098500626e-16,
+          1.3311638681420487e-19,
+          1.1102230246251565e-16,
+          3.9999999999999964,
+          3.999999999999997,
+          3.9999999999999973,
+          3.9999999999999982,
+          3.999999999999999,
+          3.999999999999999,
+          4.0,
+          4.0,
+          4.000000000000001,
+          4.000000000000001,
+          4.000000000000001,
+          4.000000000000002
+        ],
+        "mean_edge_length_mm": 16.666666666666668,
+        "total_edge_length_mm": 400.0
+      },
+      "trials": [
+        {
+          "condition": "clean",
+          "error_mm": 4.227544766091337,
+          "estimate_mm": [
+            10.383217441257615,
+            23.05169151832098
+          ],
+          "failed": false,
+          "object_id": "test-object-0000",
+          "session_id": "test-session-0000",
+          "split": "test",
+          "target_mm": [
+            9.233231041800504,
+            27.11981959280068
+          ],
+          "trial_id": "test-0000"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.785724293147813,
+          "estimate_mm": [
+            6.629128105091871,
+            22.280088604567577
+          ],
+          "failed": false,
+          "object_id": "test-object-0001",
+          "session_id": "test-session-0001",
+          "split": "test",
+          "target_mm": [
+            3.218989574901551,
+            28.146689783063334
+          ],
+          "trial_id": "test-0001"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.0858989264071437,
+          "estimate_mm": [
+            19.485228213817006,
+            9.94424386452548
+          ],
+          "failed": false,
+          "object_id": "test-object-0002",
+          "session_id": "test-session-0002",
+          "split": "test",
+          "target_mm": [
+            21.515333683122986,
+            9.465029805173689
+          ],
+          "trial_id": "test-0002"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.13216999924207,
+          "estimate_mm": [
+            5.455847584419089,
+            27.436627486110297
+          ],
+          "failed": false,
+          "object_id": "test-object-0003",
+          "session_id": "test-session-0003",
+          "split": "test",
+          "target_mm": [
+            1.4540321271010526,
+            26.406917843440752
+          ],
+          "trial_id": "test-0003"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.6605307294607972,
+          "estimate_mm": [
+            15.245118155076254,
+            5.629944736711884
+          ],
+          "failed": false,
+          "object_id": "test-object-0004",
+          "session_id": "test-session-0004",
+          "split": "test",
+          "target_mm": [
+            14.942166239183535,
+            3.9972835838266505
+          ],
+          "trial_id": "test-0004"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.1107408165735224,
+          "estimate_mm": [
+            9.616791160931772,
+            11.69926590027613
+          ],
+          "failed": false,
+          "object_id": "test-object-0005",
+          "session_id": "test-session-0005",
+          "split": "test",
+          "target_mm": [
+            7.64588346858122,
+            9.292560414320292
+          ],
+          "trial_id": "test-0005"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.231654598527788,
+          "estimate_mm": [
+            3.961892283356124,
+            9.227846205530819
+          ],
+          "failed": false,
+          "object_id": "test-object-0006",
+          "session_id": "test-session-0006",
+          "split": "test",
+          "target_mm": [
+            0.46214155093856957,
+            6.849055451348315
+          ],
+          "trial_id": "test-0006"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.863564430360972,
+          "estimate_mm": [
+            23.52485317069878,
+            6.878060820579258
+          ],
+          "failed": false,
+          "object_id": "test-object-0007",
+          "session_id": "test-session-0007",
+          "split": "test",
+          "target_mm": [
+            26.997438980006567,
+            3.4728579242356905
+          ],
+          "trial_id": "test-0007"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 6.029289576710315,
+          "estimate_mm": [
+            20.692123701998018,
+            7.134275407161879
+          ],
+          "failed": false,
+          "object_id": "test-object-0008",
+          "session_id": "test-session-0008",
+          "split": "test",
+          "target_mm": [
+            24.49345815526045,
+            2.4542979313327837
+          ],
+          "trial_id": "test-0008"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.735656409769901,
+          "estimate_mm": [
+            11.393603281733007,
+            6.903059554810115
+          ],
+          "failed": false,
+          "object_id": "test-object-0009",
+          "session_id": "test-session-0009",
+          "split": "test",
+          "target_mm": [
+            8.499061962919958,
+            0.8210617067211856
+          ],
+          "trial_id": "test-0009"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 5.7935326542101535,
+          "estimate_mm": [
+            23.78434700722093,
+            21.405251899326302
+          ],
+          "failed": false,
+          "object_id": "test-object-0010",
+          "session_id": "test-session-0010",
+          "split": "test",
+          "target_mm": [
+            28.841087008202106,
+            24.232689109570988
+          ],
+          "trial_id": "test-0010"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.6533924251764913,
+          "estimate_mm": [
+            4.708629571835944,
+            26.685798259748957
+          ],
+          "failed": false,
+          "object_id": "test-object-0011",
+          "session_id": "test-session-0011",
+          "split": "test",
+          "target_mm": [
+            3.8875482867261857,
+            28.12090523655365
+          ],
+          "trial_id": "test-0011"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.028874507751455,
+          "estimate_mm": [
+            8.632831793172995,
+            23.859404628822258
+          ],
+          "failed": false,
+          "object_id": "test-object-0012",
+          "session_id": "test-session-0012",
+          "split": "test",
+          "target_mm": [
+            5.653766655081736,
+            27.910916657401433
+          ],
+          "trial_id": "test-0012"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.5099137939019776,
+          "estimate_mm": [
+            8.894784455696593,
+            7.5696563322373
+          ],
+          "failed": false,
+          "object_id": "test-object-0013",
+          "session_id": "test-session-0013",
+          "split": "test",
+          "target_mm": [
+            6.043016367688602,
+            5.5234614214718025
+          ],
+          "trial_id": "test-0013"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.6363000516293638,
+          "estimate_mm": [
+            11.374995161658752,
+            18.51254078567804
+          ],
+          "failed": false,
+          "object_id": "test-object-0014",
+          "session_id": "test-session-0014",
+          "split": "test",
+          "target_mm": [
+            10.647479482912244,
+            19.97821428142676
+          ],
+          "trial_id": "test-0014"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.8423974797927656,
+          "estimate_mm": [
+            22.688409740725852,
+            4.523184381224029
+          ],
+          "failed": false,
+          "object_id": "test-object-0015",
+          "session_id": "test-session-0015",
+          "split": "test",
+          "target_mm": [
+            24.575988791003745,
+            2.3980329131906855
+          ],
+          "trial_id": "test-0015"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.5429030700536757,
+          "estimate_mm": [
+            12.081843338407644,
+            9.177508844975424
+          ],
+          "failed": false,
+          "object_id": "test-object-0016",
+          "session_id": "test-session-0016",
+          "split": "test",
+          "target_mm": [
+            11.070655444379907,
+            6.8443018102997275
+          ],
+          "trial_id": "test-0016"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.582949560764204,
+          "estimate_mm": [
+            15.128064700531743,
+            7.239655007852076
+          ],
+          "failed": false,
+          "object_id": "test-object-0017",
+          "session_id": "test-session-0017",
+          "split": "test",
+          "target_mm": [
+            14.234337600605832,
+            0.7176555605641777
+          ],
+          "trial_id": "test-0017"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.6625518262234071,
+          "estimate_mm": [
+            16.892629319806524,
+            17.51860056920887
+          ],
+          "failed": false,
+          "object_id": "test-object-0018",
+          "session_id": "test-session-0018",
+          "split": "test",
+          "target_mm": [
+            16.301259962600383,
+            17.817360013895676
+          ],
+          "trial_id": "test-0018"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.09060102479152,
+          "estimate_mm": [
+            21.17193377596436,
+            12.067978554677437
+          ],
+          "failed": false,
+          "object_id": "test-object-0019",
+          "session_id": "test-session-0019",
+          "split": "test",
+          "target_mm": [
+            25.039017822633802,
+            10.734307785701782
+          ],
+          "trial_id": "test-0019"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.4743778779027394,
+          "estimate_mm": [
+            13.882882885547158,
+            13.859570435999748
+          ],
+          "failed": false,
+          "object_id": "test-object-0020",
+          "session_id": "test-session-0020",
+          "split": "test",
+          "target_mm": [
+            13.432387981407,
+            14.008193154274098
+          ],
+          "trial_id": "test-0020"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 4.33269080719182,
+          "estimate_mm": [
+            15.092908151344673,
+            6.194379292865785
+          ],
+          "failed": false,
+          "object_id": "test-object-0021",
+          "session_id": "test-session-0021",
+          "split": "test",
+          "target_mm": [
+            13.642302220150984,
+            2.111738962992211
+          ],
+          "trial_id": "test-0021"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.2567273407714232,
+          "estimate_mm": [
+            20.662714992873408,
+            7.958037674593404
+          ],
+          "failed": false,
+          "object_id": "test-object-0022",
+          "session_id": "test-session-0022",
+          "split": "test",
+          "target_mm": [
+            22.63526359897063,
+            6.861739226556028
+          ],
+          "trial_id": "test-0022"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.0612014649036743,
+          "estimate_mm": [
+            26.635208411090773,
+            26.481831569246534
+          ],
+          "failed": false,
+          "object_id": "test-object-0023",
+          "session_id": "test-session-0023",
+          "split": "test",
+          "target_mm": [
+            27.408487509751225,
+            29.443755579801714
+          ],
+          "trial_id": "test-0023"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.9796391824766912,
+          "estimate_mm": [
+            12.908579894929126,
+            12.771022597850342
+          ],
+          "failed": false,
+          "object_id": "test-object-0024",
+          "session_id": "test-session-0024",
+          "split": "test",
+          "target_mm": [
+            11.00449241261903,
+            12.229338047113494
+          ],
+          "trial_id": "test-0024"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 11.283819986824472,
+          "estimate_mm": [
+            20.208792773818978,
+            11.510973882459568
+          ],
+          "failed": false,
+          "object_id": "test-object-0025",
+          "session_id": "test-session-0025",
+          "split": "test",
+          "target_mm": [
+            29.77048529744736,
+            5.51942737269696
+          ],
+          "trial_id": "test-0025"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.8217140562180205,
+          "estimate_mm": [
+            16.4130295125606,
+            24.07780541065208
+          ],
+          "failed": false,
+          "object_id": "test-object-0026",
+          "session_id": "test-session-0026",
+          "split": "test",
+          "target_mm": [
+            16.138676823850602,
+            28.891707885996592
+          ],
+          "trial_id": "test-0026"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.6817256495198488,
+          "estimate_mm": [
+            6.976410236969233,
+            18.646679756645607
+          ],
+          "failed": false,
+          "object_id": "test-object-0027",
+          "session_id": "test-session-0027",
+          "split": "test",
+          "target_mm": [
+            6.519230163960399,
+            19.15238346639757
+          ],
+          "trial_id": "test-0027"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.916723132109118,
+          "estimate_mm": [
+            5.979003354390682,
+            18.88897579248439
+          ],
+          "failed": false,
+          "object_id": "test-object-0028",
+          "session_id": "test-session-0028",
+          "split": "test",
+          "target_mm": [
+            4.8223293980075255,
+            20.417351702981257
+          ],
+          "trial_id": "test-0028"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.059453999088598,
+          "estimate_mm": [
+            8.701193459137006,
+            23.12976429074513
+          ],
+          "failed": false,
+          "object_id": "test-object-0029",
+          "session_id": "test-session-0029",
+          "split": "test",
+          "target_mm": [
+            6.109564985874242,
+            27.475053305927815
+          ],
+          "trial_id": "test-0029"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.303036833774197,
+          "estimate_mm": [
+            19.266709776199075,
+            25.339231939155162
+          ],
+          "failed": false,
+          "object_id": "test-object-0030",
+          "session_id": "test-session-0030",
+          "split": "test",
+          "target_mm": [
+            19.599020673686027,
+            28.62550974127118
+          ],
+          "trial_id": "test-0030"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.589805772901675,
+          "estimate_mm": [
+            22.827784091150924,
+            18.603816534173934
+          ],
+          "failed": false,
+          "object_id": "test-object-0031",
+          "session_id": "test-session-0031",
+          "split": "test",
+          "target_mm": [
+            24.245507559760906,
+            19.323220844769843
+          ],
+          "trial_id": "test-0031"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.8314630116688613,
+          "estimate_mm": [
+            12.46927622518724,
+            4.180811399486036
+          ],
+          "failed": false,
+          "object_id": "test-object-0032",
+          "session_id": "test-session-0032",
+          "split": "test",
+          "target_mm": [
+            12.41392056222042,
+            1.3498895466214245
+          ],
+          "trial_id": "test-0032"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 1.1451534967000971,
+          "estimate_mm": [
+            14.492861522607182,
+            12.86485243655667
+          ],
+          "failed": false,
+          "object_id": "test-object-0033",
+          "session_id": "test-session-0033",
+          "split": "test",
+          "target_mm": [
+            13.885870738311716,
+            11.893802119227628
+          ],
+          "trial_id": "test-0033"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.0530620899322973,
+          "estimate_mm": [
+            10.423004224485023,
+            20.300244646420786
+          ],
+          "failed": false,
+          "object_id": "test-object-0034",
+          "session_id": "test-session-0034",
+          "split": "test",
+          "target_mm": [
+            10.055665205099832,
+            21.287159946783337
+          ],
+          "trial_id": "test-0034"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.7392497967156862,
+          "estimate_mm": [
+            7.661511891255853,
+            17.57238777399807
+          ],
+          "failed": false,
+          "object_id": "test-object-0035",
+          "session_id": "test-session-0035",
+          "split": "test",
+          "target_mm": [
+            7.92076160143651,
+            16.880087369754776
+          ],
+          "trial_id": "test-0035"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 4.412977215295227,
+          "estimate_mm": [
+            23.89288765630801,
+            10.54036619558324
+          ],
+          "failed": false,
+          "object_id": "test-object-0036",
+          "session_id": "test-session-0036",
+          "split": "test",
+          "target_mm": [
+            28.23327483615697,
+            9.74324196955721
+          ],
+          "trial_id": "test-0036"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.455646055640312,
+          "estimate_mm": [
+            24.574700791465844,
+            7.925326933747706
+          ],
+          "failed": false,
+          "object_id": "test-object-0037",
+          "session_id": "test-session-0037",
+          "split": "test",
+          "target_mm": [
+            29.20889690712969,
+            2.084874513896052
+          ],
+          "trial_id": "test-0037"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.529348700409737,
+          "estimate_mm": [
+            19.814911611049666,
+            5.9675375085079345
+          ],
+          "failed": false,
+          "object_id": "test-object-0038",
+          "session_id": "test-session-0038",
+          "split": "test",
+          "target_mm": [
+            20.453410407393797,
+            2.4964250735454776
+          ],
+          "trial_id": "test-0038"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.531174944853792,
+          "estimate_mm": [
+            16.488859549248623,
+            27.20195745720898
+          ],
+          "failed": false,
+          "object_id": "test-object-0039",
+          "session_id": "test-session-0039",
+          "split": "test",
+          "target_mm": [
+            18.671501510893847,
+            25.920192787419285
+          ],
+          "trial_id": "test-0039"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.836705733659134,
+          "estimate_mm": [
+            17.760835885822033,
+            10.816590243078215
+          ],
+          "failed": false,
+          "object_id": "test-object-0040",
+          "session_id": "test-session-0040",
+          "split": "test",
+          "target_mm": [
+            19.369573351261565,
+            8.480169222229062
+          ],
+          "trial_id": "test-0040"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.178517093502374,
+          "estimate_mm": [
+            15.214240290746076,
+            13.472378439474738
+          ],
+          "failed": false,
+          "object_id": "test-object-0041",
+          "session_id": "test-session-0041",
+          "split": "test",
+          "target_mm": [
+            15.286880572928274,
+            10.294691497201905
+          ],
+          "trial_id": "test-0041"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.577125202484266,
+          "estimate_mm": [
+            22.900070631295584,
+            14.92143167768639
+          ],
+          "failed": false,
+          "object_id": "test-object-0042",
+          "session_id": "test-session-0042",
+          "split": "test",
+          "target_mm": [
+            25.31693872886613,
+            14.026823993712407
+          ],
+          "trial_id": "test-0042"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.5112455417402795,
+          "estimate_mm": [
+            12.398279130847653,
+            11.80315409027668
+          ],
+          "failed": false,
+          "object_id": "test-object-0043",
+          "session_id": "test-session-0043",
+          "split": "test",
+          "target_mm": [
+            12.273378359970781,
+            14.31129164000253
+          ],
+          "trial_id": "test-0043"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 6.795832559164584,
+          "estimate_mm": [
+            5.847355547179775,
+            5.794465322734342
+          ],
+          "failed": false,
+          "object_id": "test-object-0044",
+          "session_id": "test-session-0044",
+          "split": "test",
+          "target_mm": [
+            2.1440657271277375,
+            0.09630906997148858
+          ],
+          "trial_id": "test-0044"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.0973889615249823,
+          "estimate_mm": [
+            16.991644795797747,
+            16.27588873428266
+          ],
+          "failed": false,
+          "object_id": "test-object-0045",
+          "session_id": "test-session-0045",
+          "split": "test",
+          "target_mm": [
+            18.98173549613758,
+            16.93814205465769
+          ],
+          "trial_id": "test-0045"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.40575561934881754,
+          "estimate_mm": [
+            24.59640380279977,
+            12.762885761274493
+          ],
+          "failed": false,
+          "object_id": "test-object-0046",
+          "session_id": "test-session-0046",
+          "split": "test",
+          "target_mm": [
+            24.85924610040866,
+            12.453771625038666
+          ],
+          "trial_id": "test-0046"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 6.896795963549082,
+          "estimate_mm": [
+            22.984327650472128,
+            19.443431543979692
+          ],
+          "failed": false,
+          "object_id": "test-object-0047",
+          "session_id": "test-session-0047",
+          "split": "test",
+          "target_mm": [
+            29.517348968120054,
+            21.65373175571218
+          ],
+          "trial_id": "test-0047"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.6008425579431076,
+          "estimate_mm": [
+            20.87384152173166,
+            7.61795818323205
+          ],
+          "failed": false,
+          "object_id": "test-object-0048",
+          "session_id": "test-session-0048",
+          "split": "test",
+          "target_mm": [
+            21.64627327800446,
+            6.215800532601014
+          ],
+          "trial_id": "test-0048"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.2854749249644377,
+          "estimate_mm": [
+            15.683999817265095,
+            19.693896391976075
+          ],
+          "failed": false,
+          "object_id": "test-object-0049",
+          "session_id": "test-session-0049",
+          "split": "test",
+          "target_mm": [
+            15.991277861789367,
+            21.958620621544554
+          ],
+          "trial_id": "test-0049"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.4949486927780704,
+          "estimate_mm": [
+            11.30875056113485,
+            22.787345956026012
+          ],
+          "failed": false,
+          "object_id": "test-object-0050",
+          "session_id": "test-session-0050",
+          "split": "test",
+          "target_mm": [
+            10.570949554487788,
+            26.203530383093984
+          ],
+          "trial_id": "test-0050"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.7471854426472495,
+          "estimate_mm": [
+            13.851211258577232,
+            22.943324010506117
+          ],
+          "failed": false,
+          "object_id": "test-object-0051",
+          "session_id": "test-session-0051",
+          "split": "test",
+          "target_mm": [
+            12.174396033194046,
+            26.2943968896764
+          ],
+          "trial_id": "test-0051"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.9960542325795374,
+          "estimate_mm": [
+            16.311675803971152,
+            6.863174797138964
+          ],
+          "failed": false,
+          "object_id": "test-object-0052",
+          "session_id": "test-session-0052",
+          "split": "test",
+          "target_mm": [
+            16.37835329329095,
+            2.867676887974845
+          ],
+          "trial_id": "test-0052"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.5316587802447197,
+          "estimate_mm": [
+            11.10175716733546,
+            11.540418283441122
+          ],
+          "failed": false,
+          "object_id": "test-object-0053",
+          "session_id": "test-session-0053",
+          "split": "test",
+          "target_mm": [
+            7.833652249352731,
+            10.201723402171787
+          ],
+          "trial_id": "test-0053"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.301777709545868,
+          "estimate_mm": [
+            10.064733636950946,
+            5.782308693814552
+          ],
+          "failed": false,
+          "object_id": "test-object-0054",
+          "session_id": "test-session-0054",
+          "split": "test",
+          "target_mm": [
+            8.097571413717237,
+            1.956663094725699
+          ],
+          "trial_id": "test-0054"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.7856785079655846,
+          "estimate_mm": [
+            4.798378630011529,
+            22.342664732523165
+          ],
+          "failed": false,
+          "object_id": "test-object-0055",
+          "session_id": "test-session-0055",
+          "split": "test",
+          "target_mm": [
+            5.54431702117138,
+            23.96507764248291
+          ],
+          "trial_id": "test-0055"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.0493956911752256,
+          "estimate_mm": [
+            17.227761985984515,
+            19.698588321295063
+          ],
+          "failed": false,
+          "object_id": "test-object-0056",
+          "session_id": "test-session-0056",
+          "split": "test",
+          "target_mm": [
+            18.508513984615696,
+            21.29849363630899
+          ],
+          "trial_id": "test-0056"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.2228524863267176,
+          "estimate_mm": [
+            18.50649389022049,
+            12.463986348028063
+          ],
+          "failed": false,
+          "object_id": "test-object-0057",
+          "session_id": "test-session-0057",
+          "split": "test",
+          "target_mm": [
+            18.768566059366513,
+            9.251806974645966
+          ],
+          "trial_id": "test-0057"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.5286610758832726,
+          "estimate_mm": [
+            5.024661004654983,
+            18.912525126150538
+          ],
+          "failed": false,
+          "object_id": "test-object-0058",
+          "session_id": "test-session-0058",
+          "split": "test",
+          "target_mm": [
+            2.635749224418192,
+            19.741516889036657
+          ],
+          "trial_id": "test-0058"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.9061072122570646,
+          "estimate_mm": [
+            23.475225543066575,
+            8.810156735902005
+          ],
+          "failed": false,
+          "object_id": "test-object-0059",
+          "session_id": "test-session-0059",
+          "split": "test",
+          "target_mm": [
+            25.38032327530311,
+            8.748129844591755
+          ],
+          "trial_id": "test-0059"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.54417958064168,
+          "estimate_mm": [
+            16.81316760630389,
+            23.47087437012704
+          ],
+          "failed": false,
+          "object_id": "test-object-0060",
+          "session_id": "test-session-0060",
+          "split": "test",
+          "target_mm": [
+            17.74431968972389,
+            28.936300521850868
+          ],
+          "trial_id": "test-0060"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.490051497696254,
+          "estimate_mm": [
+            22.372340585760536,
+            9.308478035127607
+          ],
+          "failed": false,
+          "object_id": "test-object-0061",
+          "session_id": "test-session-0061",
+          "split": "test",
+          "target_mm": [
+            28.389392654874836,
+            6.876225408380806
+          ],
+          "trial_id": "test-0061"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.0036647498943343,
+          "estimate_mm": [
+            23.49282828063375,
+            22.659724218258003
+          ],
+          "failed": false,
+          "object_id": "test-object-0062",
+          "session_id": "test-session-0062",
+          "split": "test",
+          "target_mm": [
+            24.487719352695645,
+            22.5273056209539
+          ],
+          "trial_id": "test-0062"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.611066860355882,
+          "estimate_mm": [
+            13.628702188459789,
+            16.003124622526453
+          ],
+          "failed": false,
+          "object_id": "test-object-0063",
+          "session_id": "test-session-0063",
+          "split": "test",
+          "target_mm": [
+            15.042739677117234,
+            15.231091974765814
+          ],
+          "trial_id": "test-0063"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.816696792083957,
+          "estimate_mm": [
+            16.941952851016666,
+            25.064606245307917
+          ],
+          "failed": false,
+          "object_id": "test-object-0064",
+          "session_id": "test-session-0064",
+          "split": "test",
+          "target_mm": [
+            17.86906949431791,
+            27.724349757049207
+          ],
+          "trial_id": "test-0064"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.546704073079444,
+          "estimate_mm": [
+            15.602058323214786,
+            15.952197878269535
+          ],
+          "failed": false,
+          "object_id": "test-object-0065",
+          "session_id": "test-session-0065",
+          "split": "test",
+          "target_mm": [
+            13.241795459308662,
+            14.995714292887595
+          ],
+          "trial_id": "test-0065"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 7.636062966841465,
+          "estimate_mm": [
+            20.991093986962902,
+            16.859684420996583
+          ],
+          "failed": false,
+          "object_id": "test-object-0066",
+          "session_id": "test-session-0066",
+          "split": "test",
+          "target_mm": [
+            28.588476418997836,
+            16.092066146738713
+          ],
+          "trial_id": "test-0066"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 9.65000233263859,
+          "estimate_mm": [
+            20.899160025206033,
+            7.363050912720466
+          ],
+          "failed": false,
+          "object_id": "test-object-0067",
+          "session_id": "test-session-0067",
+          "split": "test",
+          "target_mm": [
+            28.64685074651074,
+            1.610153077112818
+          ],
+          "trial_id": "test-0067"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.4282815012335925,
+          "estimate_mm": [
+            10.798819487130812,
+            8.277606479315402
+          ],
+          "failed": false,
+          "object_id": "test-object-0068",
+          "session_id": "test-session-0068",
+          "split": "test",
+          "target_mm": [
+            7.386672317582132,
+            4.055818735956464
+          ],
+          "trial_id": "test-0068"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.262145500261309,
+          "estimate_mm": [
+            18.876449747185763,
+            20.937300393061854
+          ],
+          "failed": false,
+          "object_id": "test-object-0069",
+          "session_id": "test-session-0069",
+          "split": "test",
+          "target_mm": [
+            20.76011297841621,
+            27.950899333568508
+          ],
+          "trial_id": "test-0069"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.5548531352442683,
+          "estimate_mm": [
+            11.857122607088957,
+            11.413972505764354
+          ],
+          "failed": false,
+          "object_id": "test-object-0070",
+          "session_id": "test-session-0070",
+          "split": "test",
+          "target_mm": [
+            12.406831182132986,
+            11.338590251795285
+          ],
+          "trial_id": "test-0070"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.170479231793946,
+          "estimate_mm": [
+            5.154633162603974,
+            24.7289736802497
+          ],
+          "failed": false,
+          "object_id": "test-object-0071",
+          "session_id": "test-session-0071",
+          "split": "test",
+          "target_mm": [
+            0.5838509254952418,
+            27.145956350304207
+          ],
+          "trial_id": "test-0071"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 4.191559877404691,
+          "estimate_mm": [
+            5.666492577699699,
+            4.77664776164461
+          ],
+          "failed": false,
+          "object_id": "test-object-0072",
+          "session_id": "test-session-0072",
+          "split": "test",
+          "target_mm": [
+            2.608285223096174,
+            1.910196648836694
+          ],
+          "trial_id": "test-0072"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.556854312397493,
+          "estimate_mm": [
+            18.594177360709324,
+            8.98496133454828
+          ],
+          "failed": false,
+          "object_id": "test-object-0073",
+          "session_id": "test-session-0073",
+          "split": "test",
+          "target_mm": [
+            19.414436579119975,
+            3.48898056094445
+          ],
+          "trial_id": "test-0073"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.8824099961378105,
+          "estimate_mm": [
+            22.19435378517684,
+            15.940310907635464
+          ],
+          "failed": false,
+          "object_id": "test-object-0074",
+          "session_id": "test-session-0074",
+          "split": "test",
+          "target_mm": [
+            27.074978008520286,
+            15.808270910287707
+          ],
+          "trial_id": "test-0074"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.85968795281509,
+          "estimate_mm": [
+            22.25272502681899,
+            22.526539721973883
+          ],
+          "failed": false,
+          "object_id": "test-object-0075",
+          "session_id": "test-session-0075",
+          "split": "test",
+          "target_mm": [
+            27.02241299166827,
+            23.457476732038508
+          ],
+          "trial_id": "test-0075"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.1034458221273344,
+          "estimate_mm": [
+            23.442773728700097,
+            15.418173687997195
+          ],
+          "failed": false,
+          "object_id": "test-object-0076",
+          "session_id": "test-session-0076",
+          "split": "test",
+          "target_mm": [
+            25.419665471424466,
+            16.13677188182539
+          ],
+          "trial_id": "test-0076"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.887264089220362,
+          "estimate_mm": [
+            16.322391371659897,
+            15.92913628996586
+          ],
+          "failed": false,
+          "object_id": "test-object-0077",
+          "session_id": "test-session-0077",
+          "split": "test",
+          "target_mm": [
+            20.71515824815019,
+            12.009509059599
+          ],
+          "trial_id": "test-0077"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.5795177647338738,
+          "estimate_mm": [
+            16.825251546462173,
+            16.231190046359526
+          ],
+          "failed": false,
+          "object_id": "test-object-0078",
+          "session_id": "test-session-0078",
+          "split": "test",
+          "target_mm": [
+            18.39966731945331,
+            16.358041703292383
+          ],
+          "trial_id": "test-0078"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.735799275530185,
+          "estimate_mm": [
+            7.859550197837349,
+            24.54071296474368
+          ],
+          "failed": false,
+          "object_id": "test-object-0079",
+          "session_id": "test-session-0079",
+          "split": "test",
+          "target_mm": [
+            3.3926476263157443,
+            28.13879227816998
+          ],
+          "trial_id": "test-0079"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.9553798756177274,
+          "estimate_mm": [
+            20.72290798803986,
+            14.137750073677115
+          ],
+          "failed": false,
+          "object_id": "test-object-0080",
+          "session_id": "test-session-0080",
+          "split": "test",
+          "target_mm": [
+            23.676688385612255,
+            14.04053087740745
+          ],
+          "trial_id": "test-0080"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.412855523131673,
+          "estimate_mm": [
+            8.157540085028874,
+            21.44449711438203
+          ],
+          "failed": false,
+          "object_id": "test-object-0081",
+          "session_id": "test-session-0081",
+          "split": "test",
+          "target_mm": [
+            3.244795532238487,
+            26.995656269536216
+          ],
+          "trial_id": "test-0081"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.669718888792541,
+          "estimate_mm": [
+            18.511737917091803,
+            10.000112279999197
+          ],
+          "failed": false,
+          "object_id": "test-object-0082",
+          "session_id": "test-session-0082",
+          "split": "test",
+          "target_mm": [
+            20.08064622912279,
+            9.428721103981687
+          ],
+          "trial_id": "test-0082"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.1691754329185198,
+          "estimate_mm": [
+            3.852699822611275,
+            3.408523936460336
+          ],
+          "failed": false,
+          "object_id": "test-object-0083",
+          "session_id": "test-session-0083",
+          "split": "test",
+          "target_mm": [
+            1.875812667512241,
+            2.5156413939152955
+          ],
+          "trial_id": "test-0083"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.832523708490143,
+          "estimate_mm": [
+            23.336611660870155,
+            9.189416531687106
+          ],
+          "failed": false,
+          "object_id": "test-object-0084",
+          "session_id": "test-session-0084",
+          "split": "test",
+          "target_mm": [
+            25.16381019072206,
+            9.049814688269832
+          ],
+          "trial_id": "test-0084"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.271531996195897,
+          "estimate_mm": [
+            23.183456977095716,
+            19.206220049991607
+          ],
+          "failed": false,
+          "object_id": "test-object-0085",
+          "session_id": "test-session-0085",
+          "split": "test",
+          "target_mm": [
+            28.767000575809444,
+            23.864462041662247
+          ],
+          "trial_id": "test-0085"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.729016034381202,
+          "estimate_mm": [
+            15.93846535613736,
+            7.727157545018669
+          ],
+          "failed": false,
+          "object_id": "test-object-0086",
+          "session_id": "test-session-0086",
+          "split": "test",
+          "target_mm": [
+            17.221454977011,
+            5.31853425595078
+          ],
+          "trial_id": "test-0086"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.9006292711582062,
+          "estimate_mm": [
+            23.929774596233536,
+            8.696724853646673
+          ],
+          "failed": false,
+          "object_id": "test-object-0087",
+          "session_id": "test-session-0087",
+          "split": "test",
+          "target_mm": [
+            24.541415827425634,
+            8.035643853789034
+          ],
+          "trial_id": "test-0087"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.395512992754157,
+          "estimate_mm": [
+            24.93148499105674,
+            13.553782231173056
+          ],
+          "failed": false,
+          "object_id": "test-object-0088",
+          "session_id": "test-session-0088",
+          "split": "test",
+          "target_mm": [
+            28.317448592298042,
+            13.299304383352593
+          ],
+          "trial_id": "test-0088"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.248608550080605,
+          "estimate_mm": [
+            10.360223223662548,
+            9.864392175932142
+          ],
+          "failed": false,
+          "object_id": "test-object-0089",
+          "session_id": "test-session-0089",
+          "split": "test",
+          "target_mm": [
+            9.74939415731787,
+            3.6457109118819475
+          ],
+          "trial_id": "test-0089"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.104087353770657,
+          "estimate_mm": [
+            14.812453325752205,
+            25.370575725918098
+          ],
+          "failed": false,
+          "object_id": "test-object-0090",
+          "session_id": "test-session-0090",
+          "split": "test",
+          "target_mm": [
+            12.744464325399328,
+            25.75865443793038
+          ],
+          "trial_id": "test-0090"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 6.16314681271223,
+          "estimate_mm": [
+            20.983283819111424,
+            10.8727694899916
+          ],
+          "failed": false,
+          "object_id": "test-object-0091",
+          "session_id": "test-session-0091",
+          "split": "test",
+          "target_mm": [
+            27.14018521121727,
+            10.595381885852472
+          ],
+          "trial_id": "test-0091"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.7027985013300962,
+          "estimate_mm": [
+            14.762062790055069,
+            4.057624783516545
+          ],
+          "failed": false,
+          "object_id": "test-object-0092",
+          "session_id": "test-session-0092",
+          "split": "test",
+          "target_mm": [
+            14.169417267237154,
+            3.679872195496674
+          ],
+          "trial_id": "test-0092"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.165789308305068,
+          "estimate_mm": [
+            14.747879361484703,
+            15.738808622860569
+          ],
+          "failed": false,
+          "object_id": "test-object-0093",
+          "session_id": "test-session-0093",
+          "split": "test",
+          "target_mm": [
+            16.883895023952526,
+            16.09669186871135
+          ],
+          "trial_id": "test-0093"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 5.450069655571705,
+          "estimate_mm": [
+            22.020884071849554,
+            9.745774336257893
+          ],
+          "failed": false,
+          "object_id": "test-object-0094",
+          "session_id": "test-session-0094",
+          "split": "test",
+          "target_mm": [
+            26.358396198363543,
+            6.445888307479387
+          ],
+          "trial_id": "test-0094"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.148503914333874,
+          "estimate_mm": [
+            12.891038351983077,
+            15.344375761831824
+          ],
+          "failed": false,
+          "object_id": "test-object-0095",
+          "session_id": "test-session-0095",
+          "split": "test",
+          "target_mm": [
+            13.920529105483599,
+            13.458582067292332
+          ],
+          "trial_id": "test-0095"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.287110836131552,
+          "estimate_mm": [
+            2.66442927433095,
+            13.213690677397047
+          ],
+          "failed": false,
+          "object_id": "test-object-0096",
+          "session_id": "test-session-0096",
+          "split": "test",
+          "target_mm": [
+            1.5058988286522845,
+            12.65292199877559
+          ],
+          "trial_id": "test-0096"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 8.219206727875818,
+          "estimate_mm": [
+            22.344155719883183,
+            8.87193320937691
+          ],
+          "failed": false,
+          "object_id": "test-object-0097",
+          "session_id": "test-session-0097",
+          "split": "test",
+          "target_mm": [
+            28.91266028778527,
+            3.931274652361607
+          ],
+          "trial_id": "test-0097"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.887620679916401,
+          "estimate_mm": [
+            9.042627202302496,
+            6.8686069617902685
+          ],
+          "failed": false,
+          "object_id": "test-object-0098",
+          "session_id": "test-session-0098",
+          "split": "test",
+          "target_mm": [
+            7.684095727903197,
+            2.173585327781228
+          ],
+          "trial_id": "test-0098"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.37172726442492,
+          "estimate_mm": [
+            18.333011511486955,
+            9.28092292905179
+          ],
+          "failed": false,
+          "object_id": "test-object-0099",
+          "session_id": "test-session-0099",
+          "split": "test",
+          "target_mm": [
+            19.30929132971895,
+            8.317328925085608
+          ],
+          "trial_id": "test-0099"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.320471047686262,
+          "estimate_mm": [
+            26.612257868595837,
+            11.607202405653991
+          ],
+          "failed": false,
+          "object_id": "test-object-0100",
+          "session_id": "test-session-0100",
+          "split": "test",
+          "target_mm": [
+            28.928167432442642,
+            11.461776220827877
+          ],
+          "trial_id": "test-0100"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.688384671549284,
+          "estimate_mm": [
+            18.938301762606894,
+            17.33744356199963
+          ],
+          "failed": false,
+          "object_id": "test-object-0101",
+          "session_id": "test-session-0101",
+          "split": "test",
+          "target_mm": [
+            17.922955740925016,
+            19.826717471893023
+          ],
+          "trial_id": "test-0101"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.4097620832744821,
+          "estimate_mm": [
+            20.27746027638928,
+            13.753465140153649
+          ],
+          "failed": false,
+          "object_id": "test-object-0102",
+          "session_id": "test-session-0102",
+          "split": "test",
+          "target_mm": [
+            20.611869586875525,
+            13.990267542906574
+          ],
+          "trial_id": "test-0102"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.7599051159364483,
+          "estimate_mm": [
+            26.73735130026526,
+            12.158072906164104
+          ],
+          "failed": false,
+          "object_id": "test-object-0103",
+          "session_id": "test-session-0103",
+          "split": "test",
+          "target_mm": [
+            27.56242518032211,
+            13.712588621603231
+          ],
+          "trial_id": "test-0103"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.0876236453439603,
+          "estimate_mm": [
+            7.511588049143084,
+            23.52485865197224
+          ],
+          "failed": false,
+          "object_id": "test-object-0104",
+          "session_id": "test-session-0104",
+          "split": "test",
+          "target_mm": [
+            5.224591027082239,
+            25.5992415472864
+          ],
+          "trial_id": "test-0104"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.196327677821905,
+          "estimate_mm": [
+            23.613342663351194,
+            13.45280629791797
+          ],
+          "failed": false,
+          "object_id": "test-object-0105",
+          "session_id": "test-session-0105",
+          "split": "test",
+          "target_mm": [
+            26.391461277435766,
+            15.03349209531326
+          ],
+          "trial_id": "test-0105"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.7758553309391634,
+          "estimate_mm": [
+            12.72980942773091,
+            9.085413432650851
+          ],
+          "failed": false,
+          "object_id": "test-object-0106",
+          "session_id": "test-session-0106",
+          "split": "test",
+          "target_mm": [
+            12.772546030287078,
+            7.310072412106629
+          ],
+          "trial_id": "test-0106"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.617999440642605,
+          "estimate_mm": [
+            6.811952950525522,
+            11.946877695404316
+          ],
+          "failed": false,
+          "object_id": "test-object-0107",
+          "session_id": "test-session-0107",
+          "split": "test",
+          "target_mm": [
+            4.159481777907283,
+            8.166624329265396
+          ],
+          "trial_id": "test-0107"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.7446203694227911,
+          "estimate_mm": [
+            19.921122663036023,
+            16.29739545416363
+          ],
+          "failed": false,
+          "object_id": "test-object-0108",
+          "session_id": "test-session-0108",
+          "split": "test",
+          "target_mm": [
+            20.42064930770906,
+            15.745188404388792
+          ],
+          "trial_id": "test-0108"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.457476619301306,
+          "estimate_mm": [
+            9.409587741740115,
+            16.65387835870382
+          ],
+          "failed": false,
+          "object_id": "test-object-0109",
+          "session_id": "test-session-0109",
+          "split": "test",
+          "target_mm": [
+            1.9563050120522762,
+            16.403810210466926
+          ],
+          "trial_id": "test-0109"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.0310939252622187,
+          "estimate_mm": [
+            7.071521799174798,
+            7.9254262168099565
+          ],
+          "failed": false,
+          "object_id": "test-object-0110",
+          "session_id": "test-session-0110",
+          "split": "test",
+          "target_mm": [
+            5.223616621901893,
+            7.082461811247609
+          ],
+          "trial_id": "test-0110"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.1443537180255157,
+          "estimate_mm": [
+            6.090809901673334,
+            17.35032655656127
+          ],
+          "failed": false,
+          "object_id": "test-object-0111",
+          "session_id": "test-session-0111",
+          "split": "test",
+          "target_mm": [
+            3.9161306088933956,
+            15.079262867975011
+          ],
+          "trial_id": "test-0111"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.39660941240294656,
+          "estimate_mm": [
+            13.05960339085619,
+            19.37106999157379
+          ],
+          "failed": false,
+          "object_id": "test-object-0112",
+          "session_id": "test-session-0112",
+          "split": "test",
+          "target_mm": [
+            13.186530848257318,
+            19.746820502637043
+          ],
+          "trial_id": "test-0112"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.6632657093235785,
+          "estimate_mm": [
+            14.074917271815856,
+            12.947729130678725
+          ],
+          "failed": false,
+          "object_id": "test-object-0113",
+          "session_id": "test-session-0113",
+          "split": "test",
+          "target_mm": [
+            12.426819699118669,
+            10.855658713764308
+          ],
+          "trial_id": "test-0113"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.5915280134714407,
+          "estimate_mm": [
+            20.35761784453279,
+            14.689201301037006
+          ],
+          "failed": false,
+          "object_id": "test-object-0114",
+          "session_id": "test-session-0114",
+          "split": "test",
+          "target_mm": [
+            22.939442139121986,
+            14.465146047859964
+          ],
+          "trial_id": "test-0114"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.142344775167473,
+          "estimate_mm": [
+            4.9815794336604124,
+            7.761538879524785
+          ],
+          "failed": false,
+          "object_id": "test-object-0115",
+          "session_id": "test-session-0115",
+          "split": "test",
+          "target_mm": [
+            2.0643407818658255,
+            3.5267509940259245
+          ],
+          "trial_id": "test-0115"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.1046946806675035,
+          "estimate_mm": [
+            13.044815324688454,
+            24.520408335731066
+          ],
+          "failed": false,
+          "object_id": "test-object-0116",
+          "session_id": "test-session-0116",
+          "split": "test",
+          "target_mm": [
+            13.409993983559872,
+            27.603551797730518
+          ],
+          "trial_id": "test-0116"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.8116832518325077,
+          "estimate_mm": [
+            9.17078985673458,
+            20.222509781294423
+          ],
+          "failed": false,
+          "object_id": "test-object-0117",
+          "session_id": "test-session-0117",
+          "split": "test",
+          "target_mm": [
+            10.460319683030175,
+            23.80943632631796
+          ],
+          "trial_id": "test-0117"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.316902617747451,
+          "estimate_mm": [
+            23.375287091488413,
+            7.094372767593251
+          ],
+          "failed": false,
+          "object_id": "test-object-0118",
+          "session_id": "test-session-0118",
+          "split": "test",
+          "target_mm": [
+            25.08238087442391,
+            3.129340734005406
+          ],
+          "trial_id": "test-0118"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.5758040793151094,
+          "estimate_mm": [
+            17.118747245090457,
+            21.149401797432613
+          ],
+          "failed": false,
+          "object_id": "test-object-0119",
+          "session_id": "test-session-0119",
+          "split": "test",
+          "target_mm": [
+            20.508244325990372,
+            22.28856129118998
+          ],
+          "trial_id": "test-0119"
+        }
+      ],
+      "validation_candidates": [
+        {
+          "failures": 0,
+          "mean_error_mm": 3.2903220628119785,
+          "median_error_mm": 2.781645358733729,
+          "p95_error_mm": 6.903514133960076,
+          "strength": 0.0,
+          "trials": 120
+        },
+        {
+          "failures": 0,
+          "mean_error_mm": 4.362993473632005,
+          "median_error_mm": 3.83509490564262,
+          "p95_error_mm": 8.887723899183067,
+          "strength": 0.15,
+          "trials": 120
+        },
+        {
+          "failures": 0,
+          "mean_error_mm": 5.4958520464715495,
+          "median_error_mm": 5.084131426922517,
+          "p95_error_mm": 10.681893680958462,
+          "strength": 0.35,
+          "trials": 120
+        },
+        {
+          "failures": 0,
+          "mean_error_mm": 7.1450553588306684,
+          "median_error_mm": 7.47578189518792,
+          "p95_error_mm": 13.231453340843814,
+          "strength": 0.6,
+          "trials": 120
+        }
+      ]
+    },
+    "spatial": {
+      "by_condition": {
+        "clean": {
+          "failures": 0,
+          "mean_error_mm": 2.9431554162460065,
+          "median_error_mm": 2.8240799018764093,
+          "p95_error_mm": 5.810990078479429,
+          "trials": 30
+        },
+        "noise": {
+          "failures": 0,
+          "mean_error_mm": 4.973193032474614,
+          "median_error_mm": 4.696072403140209,
+          "p95_error_mm": 7.876428179017285,
+          "trials": 30
+        },
+        "quarter_dropout": {
+          "failures": 0,
+          "mean_error_mm": 3.3684307044728783,
+          "median_error_mm": 2.95179947234822,
+          "p95_error_mm": 6.566653845672497,
+          "trials": 30
+        },
+        "single_dropout": {
+          "failures": 0,
+          "mean_error_mm": 2.8768086191374276,
+          "median_error_mm": 2.5528931391837695,
+          "p95_error_mm": 5.638974304822851,
+          "trials": 30
+        }
+      },
+      "graph": {
+        "degrees": [
+          2,
+          3,
+          3,
+          2,
+          3,
+          4,
+          4,
+          3,
+          3,
+          4,
+          4,
+          3,
+          2,
+          3,
+          3,
+          2
+        ],
+        "edges": 24,
+        "isolated_nodes": 0,
+        "nodes": 16
+      },
+      "steps": 1,
+      "strength": 0.0,
+      "summary": {
+        "failures": 0,
+        "mean_error_mm": 3.5403969430827322,
+        "median_error_mm": 3.0961591630057317,
+        "p95_error_mm": 7.414995049757104,
+        "trials": 120
+      },
+      "topology": {
+        "component_count": 1,
+        "components": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        ],
+        "laplacian_eigenvalues": [
+          -2.0396996738691913e-16,
+          0.5857864376269039,
+          0.5857864376269044,
+          1.1715728752538097,
+          1.9999999999999984,
+          2.0000000000000004,
+          2.585786437626904,
+          2.5857864376269055,
+          3.414213562373093,
+          3.4142135623730945,
+          4.0,
+          4.000000000000001,
+          4.000000000000002,
+          5.414213562373094,
+          5.414213562373097,
+          6.828427124746191
+        ],
+        "mean_edge_length_mm": 10.0,
+        "total_edge_length_mm": 240.0
+      },
+      "trials": [
+        {
+          "condition": "clean",
+          "error_mm": 4.227544766091337,
+          "estimate_mm": [
+            10.383217441257615,
+            23.05169151832098
+          ],
+          "failed": false,
+          "object_id": "test-object-0000",
+          "session_id": "test-session-0000",
+          "split": "test",
+          "target_mm": [
+            9.233231041800504,
+            27.11981959280068
+          ],
+          "trial_id": "test-0000"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.785724293147813,
+          "estimate_mm": [
+            6.629128105091871,
+            22.280088604567577
+          ],
+          "failed": false,
+          "object_id": "test-object-0001",
+          "session_id": "test-session-0001",
+          "split": "test",
+          "target_mm": [
+            3.218989574901551,
+            28.146689783063334
+          ],
+          "trial_id": "test-0001"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.0858989264071437,
+          "estimate_mm": [
+            19.485228213817006,
+            9.94424386452548
+          ],
+          "failed": false,
+          "object_id": "test-object-0002",
+          "session_id": "test-session-0002",
+          "split": "test",
+          "target_mm": [
+            21.515333683122986,
+            9.465029805173689
+          ],
+          "trial_id": "test-0002"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.13216999924207,
+          "estimate_mm": [
+            5.455847584419089,
+            27.436627486110297
+          ],
+          "failed": false,
+          "object_id": "test-object-0003",
+          "session_id": "test-session-0003",
+          "split": "test",
+          "target_mm": [
+            1.4540321271010526,
+            26.406917843440752
+          ],
+          "trial_id": "test-0003"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.6605307294607972,
+          "estimate_mm": [
+            15.245118155076254,
+            5.629944736711884
+          ],
+          "failed": false,
+          "object_id": "test-object-0004",
+          "session_id": "test-session-0004",
+          "split": "test",
+          "target_mm": [
+            14.942166239183535,
+            3.9972835838266505
+          ],
+          "trial_id": "test-0004"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.1107408165735224,
+          "estimate_mm": [
+            9.616791160931772,
+            11.69926590027613
+          ],
+          "failed": false,
+          "object_id": "test-object-0005",
+          "session_id": "test-session-0005",
+          "split": "test",
+          "target_mm": [
+            7.64588346858122,
+            9.292560414320292
+          ],
+          "trial_id": "test-0005"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.231654598527788,
+          "estimate_mm": [
+            3.961892283356124,
+            9.227846205530819
+          ],
+          "failed": false,
+          "object_id": "test-object-0006",
+          "session_id": "test-session-0006",
+          "split": "test",
+          "target_mm": [
+            0.46214155093856957,
+            6.849055451348315
+          ],
+          "trial_id": "test-0006"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.863564430360972,
+          "estimate_mm": [
+            23.52485317069878,
+            6.878060820579258
+          ],
+          "failed": false,
+          "object_id": "test-object-0007",
+          "session_id": "test-session-0007",
+          "split": "test",
+          "target_mm": [
+            26.997438980006567,
+            3.4728579242356905
+          ],
+          "trial_id": "test-0007"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 6.029289576710315,
+          "estimate_mm": [
+            20.692123701998018,
+            7.134275407161879
+          ],
+          "failed": false,
+          "object_id": "test-object-0008",
+          "session_id": "test-session-0008",
+          "split": "test",
+          "target_mm": [
+            24.49345815526045,
+            2.4542979313327837
+          ],
+          "trial_id": "test-0008"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.735656409769901,
+          "estimate_mm": [
+            11.393603281733007,
+            6.903059554810115
+          ],
+          "failed": false,
+          "object_id": "test-object-0009",
+          "session_id": "test-session-0009",
+          "split": "test",
+          "target_mm": [
+            8.499061962919958,
+            0.8210617067211856
+          ],
+          "trial_id": "test-0009"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 5.7935326542101535,
+          "estimate_mm": [
+            23.78434700722093,
+            21.405251899326302
+          ],
+          "failed": false,
+          "object_id": "test-object-0010",
+          "session_id": "test-session-0010",
+          "split": "test",
+          "target_mm": [
+            28.841087008202106,
+            24.232689109570988
+          ],
+          "trial_id": "test-0010"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.6533924251764913,
+          "estimate_mm": [
+            4.708629571835944,
+            26.685798259748957
+          ],
+          "failed": false,
+          "object_id": "test-object-0011",
+          "session_id": "test-session-0011",
+          "split": "test",
+          "target_mm": [
+            3.8875482867261857,
+            28.12090523655365
+          ],
+          "trial_id": "test-0011"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.028874507751455,
+          "estimate_mm": [
+            8.632831793172995,
+            23.859404628822258
+          ],
+          "failed": false,
+          "object_id": "test-object-0012",
+          "session_id": "test-session-0012",
+          "split": "test",
+          "target_mm": [
+            5.653766655081736,
+            27.910916657401433
+          ],
+          "trial_id": "test-0012"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.5099137939019776,
+          "estimate_mm": [
+            8.894784455696593,
+            7.5696563322373
+          ],
+          "failed": false,
+          "object_id": "test-object-0013",
+          "session_id": "test-session-0013",
+          "split": "test",
+          "target_mm": [
+            6.043016367688602,
+            5.5234614214718025
+          ],
+          "trial_id": "test-0013"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.6363000516293638,
+          "estimate_mm": [
+            11.374995161658752,
+            18.51254078567804
+          ],
+          "failed": false,
+          "object_id": "test-object-0014",
+          "session_id": "test-session-0014",
+          "split": "test",
+          "target_mm": [
+            10.647479482912244,
+            19.97821428142676
+          ],
+          "trial_id": "test-0014"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.8423974797927656,
+          "estimate_mm": [
+            22.688409740725852,
+            4.523184381224029
+          ],
+          "failed": false,
+          "object_id": "test-object-0015",
+          "session_id": "test-session-0015",
+          "split": "test",
+          "target_mm": [
+            24.575988791003745,
+            2.3980329131906855
+          ],
+          "trial_id": "test-0015"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.5429030700536757,
+          "estimate_mm": [
+            12.081843338407644,
+            9.177508844975424
+          ],
+          "failed": false,
+          "object_id": "test-object-0016",
+          "session_id": "test-session-0016",
+          "split": "test",
+          "target_mm": [
+            11.070655444379907,
+            6.8443018102997275
+          ],
+          "trial_id": "test-0016"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.582949560764204,
+          "estimate_mm": [
+            15.128064700531743,
+            7.239655007852076
+          ],
+          "failed": false,
+          "object_id": "test-object-0017",
+          "session_id": "test-session-0017",
+          "split": "test",
+          "target_mm": [
+            14.234337600605832,
+            0.7176555605641777
+          ],
+          "trial_id": "test-0017"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.6625518262234071,
+          "estimate_mm": [
+            16.892629319806524,
+            17.51860056920887
+          ],
+          "failed": false,
+          "object_id": "test-object-0018",
+          "session_id": "test-session-0018",
+          "split": "test",
+          "target_mm": [
+            16.301259962600383,
+            17.817360013895676
+          ],
+          "trial_id": "test-0018"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.09060102479152,
+          "estimate_mm": [
+            21.17193377596436,
+            12.067978554677437
+          ],
+          "failed": false,
+          "object_id": "test-object-0019",
+          "session_id": "test-session-0019",
+          "split": "test",
+          "target_mm": [
+            25.039017822633802,
+            10.734307785701782
+          ],
+          "trial_id": "test-0019"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.4743778779027394,
+          "estimate_mm": [
+            13.882882885547158,
+            13.859570435999748
+          ],
+          "failed": false,
+          "object_id": "test-object-0020",
+          "session_id": "test-session-0020",
+          "split": "test",
+          "target_mm": [
+            13.432387981407,
+            14.008193154274098
+          ],
+          "trial_id": "test-0020"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 4.33269080719182,
+          "estimate_mm": [
+            15.092908151344673,
+            6.194379292865785
+          ],
+          "failed": false,
+          "object_id": "test-object-0021",
+          "session_id": "test-session-0021",
+          "split": "test",
+          "target_mm": [
+            13.642302220150984,
+            2.111738962992211
+          ],
+          "trial_id": "test-0021"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.2567273407714232,
+          "estimate_mm": [
+            20.662714992873408,
+            7.958037674593404
+          ],
+          "failed": false,
+          "object_id": "test-object-0022",
+          "session_id": "test-session-0022",
+          "split": "test",
+          "target_mm": [
+            22.63526359897063,
+            6.861739226556028
+          ],
+          "trial_id": "test-0022"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.0612014649036743,
+          "estimate_mm": [
+            26.635208411090773,
+            26.481831569246534
+          ],
+          "failed": false,
+          "object_id": "test-object-0023",
+          "session_id": "test-session-0023",
+          "split": "test",
+          "target_mm": [
+            27.408487509751225,
+            29.443755579801714
+          ],
+          "trial_id": "test-0023"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.9796391824766912,
+          "estimate_mm": [
+            12.908579894929126,
+            12.771022597850342
+          ],
+          "failed": false,
+          "object_id": "test-object-0024",
+          "session_id": "test-session-0024",
+          "split": "test",
+          "target_mm": [
+            11.00449241261903,
+            12.229338047113494
+          ],
+          "trial_id": "test-0024"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 11.283819986824472,
+          "estimate_mm": [
+            20.208792773818978,
+            11.510973882459568
+          ],
+          "failed": false,
+          "object_id": "test-object-0025",
+          "session_id": "test-session-0025",
+          "split": "test",
+          "target_mm": [
+            29.77048529744736,
+            5.51942737269696
+          ],
+          "trial_id": "test-0025"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.8217140562180205,
+          "estimate_mm": [
+            16.4130295125606,
+            24.07780541065208
+          ],
+          "failed": false,
+          "object_id": "test-object-0026",
+          "session_id": "test-session-0026",
+          "split": "test",
+          "target_mm": [
+            16.138676823850602,
+            28.891707885996592
+          ],
+          "trial_id": "test-0026"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.6817256495198488,
+          "estimate_mm": [
+            6.976410236969233,
+            18.646679756645607
+          ],
+          "failed": false,
+          "object_id": "test-object-0027",
+          "session_id": "test-session-0027",
+          "split": "test",
+          "target_mm": [
+            6.519230163960399,
+            19.15238346639757
+          ],
+          "trial_id": "test-0027"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.916723132109118,
+          "estimate_mm": [
+            5.979003354390682,
+            18.88897579248439
+          ],
+          "failed": false,
+          "object_id": "test-object-0028",
+          "session_id": "test-session-0028",
+          "split": "test",
+          "target_mm": [
+            4.8223293980075255,
+            20.417351702981257
+          ],
+          "trial_id": "test-0028"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.059453999088598,
+          "estimate_mm": [
+            8.701193459137006,
+            23.12976429074513
+          ],
+          "failed": false,
+          "object_id": "test-object-0029",
+          "session_id": "test-session-0029",
+          "split": "test",
+          "target_mm": [
+            6.109564985874242,
+            27.475053305927815
+          ],
+          "trial_id": "test-0029"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.303036833774197,
+          "estimate_mm": [
+            19.266709776199075,
+            25.339231939155162
+          ],
+          "failed": false,
+          "object_id": "test-object-0030",
+          "session_id": "test-session-0030",
+          "split": "test",
+          "target_mm": [
+            19.599020673686027,
+            28.62550974127118
+          ],
+          "trial_id": "test-0030"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.589805772901675,
+          "estimate_mm": [
+            22.827784091150924,
+            18.603816534173934
+          ],
+          "failed": false,
+          "object_id": "test-object-0031",
+          "session_id": "test-session-0031",
+          "split": "test",
+          "target_mm": [
+            24.245507559760906,
+            19.323220844769843
+          ],
+          "trial_id": "test-0031"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.8314630116688613,
+          "estimate_mm": [
+            12.46927622518724,
+            4.180811399486036
+          ],
+          "failed": false,
+          "object_id": "test-object-0032",
+          "session_id": "test-session-0032",
+          "split": "test",
+          "target_mm": [
+            12.41392056222042,
+            1.3498895466214245
+          ],
+          "trial_id": "test-0032"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 1.1451534967000971,
+          "estimate_mm": [
+            14.492861522607182,
+            12.86485243655667
+          ],
+          "failed": false,
+          "object_id": "test-object-0033",
+          "session_id": "test-session-0033",
+          "split": "test",
+          "target_mm": [
+            13.885870738311716,
+            11.893802119227628
+          ],
+          "trial_id": "test-0033"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.0530620899322973,
+          "estimate_mm": [
+            10.423004224485023,
+            20.300244646420786
+          ],
+          "failed": false,
+          "object_id": "test-object-0034",
+          "session_id": "test-session-0034",
+          "split": "test",
+          "target_mm": [
+            10.055665205099832,
+            21.287159946783337
+          ],
+          "trial_id": "test-0034"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.7392497967156862,
+          "estimate_mm": [
+            7.661511891255853,
+            17.57238777399807
+          ],
+          "failed": false,
+          "object_id": "test-object-0035",
+          "session_id": "test-session-0035",
+          "split": "test",
+          "target_mm": [
+            7.92076160143651,
+            16.880087369754776
+          ],
+          "trial_id": "test-0035"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 4.412977215295227,
+          "estimate_mm": [
+            23.89288765630801,
+            10.54036619558324
+          ],
+          "failed": false,
+          "object_id": "test-object-0036",
+          "session_id": "test-session-0036",
+          "split": "test",
+          "target_mm": [
+            28.23327483615697,
+            9.74324196955721
+          ],
+          "trial_id": "test-0036"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.455646055640312,
+          "estimate_mm": [
+            24.574700791465844,
+            7.925326933747706
+          ],
+          "failed": false,
+          "object_id": "test-object-0037",
+          "session_id": "test-session-0037",
+          "split": "test",
+          "target_mm": [
+            29.20889690712969,
+            2.084874513896052
+          ],
+          "trial_id": "test-0037"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.529348700409737,
+          "estimate_mm": [
+            19.814911611049666,
+            5.9675375085079345
+          ],
+          "failed": false,
+          "object_id": "test-object-0038",
+          "session_id": "test-session-0038",
+          "split": "test",
+          "target_mm": [
+            20.453410407393797,
+            2.4964250735454776
+          ],
+          "trial_id": "test-0038"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.531174944853792,
+          "estimate_mm": [
+            16.488859549248623,
+            27.20195745720898
+          ],
+          "failed": false,
+          "object_id": "test-object-0039",
+          "session_id": "test-session-0039",
+          "split": "test",
+          "target_mm": [
+            18.671501510893847,
+            25.920192787419285
+          ],
+          "trial_id": "test-0039"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.836705733659134,
+          "estimate_mm": [
+            17.760835885822033,
+            10.816590243078215
+          ],
+          "failed": false,
+          "object_id": "test-object-0040",
+          "session_id": "test-session-0040",
+          "split": "test",
+          "target_mm": [
+            19.369573351261565,
+            8.480169222229062
+          ],
+          "trial_id": "test-0040"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.178517093502374,
+          "estimate_mm": [
+            15.214240290746076,
+            13.472378439474738
+          ],
+          "failed": false,
+          "object_id": "test-object-0041",
+          "session_id": "test-session-0041",
+          "split": "test",
+          "target_mm": [
+            15.286880572928274,
+            10.294691497201905
+          ],
+          "trial_id": "test-0041"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.577125202484266,
+          "estimate_mm": [
+            22.900070631295584,
+            14.92143167768639
+          ],
+          "failed": false,
+          "object_id": "test-object-0042",
+          "session_id": "test-session-0042",
+          "split": "test",
+          "target_mm": [
+            25.31693872886613,
+            14.026823993712407
+          ],
+          "trial_id": "test-0042"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.5112455417402795,
+          "estimate_mm": [
+            12.398279130847653,
+            11.80315409027668
+          ],
+          "failed": false,
+          "object_id": "test-object-0043",
+          "session_id": "test-session-0043",
+          "split": "test",
+          "target_mm": [
+            12.273378359970781,
+            14.31129164000253
+          ],
+          "trial_id": "test-0043"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 6.795832559164584,
+          "estimate_mm": [
+            5.847355547179775,
+            5.794465322734342
+          ],
+          "failed": false,
+          "object_id": "test-object-0044",
+          "session_id": "test-session-0044",
+          "split": "test",
+          "target_mm": [
+            2.1440657271277375,
+            0.09630906997148858
+          ],
+          "trial_id": "test-0044"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.0973889615249823,
+          "estimate_mm": [
+            16.991644795797747,
+            16.27588873428266
+          ],
+          "failed": false,
+          "object_id": "test-object-0045",
+          "session_id": "test-session-0045",
+          "split": "test",
+          "target_mm": [
+            18.98173549613758,
+            16.93814205465769
+          ],
+          "trial_id": "test-0045"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.40575561934881754,
+          "estimate_mm": [
+            24.59640380279977,
+            12.762885761274493
+          ],
+          "failed": false,
+          "object_id": "test-object-0046",
+          "session_id": "test-session-0046",
+          "split": "test",
+          "target_mm": [
+            24.85924610040866,
+            12.453771625038666
+          ],
+          "trial_id": "test-0046"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 6.896795963549082,
+          "estimate_mm": [
+            22.984327650472128,
+            19.443431543979692
+          ],
+          "failed": false,
+          "object_id": "test-object-0047",
+          "session_id": "test-session-0047",
+          "split": "test",
+          "target_mm": [
+            29.517348968120054,
+            21.65373175571218
+          ],
+          "trial_id": "test-0047"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.6008425579431076,
+          "estimate_mm": [
+            20.87384152173166,
+            7.61795818323205
+          ],
+          "failed": false,
+          "object_id": "test-object-0048",
+          "session_id": "test-session-0048",
+          "split": "test",
+          "target_mm": [
+            21.64627327800446,
+            6.215800532601014
+          ],
+          "trial_id": "test-0048"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.2854749249644377,
+          "estimate_mm": [
+            15.683999817265095,
+            19.693896391976075
+          ],
+          "failed": false,
+          "object_id": "test-object-0049",
+          "session_id": "test-session-0049",
+          "split": "test",
+          "target_mm": [
+            15.991277861789367,
+            21.958620621544554
+          ],
+          "trial_id": "test-0049"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 3.4949486927780704,
+          "estimate_mm": [
+            11.30875056113485,
+            22.787345956026012
+          ],
+          "failed": false,
+          "object_id": "test-object-0050",
+          "session_id": "test-session-0050",
+          "split": "test",
+          "target_mm": [
+            10.570949554487788,
+            26.203530383093984
+          ],
+          "trial_id": "test-0050"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.7471854426472495,
+          "estimate_mm": [
+            13.851211258577232,
+            22.943324010506117
+          ],
+          "failed": false,
+          "object_id": "test-object-0051",
+          "session_id": "test-session-0051",
+          "split": "test",
+          "target_mm": [
+            12.174396033194046,
+            26.2943968896764
+          ],
+          "trial_id": "test-0051"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.9960542325795374,
+          "estimate_mm": [
+            16.311675803971152,
+            6.863174797138964
+          ],
+          "failed": false,
+          "object_id": "test-object-0052",
+          "session_id": "test-session-0052",
+          "split": "test",
+          "target_mm": [
+            16.37835329329095,
+            2.867676887974845
+          ],
+          "trial_id": "test-0052"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.5316587802447197,
+          "estimate_mm": [
+            11.10175716733546,
+            11.540418283441122
+          ],
+          "failed": false,
+          "object_id": "test-object-0053",
+          "session_id": "test-session-0053",
+          "split": "test",
+          "target_mm": [
+            7.833652249352731,
+            10.201723402171787
+          ],
+          "trial_id": "test-0053"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.301777709545868,
+          "estimate_mm": [
+            10.064733636950946,
+            5.782308693814552
+          ],
+          "failed": false,
+          "object_id": "test-object-0054",
+          "session_id": "test-session-0054",
+          "split": "test",
+          "target_mm": [
+            8.097571413717237,
+            1.956663094725699
+          ],
+          "trial_id": "test-0054"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.7856785079655846,
+          "estimate_mm": [
+            4.798378630011529,
+            22.342664732523165
+          ],
+          "failed": false,
+          "object_id": "test-object-0055",
+          "session_id": "test-session-0055",
+          "split": "test",
+          "target_mm": [
+            5.54431702117138,
+            23.96507764248291
+          ],
+          "trial_id": "test-0055"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.0493956911752256,
+          "estimate_mm": [
+            17.227761985984515,
+            19.698588321295063
+          ],
+          "failed": false,
+          "object_id": "test-object-0056",
+          "session_id": "test-session-0056",
+          "split": "test",
+          "target_mm": [
+            18.508513984615696,
+            21.29849363630899
+          ],
+          "trial_id": "test-0056"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.2228524863267176,
+          "estimate_mm": [
+            18.50649389022049,
+            12.463986348028063
+          ],
+          "failed": false,
+          "object_id": "test-object-0057",
+          "session_id": "test-session-0057",
+          "split": "test",
+          "target_mm": [
+            18.768566059366513,
+            9.251806974645966
+          ],
+          "trial_id": "test-0057"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.5286610758832726,
+          "estimate_mm": [
+            5.024661004654983,
+            18.912525126150538
+          ],
+          "failed": false,
+          "object_id": "test-object-0058",
+          "session_id": "test-session-0058",
+          "split": "test",
+          "target_mm": [
+            2.635749224418192,
+            19.741516889036657
+          ],
+          "trial_id": "test-0058"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.9061072122570646,
+          "estimate_mm": [
+            23.475225543066575,
+            8.810156735902005
+          ],
+          "failed": false,
+          "object_id": "test-object-0059",
+          "session_id": "test-session-0059",
+          "split": "test",
+          "target_mm": [
+            25.38032327530311,
+            8.748129844591755
+          ],
+          "trial_id": "test-0059"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.54417958064168,
+          "estimate_mm": [
+            16.81316760630389,
+            23.47087437012704
+          ],
+          "failed": false,
+          "object_id": "test-object-0060",
+          "session_id": "test-session-0060",
+          "split": "test",
+          "target_mm": [
+            17.74431968972389,
+            28.936300521850868
+          ],
+          "trial_id": "test-0060"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.490051497696254,
+          "estimate_mm": [
+            22.372340585760536,
+            9.308478035127607
+          ],
+          "failed": false,
+          "object_id": "test-object-0061",
+          "session_id": "test-session-0061",
+          "split": "test",
+          "target_mm": [
+            28.389392654874836,
+            6.876225408380806
+          ],
+          "trial_id": "test-0061"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.0036647498943343,
+          "estimate_mm": [
+            23.49282828063375,
+            22.659724218258003
+          ],
+          "failed": false,
+          "object_id": "test-object-0062",
+          "session_id": "test-session-0062",
+          "split": "test",
+          "target_mm": [
+            24.487719352695645,
+            22.5273056209539
+          ],
+          "trial_id": "test-0062"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.611066860355882,
+          "estimate_mm": [
+            13.628702188459789,
+            16.003124622526453
+          ],
+          "failed": false,
+          "object_id": "test-object-0063",
+          "session_id": "test-session-0063",
+          "split": "test",
+          "target_mm": [
+            15.042739677117234,
+            15.231091974765814
+          ],
+          "trial_id": "test-0063"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.816696792083957,
+          "estimate_mm": [
+            16.941952851016666,
+            25.064606245307917
+          ],
+          "failed": false,
+          "object_id": "test-object-0064",
+          "session_id": "test-session-0064",
+          "split": "test",
+          "target_mm": [
+            17.86906949431791,
+            27.724349757049207
+          ],
+          "trial_id": "test-0064"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.546704073079444,
+          "estimate_mm": [
+            15.602058323214786,
+            15.952197878269535
+          ],
+          "failed": false,
+          "object_id": "test-object-0065",
+          "session_id": "test-session-0065",
+          "split": "test",
+          "target_mm": [
+            13.241795459308662,
+            14.995714292887595
+          ],
+          "trial_id": "test-0065"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 7.636062966841465,
+          "estimate_mm": [
+            20.991093986962902,
+            16.859684420996583
+          ],
+          "failed": false,
+          "object_id": "test-object-0066",
+          "session_id": "test-session-0066",
+          "split": "test",
+          "target_mm": [
+            28.588476418997836,
+            16.092066146738713
+          ],
+          "trial_id": "test-0066"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 9.65000233263859,
+          "estimate_mm": [
+            20.899160025206033,
+            7.363050912720466
+          ],
+          "failed": false,
+          "object_id": "test-object-0067",
+          "session_id": "test-session-0067",
+          "split": "test",
+          "target_mm": [
+            28.64685074651074,
+            1.610153077112818
+          ],
+          "trial_id": "test-0067"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 5.4282815012335925,
+          "estimate_mm": [
+            10.798819487130812,
+            8.277606479315402
+          ],
+          "failed": false,
+          "object_id": "test-object-0068",
+          "session_id": "test-session-0068",
+          "split": "test",
+          "target_mm": [
+            7.386672317582132,
+            4.055818735956464
+          ],
+          "trial_id": "test-0068"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.262145500261309,
+          "estimate_mm": [
+            18.876449747185763,
+            20.937300393061854
+          ],
+          "failed": false,
+          "object_id": "test-object-0069",
+          "session_id": "test-session-0069",
+          "split": "test",
+          "target_mm": [
+            20.76011297841621,
+            27.950899333568508
+          ],
+          "trial_id": "test-0069"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.5548531352442683,
+          "estimate_mm": [
+            11.857122607088957,
+            11.413972505764354
+          ],
+          "failed": false,
+          "object_id": "test-object-0070",
+          "session_id": "test-session-0070",
+          "split": "test",
+          "target_mm": [
+            12.406831182132986,
+            11.338590251795285
+          ],
+          "trial_id": "test-0070"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.170479231793946,
+          "estimate_mm": [
+            5.154633162603974,
+            24.7289736802497
+          ],
+          "failed": false,
+          "object_id": "test-object-0071",
+          "session_id": "test-session-0071",
+          "split": "test",
+          "target_mm": [
+            0.5838509254952418,
+            27.145956350304207
+          ],
+          "trial_id": "test-0071"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 4.191559877404691,
+          "estimate_mm": [
+            5.666492577699699,
+            4.77664776164461
+          ],
+          "failed": false,
+          "object_id": "test-object-0072",
+          "session_id": "test-session-0072",
+          "split": "test",
+          "target_mm": [
+            2.608285223096174,
+            1.910196648836694
+          ],
+          "trial_id": "test-0072"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.556854312397493,
+          "estimate_mm": [
+            18.594177360709324,
+            8.98496133454828
+          ],
+          "failed": false,
+          "object_id": "test-object-0073",
+          "session_id": "test-session-0073",
+          "split": "test",
+          "target_mm": [
+            19.414436579119975,
+            3.48898056094445
+          ],
+          "trial_id": "test-0073"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.8824099961378105,
+          "estimate_mm": [
+            22.19435378517684,
+            15.940310907635464
+          ],
+          "failed": false,
+          "object_id": "test-object-0074",
+          "session_id": "test-session-0074",
+          "split": "test",
+          "target_mm": [
+            27.074978008520286,
+            15.808270910287707
+          ],
+          "trial_id": "test-0074"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.85968795281509,
+          "estimate_mm": [
+            22.25272502681899,
+            22.526539721973883
+          ],
+          "failed": false,
+          "object_id": "test-object-0075",
+          "session_id": "test-session-0075",
+          "split": "test",
+          "target_mm": [
+            27.02241299166827,
+            23.457476732038508
+          ],
+          "trial_id": "test-0075"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.1034458221273344,
+          "estimate_mm": [
+            23.442773728700097,
+            15.418173687997195
+          ],
+          "failed": false,
+          "object_id": "test-object-0076",
+          "session_id": "test-session-0076",
+          "split": "test",
+          "target_mm": [
+            25.419665471424466,
+            16.13677188182539
+          ],
+          "trial_id": "test-0076"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 5.887264089220362,
+          "estimate_mm": [
+            16.322391371659897,
+            15.92913628996586
+          ],
+          "failed": false,
+          "object_id": "test-object-0077",
+          "session_id": "test-session-0077",
+          "split": "test",
+          "target_mm": [
+            20.71515824815019,
+            12.009509059599
+          ],
+          "trial_id": "test-0077"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.5795177647338738,
+          "estimate_mm": [
+            16.825251546462173,
+            16.231190046359526
+          ],
+          "failed": false,
+          "object_id": "test-object-0078",
+          "session_id": "test-session-0078",
+          "split": "test",
+          "target_mm": [
+            18.39966731945331,
+            16.358041703292383
+          ],
+          "trial_id": "test-0078"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.735799275530185,
+          "estimate_mm": [
+            7.859550197837349,
+            24.54071296474368
+          ],
+          "failed": false,
+          "object_id": "test-object-0079",
+          "session_id": "test-session-0079",
+          "split": "test",
+          "target_mm": [
+            3.3926476263157443,
+            28.13879227816998
+          ],
+          "trial_id": "test-0079"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.9553798756177274,
+          "estimate_mm": [
+            20.72290798803986,
+            14.137750073677115
+          ],
+          "failed": false,
+          "object_id": "test-object-0080",
+          "session_id": "test-session-0080",
+          "split": "test",
+          "target_mm": [
+            23.676688385612255,
+            14.04053087740745
+          ],
+          "trial_id": "test-0080"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.412855523131673,
+          "estimate_mm": [
+            8.157540085028874,
+            21.44449711438203
+          ],
+          "failed": false,
+          "object_id": "test-object-0081",
+          "session_id": "test-session-0081",
+          "split": "test",
+          "target_mm": [
+            3.244795532238487,
+            26.995656269536216
+          ],
+          "trial_id": "test-0081"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.669718888792541,
+          "estimate_mm": [
+            18.511737917091803,
+            10.000112279999197
+          ],
+          "failed": false,
+          "object_id": "test-object-0082",
+          "session_id": "test-session-0082",
+          "split": "test",
+          "target_mm": [
+            20.08064622912279,
+            9.428721103981687
+          ],
+          "trial_id": "test-0082"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.1691754329185198,
+          "estimate_mm": [
+            3.852699822611275,
+            3.408523936460336
+          ],
+          "failed": false,
+          "object_id": "test-object-0083",
+          "session_id": "test-session-0083",
+          "split": "test",
+          "target_mm": [
+            1.875812667512241,
+            2.5156413939152955
+          ],
+          "trial_id": "test-0083"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.832523708490143,
+          "estimate_mm": [
+            23.336611660870155,
+            9.189416531687106
+          ],
+          "failed": false,
+          "object_id": "test-object-0084",
+          "session_id": "test-session-0084",
+          "split": "test",
+          "target_mm": [
+            25.16381019072206,
+            9.049814688269832
+          ],
+          "trial_id": "test-0084"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.271531996195897,
+          "estimate_mm": [
+            23.183456977095716,
+            19.206220049991607
+          ],
+          "failed": false,
+          "object_id": "test-object-0085",
+          "session_id": "test-session-0085",
+          "split": "test",
+          "target_mm": [
+            28.767000575809444,
+            23.864462041662247
+          ],
+          "trial_id": "test-0085"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.729016034381202,
+          "estimate_mm": [
+            15.93846535613736,
+            7.727157545018669
+          ],
+          "failed": false,
+          "object_id": "test-object-0086",
+          "session_id": "test-session-0086",
+          "split": "test",
+          "target_mm": [
+            17.221454977011,
+            5.31853425595078
+          ],
+          "trial_id": "test-0086"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 0.9006292711582062,
+          "estimate_mm": [
+            23.929774596233536,
+            8.696724853646673
+          ],
+          "failed": false,
+          "object_id": "test-object-0087",
+          "session_id": "test-session-0087",
+          "split": "test",
+          "target_mm": [
+            24.541415827425634,
+            8.035643853789034
+          ],
+          "trial_id": "test-0087"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.395512992754157,
+          "estimate_mm": [
+            24.93148499105674,
+            13.553782231173056
+          ],
+          "failed": false,
+          "object_id": "test-object-0088",
+          "session_id": "test-session-0088",
+          "split": "test",
+          "target_mm": [
+            28.317448592298042,
+            13.299304383352593
+          ],
+          "trial_id": "test-0088"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 6.248608550080605,
+          "estimate_mm": [
+            10.360223223662548,
+            9.864392175932142
+          ],
+          "failed": false,
+          "object_id": "test-object-0089",
+          "session_id": "test-session-0089",
+          "split": "test",
+          "target_mm": [
+            9.74939415731787,
+            3.6457109118819475
+          ],
+          "trial_id": "test-0089"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.104087353770657,
+          "estimate_mm": [
+            14.812453325752205,
+            25.370575725918098
+          ],
+          "failed": false,
+          "object_id": "test-object-0090",
+          "session_id": "test-session-0090",
+          "split": "test",
+          "target_mm": [
+            12.744464325399328,
+            25.75865443793038
+          ],
+          "trial_id": "test-0090"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 6.16314681271223,
+          "estimate_mm": [
+            20.983283819111424,
+            10.8727694899916
+          ],
+          "failed": false,
+          "object_id": "test-object-0091",
+          "session_id": "test-session-0091",
+          "split": "test",
+          "target_mm": [
+            27.14018521121727,
+            10.595381885852472
+          ],
+          "trial_id": "test-0091"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.7027985013300962,
+          "estimate_mm": [
+            14.762062790055069,
+            4.057624783516545
+          ],
+          "failed": false,
+          "object_id": "test-object-0092",
+          "session_id": "test-session-0092",
+          "split": "test",
+          "target_mm": [
+            14.169417267237154,
+            3.679872195496674
+          ],
+          "trial_id": "test-0092"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.165789308305068,
+          "estimate_mm": [
+            14.747879361484703,
+            15.738808622860569
+          ],
+          "failed": false,
+          "object_id": "test-object-0093",
+          "session_id": "test-session-0093",
+          "split": "test",
+          "target_mm": [
+            16.883895023952526,
+            16.09669186871135
+          ],
+          "trial_id": "test-0093"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 5.450069655571705,
+          "estimate_mm": [
+            22.020884071849554,
+            9.745774336257893
+          ],
+          "failed": false,
+          "object_id": "test-object-0094",
+          "session_id": "test-session-0094",
+          "split": "test",
+          "target_mm": [
+            26.358396198363543,
+            6.445888307479387
+          ],
+          "trial_id": "test-0094"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 2.148503914333874,
+          "estimate_mm": [
+            12.891038351983077,
+            15.344375761831824
+          ],
+          "failed": false,
+          "object_id": "test-object-0095",
+          "session_id": "test-session-0095",
+          "split": "test",
+          "target_mm": [
+            13.920529105483599,
+            13.458582067292332
+          ],
+          "trial_id": "test-0095"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 1.287110836131552,
+          "estimate_mm": [
+            2.66442927433095,
+            13.213690677397047
+          ],
+          "failed": false,
+          "object_id": "test-object-0096",
+          "session_id": "test-session-0096",
+          "split": "test",
+          "target_mm": [
+            1.5058988286522845,
+            12.65292199877559
+          ],
+          "trial_id": "test-0096"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 8.219206727875818,
+          "estimate_mm": [
+            22.344155719883183,
+            8.87193320937691
+          ],
+          "failed": false,
+          "object_id": "test-object-0097",
+          "session_id": "test-session-0097",
+          "split": "test",
+          "target_mm": [
+            28.91266028778527,
+            3.931274652361607
+          ],
+          "trial_id": "test-0097"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.887620679916401,
+          "estimate_mm": [
+            9.042627202302496,
+            6.8686069617902685
+          ],
+          "failed": false,
+          "object_id": "test-object-0098",
+          "session_id": "test-session-0098",
+          "split": "test",
+          "target_mm": [
+            7.684095727903197,
+            2.173585327781228
+          ],
+          "trial_id": "test-0098"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.37172726442492,
+          "estimate_mm": [
+            18.333011511486955,
+            9.28092292905179
+          ],
+          "failed": false,
+          "object_id": "test-object-0099",
+          "session_id": "test-session-0099",
+          "split": "test",
+          "target_mm": [
+            19.30929132971895,
+            8.317328925085608
+          ],
+          "trial_id": "test-0099"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 2.320471047686262,
+          "estimate_mm": [
+            26.612257868595837,
+            11.607202405653991
+          ],
+          "failed": false,
+          "object_id": "test-object-0100",
+          "session_id": "test-session-0100",
+          "split": "test",
+          "target_mm": [
+            28.928167432442642,
+            11.461776220827877
+          ],
+          "trial_id": "test-0100"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.688384671549284,
+          "estimate_mm": [
+            18.938301762606894,
+            17.33744356199963
+          ],
+          "failed": false,
+          "object_id": "test-object-0101",
+          "session_id": "test-session-0101",
+          "split": "test",
+          "target_mm": [
+            17.922955740925016,
+            19.826717471893023
+          ],
+          "trial_id": "test-0101"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 0.4097620832744821,
+          "estimate_mm": [
+            20.27746027638928,
+            13.753465140153649
+          ],
+          "failed": false,
+          "object_id": "test-object-0102",
+          "session_id": "test-session-0102",
+          "split": "test",
+          "target_mm": [
+            20.611869586875525,
+            13.990267542906574
+          ],
+          "trial_id": "test-0102"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 1.7599051159364483,
+          "estimate_mm": [
+            26.73735130026526,
+            12.158072906164104
+          ],
+          "failed": false,
+          "object_id": "test-object-0103",
+          "session_id": "test-session-0103",
+          "split": "test",
+          "target_mm": [
+            27.56242518032211,
+            13.712588621603231
+          ],
+          "trial_id": "test-0103"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.0876236453439603,
+          "estimate_mm": [
+            7.511588049143084,
+            23.52485865197224
+          ],
+          "failed": false,
+          "object_id": "test-object-0104",
+          "session_id": "test-session-0104",
+          "split": "test",
+          "target_mm": [
+            5.224591027082239,
+            25.5992415472864
+          ],
+          "trial_id": "test-0104"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.196327677821905,
+          "estimate_mm": [
+            23.613342663351194,
+            13.45280629791797
+          ],
+          "failed": false,
+          "object_id": "test-object-0105",
+          "session_id": "test-session-0105",
+          "split": "test",
+          "target_mm": [
+            26.391461277435766,
+            15.03349209531326
+          ],
+          "trial_id": "test-0105"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 1.7758553309391634,
+          "estimate_mm": [
+            12.72980942773091,
+            9.085413432650851
+          ],
+          "failed": false,
+          "object_id": "test-object-0106",
+          "session_id": "test-session-0106",
+          "split": "test",
+          "target_mm": [
+            12.772546030287078,
+            7.310072412106629
+          ],
+          "trial_id": "test-0106"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 4.617999440642605,
+          "estimate_mm": [
+            6.811952950525522,
+            11.946877695404316
+          ],
+          "failed": false,
+          "object_id": "test-object-0107",
+          "session_id": "test-session-0107",
+          "split": "test",
+          "target_mm": [
+            4.159481777907283,
+            8.166624329265396
+          ],
+          "trial_id": "test-0107"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.7446203694227911,
+          "estimate_mm": [
+            19.921122663036023,
+            16.29739545416363
+          ],
+          "failed": false,
+          "object_id": "test-object-0108",
+          "session_id": "test-session-0108",
+          "split": "test",
+          "target_mm": [
+            20.42064930770906,
+            15.745188404388792
+          ],
+          "trial_id": "test-0108"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 7.457476619301306,
+          "estimate_mm": [
+            9.409587741740115,
+            16.65387835870382
+          ],
+          "failed": false,
+          "object_id": "test-object-0109",
+          "session_id": "test-session-0109",
+          "split": "test",
+          "target_mm": [
+            1.9563050120522762,
+            16.403810210466926
+          ],
+          "trial_id": "test-0109"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.0310939252622187,
+          "estimate_mm": [
+            7.071521799174798,
+            7.9254262168099565
+          ],
+          "failed": false,
+          "object_id": "test-object-0110",
+          "session_id": "test-session-0110",
+          "split": "test",
+          "target_mm": [
+            5.223616621901893,
+            7.082461811247609
+          ],
+          "trial_id": "test-0110"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.1443537180255157,
+          "estimate_mm": [
+            6.090809901673334,
+            17.35032655656127
+          ],
+          "failed": false,
+          "object_id": "test-object-0111",
+          "session_id": "test-session-0111",
+          "split": "test",
+          "target_mm": [
+            3.9161306088933956,
+            15.079262867975011
+          ],
+          "trial_id": "test-0111"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 0.39660941240294656,
+          "estimate_mm": [
+            13.05960339085619,
+            19.37106999157379
+          ],
+          "failed": false,
+          "object_id": "test-object-0112",
+          "session_id": "test-session-0112",
+          "split": "test",
+          "target_mm": [
+            13.186530848257318,
+            19.746820502637043
+          ],
+          "trial_id": "test-0112"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 2.6632657093235785,
+          "estimate_mm": [
+            14.074917271815856,
+            12.947729130678725
+          ],
+          "failed": false,
+          "object_id": "test-object-0113",
+          "session_id": "test-session-0113",
+          "split": "test",
+          "target_mm": [
+            12.426819699118669,
+            10.855658713764308
+          ],
+          "trial_id": "test-0113"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 2.5915280134714407,
+          "estimate_mm": [
+            20.35761784453279,
+            14.689201301037006
+          ],
+          "failed": false,
+          "object_id": "test-object-0114",
+          "session_id": "test-session-0114",
+          "split": "test",
+          "target_mm": [
+            22.939442139121986,
+            14.465146047859964
+          ],
+          "trial_id": "test-0114"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 5.142344775167473,
+          "estimate_mm": [
+            4.9815794336604124,
+            7.761538879524785
+          ],
+          "failed": false,
+          "object_id": "test-object-0115",
+          "session_id": "test-session-0115",
+          "split": "test",
+          "target_mm": [
+            2.0643407818658255,
+            3.5267509940259245
+          ],
+          "trial_id": "test-0115"
+        },
+        {
+          "condition": "clean",
+          "error_mm": 3.1046946806675035,
+          "estimate_mm": [
+            13.044815324688454,
+            24.520408335731066
+          ],
+          "failed": false,
+          "object_id": "test-object-0116",
+          "session_id": "test-session-0116",
+          "split": "test",
+          "target_mm": [
+            13.409993983559872,
+            27.603551797730518
+          ],
+          "trial_id": "test-0116"
+        },
+        {
+          "condition": "noise",
+          "error_mm": 3.8116832518325077,
+          "estimate_mm": [
+            9.17078985673458,
+            20.222509781294423
+          ],
+          "failed": false,
+          "object_id": "test-object-0117",
+          "session_id": "test-session-0117",
+          "split": "test",
+          "target_mm": [
+            10.460319683030175,
+            23.80943632631796
+          ],
+          "trial_id": "test-0117"
+        },
+        {
+          "condition": "single_dropout",
+          "error_mm": 4.316902617747451,
+          "estimate_mm": [
+            23.375287091488413,
+            7.094372767593251
+          ],
+          "failed": false,
+          "object_id": "test-object-0118",
+          "session_id": "test-session-0118",
+          "split": "test",
+          "target_mm": [
+            25.08238087442391,
+            3.129340734005406
+          ],
+          "trial_id": "test-0118"
+        },
+        {
+          "condition": "quarter_dropout",
+          "error_mm": 3.5758040793151094,
+          "estimate_mm": [
+            17.118747245090457,
+            21.149401797432613
+          ],
+          "failed": false,
+          "object_id": "test-object-0119",
+          "session_id": "test-session-0119",
+          "split": "test",
+          "target_mm": [
+            20.508244325990372,
+            22.28856129118998
+          ],
+          "trial_id": "test-0119"
+        }
+      ],
+      "validation_candidates": [
+        {
+          "failures": 0,
+          "mean_error_mm": 3.2903220628119785,
+          "median_error_mm": 2.781645358733729,
+          "p95_error_mm": 6.903514133960076,
+          "strength": 0.0,
+          "trials": 120
+        },
+        {
+          "failures": 0,
+          "mean_error_mm": 3.390687961173579,
+          "median_error_mm": 3.030436895896913,
+          "p95_error_mm": 7.1515241095320645,
+          "strength": 0.15,
+          "trials": 120
+        },
+        {
+          "failures": 0,
+          "mean_error_mm": 3.476518935777302,
+          "median_error_mm": 3.1235001338576547,
+          "p95_error_mm": 7.495314992284496,
+          "strength": 0.35,
+          "trials": 120
+        },
+        {
+          "failures": 0,
+          "mean_error_mm": 3.661732184640257,
+          "median_error_mm": 3.2551372801311342,
+          "p95_error_mm": 7.937649150762318,
+          "strength": 0.6,
+          "trials": 120
+        }
+      ]
+    }
+  },
+  "paired_pathway_minus_spatial": {
+    "bootstrap_95pct_interval_mm": [
+      0.0,
+      0.0
+    ],
+    "mean_delta_mm": 0.0,
+    "negative_favors": "candidate",
+    "replicates": 2000,
+    "unit": "independent synthetic trial"
+  },
+  "splits": {
+    "test": {
+      "objects": 120,
+      "sessions": 120,
+      "trials": 120
+    },
+    "train": {
+      "objects": 120,
+      "sessions": 120,
+      "trials": 120
+    },
+    "validation": {
+      "objects": 120,
+      "sessions": 120,
+      "trials": 120
+    }
+  }
+}

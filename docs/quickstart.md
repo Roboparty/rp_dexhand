@@ -1,22 +1,22 @@
-# 单手 CAN-FD 快速开始
+# Single-Hand CAN-FD Quick Start
 
-[返回首页](../README.zh-CN.md) · [接线](hardware.md) · [排障](troubleshooting.md)
+[Home](../README.md) · [Wiring](hardware.md) · [Troubleshooting](troubleshooting.md)
 
-本流程采用当前维护的 `roboparty_dexhand`，适用于 RP Hand 六主动轴。示例中的 `can0` 和 node ID `1` 必须与实物对应。先阅读硬件接线说明，停止其他控制同一只手的程序。
+This procedure uses the maintained `roboparty_dexhand` driver for the six active axes of RP Hand. Match example interface `can0` and node ID `1` to the actual hardware. Read the wiring guide first and stop other programs controlling the same hand.
 
-## 1. 选择安装方式
+## 1. Choose an installation method
 
-| 环境 | 入口 |
+| Environment | Entry point |
 | --- | --- |
-| RoboParty 镜像已内置驱动 | 直接执行下一节的环境检查 |
-| 已确认适配系统、Python 和 CPU 架构的软件包 | 从 [下载页](downloads.md) 获取；同时需要 `roboparty-base` 提供公共环境入口 |
-| 需要开发或适配其他环境 | 按 [SDK 构建说明](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/build.md) 从源码构建 |
+| RoboParty image with the driver installed | Proceed to the environment checks below |
+| Package confirmed compatible with the operating system, Python and CPU architecture | Obtain it from [Downloads](downloads.md); `roboparty-base` is also required for the shared environment entry point |
+| Development or another environment | Build from source using the [SDK build instructions](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/build.md) |
 
-当前 SDK 文档基线是 Ubuntu 24.04、系统 Python 3.12。Python 扩展需要与解释器版本和 CPU 架构匹配。源码构建不提供仓库根目录的 `setup.bash`，应使用构建文档中的路径配置方式。驱动可以脱离 ROS 使用。
+The current SDK documentation baseline is Ubuntu 24.04 with system Python 3.12. The Python extension must match the interpreter version and CPU architecture. Source builds do not provide a repository-root `setup.bash`; use the path configuration in the build guide. The driver can run without ROS.
 
-## 2. 检查镜像中的软件环境
+## 2. Check the image's software environment
 
-以下命令在板端 Bash 运行，不会连接、使能或回零灵巧手：
+Run these commands in Bash on the controller. They do not connect to, enable or home the hand:
 
 ```bash
 source /opt/roboparty/setup.bash
@@ -26,37 +26,37 @@ roboparty-dexhand-config --help
 dpkg-query -W roboparty-dexhand roboparty-base
 ```
 
-预期模块来自 `/opt/roboparty/`，模型值为 `0`，配置工具可用。缺少环境脚本时先检查安装，不能把 SDK 的 `.so` 单独复制到另一套 Python 环境中。
+The module should come from `/opt/roboparty/`, the model value should be `0`, and the configuration tool should be available. If the environment script is missing, check the installation first. Do not copy the SDK's `.so` alone into another Python environment.
 
-## 3. 检查接口
+## 3. Check the interface
 
 ```bash
 ip -details -statistics link show can0
 ```
 
-目标接口应处于 `UP`，启用 CAN-FD，显示 `bitrate 1000000`、`dbitrate 5000000`。未配置时按 [SDK CAN-FD 配置步骤](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md) 操作。重新配置接口会中断该接口上的通信。
+The target interface should be `UP`, have CAN-FD enabled and show `bitrate 1000000` and `dbitrate 5000000`. If unconfigured, follow the [SDK CAN-FD setup](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md). Reconfiguring an interface interrupts communication on it.
 
-## 4. 配置并验证反馈周期
+## 4. Configure and verify the feedback period
 
-新设备、更换设备、恢复出厂或配置未知时执行。这个步骤会修改手本体参数，配置期间不能同时运行手控制程序。
+Perform this step for a new or replacement device, after a factory reset, or when the configuration is unknown. It changes parameters on the hand; do not run a hand-control program concurrently.
 
 ```bash
 roboparty-dexhand-config feedback-period apply --interface can0 --node-id 1 --milliseconds 20 --save
 ```
 
-给手本体断电再上电，然后查询：
+Power-cycle the hand itself, then query:
 
 ```bash
 roboparty-dexhand-config feedback-period show --interface can0 --node-id 1
 ```
 
-六轴 raw value 都应为 `200`。如果 `apply` 返回 `already-compliant`，仍需完成断电后的读回确认。正常的 `init_hand()` 不负责持久化反馈周期。
+All six axes should report raw value `200`. Even if `apply` returns `already-compliant`, complete the readback after power cycling. Normal `init_hand()` does not persist the feedback period.
 
-20 ms 表示两类反馈各约 50 Hz，合计约 100 帧/秒/手；不是 100 Hz 的单类状态采样率，也不是整机 500 Hz 控制环的承诺。
+20 ms means approximately 50 Hz for each of two feedback types, or about 100 frames/second/hand combined. It is not a 100 Hz sampling rate for a single state type, nor a promise of a 500 Hz whole-system control loop.
 
-## 5. 只初始化通信
+## 5. Initialize communication only
 
-以下示例会向设备发送初始化配置，但不会请求使能或回零。先完成上面的供电、接口与反馈配置：
+This example sends initialization configuration to the device, but does not request enabling or homing. Complete the power, interface and feedback setup first:
 
 ```python
 from dexhand_py import HandDriver, HandModel
@@ -73,20 +73,20 @@ finally:
     hand.deinit_hand()
 ```
 
-期望 DOF 为 `(11, 6)`。这只完成驱动初始化检查，不代表真实运动、回零或反馈新鲜度验收通过。运行结束后，先确认程序退出，再进入运动步骤。
+Expected DOF is `(11, 6)`. This checks driver initialization only; it does not establish successful motion, homing or fresh feedback. Confirm the process has exited before proceeding to motion.
 
-## 6. 使能、回零与单手运动
+## 6. Enable, home and move one hand
 
-这一阶段会产生真实运动。确认运动范围内无障碍物，准备硬件停止手段，并根据机构及负载确认目标值与速度。
+This stage causes physical motion. Clear the motion envelope, prepare a hardware stopping method, and confirm target values and speed for the mechanism and load.
 
-使用 SDK 维护的 [完整 Python / C++ 示例](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/api.md)。当前示例包含使能、回零、到目标位置、返回零位及资源释放。初始化失败时停止排查，不要设置 `set_move_no_home(1)` 绕过回零。
+Use the SDK-maintained [complete Python/C++ examples](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/api.md). They cover enabling, homing, moving to a target, returning to zero and releasing resources. If initialization fails, stop and diagnose it; do not bypass homing with `set_move_no_home(1)`.
 
-`home_wait_time=5.0` 是最大等待秒数；成功会提前返回。新创建实例在回零后需要收到新鲜的位置与状态反馈，才会确认回零结果。仅进程重启且本体没有掉电、零位可信的恢复场景，应按 SDK 文档处理，不能将此假设用于冷启动。
+`home_wait_time=5.0` is a maximum wait in seconds; success returns earlier. A newly created instance needs fresh position and status feedback after homing to confirm the result. For recovery after only a process restart, with the hand still powered and its zero position trustworthy, follow the SDK documentation. Do not apply that assumption to a cold start.
 
-## 7. 验收与双手扩展
+## 7. Acceptance and two-hand expansion
 
-按 [SDK 部署与验收 SOP](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/VALIDATION.md) 检查实际动作、位置反馈、报警、帧率和参数持久化。getter 返回缓存，固定等待时间不能证明动作已经完成。
+Use the [SDK deployment and acceptance SOP](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/VALIDATION.md) to check actual motion, position feedback, alarms, frame rates and parameter persistence. Getters return cached data; a fixed wait does not prove that motion completed.
 
-记录设备型号/左右手、固件、系统/Python、SDK 版本、CAN 接口与 node ID，再记录运行结果。这里的步骤是整理后的流程，未声明已经在你的设备上实测通过。
+Record device model/left or right hand, firmware, operating system/Python, SDK version, CAN interface and node ID, then record the results. This is a consolidated procedure, not a claim that your device has passed physical testing.
 
-双手保持一手一 OS 进程。进入 ROS 前阅读 [ROS 版本与当前限制](ros2.md)。
+Keep one OS process per hand. Read [ROS versions and current limitations](ros2.md) before using ROS.

@@ -1,68 +1,68 @@
-# 硬件手册
+# Hardware Guide
 
-[返回首页](../README.zh-CN.md) · [快速开始](quickstart.md) · [模型下载](models.md)
+[Home](../README.md) · [Quick start](quickstart.md) · [Model downloads](models.md)
 
-## 产品与尺寸
+## Product and dimensions
 
-RP Hand 采用蜗轮蜗杆传动，具有 11 个机械自由度和 6 个主动控制轴。SDK 中的 `RP_HAND_6DOF` 指六个主动控制轴；成功初始化的当前驱动会验证总 DOF 为 11、主动 DOF 为 6。
+RP Hand uses a worm-gear transmission with 11 mechanical degrees of freedom and 6 actively controlled axes. The SDK's `RP_HAND_6DOF` refers to the six active axes; the current driver verifies total DOF 11 and active DOF 6 on successful initialization.
 
-![RP Hand 尺寸与腕部安装尺寸，单位 mm](../assets/dimensions.png)
+![RP Hand dimensions and wrist mounting dimensions, in mm](../assets/dimensions.png)
 
-| 参数 | 手册记录 |
+| Parameter | Manual specification |
 | --- | --- |
-| 外形尺寸 | 147.54 × 73.53 × 26.35 mm |
-| 重量 | 379 g ± 10 g |
-| 拇指侧摆范围 | 0°～87.5° |
-| 拇指屈伸范围 | 0°～65° |
-| 四指弯曲范围 | 0°～72° |
-| 静态电流 | ≤ 0.1 A |
-| 最大电流 | ≤ 2.5 A |
-| 最小开合时间 | ≤ 0.7 s |
-| 工作环境 | -10～45 °C，10%～90% RH |
-| 存储温度 | -10～70 °C |
-| 防护等级 | IP30 |
+| Dimensions | 147.54 × 73.53 × 26.35 mm |
+| Weight | 379 g ± 10 g |
+| Thumb lateral swing | 0°–87.5° |
+| Thumb flexion/extension | 0°–65° |
+| Four-finger flexion | 0°–72° |
+| Idle current | ≤ 0.1 A |
+| Maximum current | ≤ 2.5 A |
+| Minimum opening/closing time | ≤ 0.7 s |
+| Operating environment | -10–45 °C, 10%–90% RH |
+| Storage temperature | -10–70 °C |
+| Ingress protection | IP30 |
 
-图中部分标注使用取整值，参数表保留手册中的精确数值。加工与安装应使用对应硬件修订的模型和工程图；这些参数不是逐轴软件限位或负载标定结果。
+Some drawing labels are rounded; the table retains the manual's precise values. Use models and engineering drawings for the actual hardware revision when machining or mounting. These specifications are not per-axis software limits or load-calibration results.
 
-## 引脚与供电
+## Pinout and power
 
-![RP Hand 插头和插座示意图，注意图中的 1 号针标识](../assets/pinout.png)
+![RP Hand plug and socket; note the pin 1 markers in the drawing](../assets/pinout.png)
 
-| 引脚 | 信号 | 用途 |
+| Pins | Signal | Purpose |
 | --- | --- | --- |
-| 1、2 | VDC | 电源输入 |
-| 5、6 | GND | 电源地 |
-| 3 | CANH / 485+ | 随设备通信配置选择 |
-| 4 | CANL / 485- | 随设备通信配置选择 |
+| 1, 2 | VDC | Power input |
+| 5, 6 | GND | Power ground |
+| 3 | CANH / 485+ | Select according to the device's communication configuration |
+| 4 | CANL / 485- | Select according to the device's communication configuration |
 
-产品手册标注电源范围为 `12 V (-10%) ～ 48 V (+10%)`。实际接线前以所交付型号、铭牌和配套电源要求为准；本页不将范围上限作为推荐工作电压。按图中的插头/插座视角辨认针位，不能从导线颜色推断极性。断电完成插接和线序检查，再按设备上电流程供电。
+The product manual specifies `12 V (-10%) – 48 V (+10%)`. Before wiring, follow the delivered model's nameplate and matched power-supply requirements; this guide does not recommend operating at the upper limit. Identify pins from the plug/socket views shown, not wire colors. Connect and check wiring with power off, then follow the device's power-on procedure.
 
-CAN-FD 与 RS485 共用的信号针位按设备配置二选一，不表示可以同时连接两条不同通信总线。
+CAN-FD and RS485 share signal pins and are alternatives according to device configuration; this does not mean two different buses can be connected simultaneously.
 
-## CAN-FD 接入
+## CAN-FD connection
 
-需要 Linux 支持的 CAN-FD 适配器。普通 CAN 适配器不能替代 CAN-FD 适配器。实际线束、终端电阻、接地与供电方案需与交付设备匹配。
+A Linux-supported CAN-FD adapter is required. An ordinary CAN adapter is not a substitute. Match wiring, termination, grounding and power to the delivered device.
 
-| 配置项 | 当前 SDK 部署说明 |
+| Setting | Current SDK deployment guidance |
 | --- | --- |
-| 名义速率 | 1 Mbps |
-| 数据速率 | 5 Mbps |
-| node ID | 1～127，与设备实际配置一致 |
-| 单手接口示例 | `can0`，必须按实际连接调整 |
-| 下游双手接口示例 | 左 `can0`、右 `can3`；不是设备自动识别结果 |
-| 双手 node ID | 两条独立总线可各用 1；同一总线不可存在冲突 ID |
-| 反馈配置 | 六轴 raw value 均为 200，即 20 ms |
+| Nominal bitrate | 1 Mbps |
+| Data bitrate | 5 Mbps |
+| Node ID | 1–127, matching the actual device configuration |
+| Single-hand example interface | `can0`; adjust to the actual connection |
+| Downstream two-hand examples | Left `can0`, right `can3`; these are not auto-detected values |
+| Two-hand node IDs | Separate buses may each use 1; IDs must not conflict on a shared bus |
+| Feedback configuration | Raw value 200 on all six axes, corresponding to 20 ms |
 
-接口配置命令由 [SDK 硬件配置文档](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md) 维护。库不会替应用拉起接口或修改系统速率。
+Interface configuration commands are maintained in the [SDK hardware setup guide](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md). The library does not bring up interfaces or change system bitrates for the application.
 
-## 主动轴、左右手与模型
+## Active axes, left/right hands and models
 
-当前示例使用主动轴 ID `1..6`；支持广播的控制方法中，`0` 表示全部轴。六轴与物理手指、左右手及 URDF 关节的精确对应表尚未完成核验，不能凭数组顺序推断。
+Current examples use active axis IDs `1..6`; `0` means all axes in methods supporting broadcast. The precise mapping between six axes, physical fingers, left/right hands and URDF joints has not been fully verified. Do not infer it from array order.
 
-在接入模型或遥操作前，按实际交付版本确认 [关节映射要求](models.md)。触觉是产品选配能力，当前 `HandDriver` 公共接口尚未提供触觉数据读取。
+Before model integration or teleoperation, confirm the [joint-mapping requirements](models.md) for the delivered version. Tactile sensing is optional hardware; the current public `HandDriver` interface does not expose tactile data.
 
-## 养护
+## Care
 
-定期清洁外表面，避免清洁液进入掌内。需要校正、拆装或检修时联系产品维护人员。质保与售后以适用销售条款为准。
+Clean exterior surfaces regularly and keep cleaning fluid out of the palm. Contact product service personnel for calibration, disassembly or repair. Warranty and after-sales service follow the applicable sales terms.
 
-资料来源：[RP Hand 用户手册](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb)，revision 13，核对日期 2026-10-05；原始飞书页面需要相应访问权限。
+Source: [RP Hand user manual](https://roboparty.feishu.cn/docx/SaoIdLjNeoOCVZxXzdIcqwLqnNb), revision 13, checked 2026-10-05. Access to the original Feishu page requires the corresponding permissions.

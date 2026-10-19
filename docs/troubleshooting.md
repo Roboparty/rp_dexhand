@@ -1,26 +1,26 @@
-# 常见问题
+# Troubleshooting
 
-[返回首页](../README.zh-CN.md) · [快速开始](quickstart.md)
+[Home](../README.md) · [Quick start](quickstart.md)
 
-| 现象 | 检查方法 |
+| Symptom | Checks |
 | --- | --- |
-| `/opt/roboparty/setup.bash` 不存在 | 检查镜像是否包含 `roboparty-base`；源码安装使用 SDK 构建文档中的路径设置 |
-| `ModuleNotFoundError: dexhand_py` | 在当前终端加载对应环境，使用匹配的系统 Python，检查实际安装路径 |
-| 导入 `.so` 失败 | 核对 CPU 架构、Python ABI 和完整依赖；不要混用源码与镜像中的扩展 |
-| `can0` 不存在 | 用 `ip -brief link` 查看实际接口，检查适配器、接线和 Linux 驱动 |
-| 无法通信或反馈超时 | 检查供电、CAN-FD 1 Mbps/5 Mbps、node ID、反馈配置及其他控制进程 |
-| 参数断电后失效 | 检查配置时是否使用 `--save`，并在手本体断电后重新执行 `show` |
-| 回零失败 | 查看新鲜位置/状态反馈和报警；不要绕过回零继续运动 |
-| 在一个进程中打开第二只手失败 | 厂商回调资源为进程级，使用一手一进程 |
-| 初始化通信成功但手不动 | `init_hand(False, False, 0.0)` 不会使能；运动阶段需要独立的明确使能和回零流程 |
-| 已初始化后改变 init 参数失败 | 先 `deinit_hand()` 再重新创建/初始化；不能把重复 init 当作状态切换 |
-| ROS 找不到 `configure_feedback` | 当前被核对的 ROS 包没有该入口，使用 SDK 的 `roboparty-dexhand-config` |
-| ROS 没有 `/joint_states` | 当前 CAN-FD ROS 包尚未实现发布，不能套用厂商 EtherCAT 示例的说明 |
-| 飞书附件打不开 | 原始资料需要访问权限；查看下载页是否已经有 GitHub 镜像，不要把权限问题当作驱动故障 |
+| Missing `/opt/roboparty/setup.bash` | Check whether the image includes `roboparty-base`; source installations use the paths specified in the SDK build guide |
+| `ModuleNotFoundError: dexhand_py` | Load the matching environment in the current shell, use the matching system Python and inspect the installation path |
+| Failure to import a `.so` | Check CPU architecture, Python ABI and all dependencies; do not mix source-built and image-bundled extensions |
+| Missing `can0` | Use `ip -brief link` to find the actual interface; check the adapter, wiring and Linux driver |
+| Communication failure or feedback timeout | Check power, CAN-FD 1 Mbps/5 Mbps, node ID, feedback configuration and other controlling processes |
+| Settings lost after power-off | Check that configuration used `--save`, then run `show` again after power cycling the hand |
+| Homing failure | Inspect fresh position/status feedback and alarms; do not bypass homing and continue moving |
+| Second hand cannot open in the same process | Vendor callback resources are process-wide; use one process per hand |
+| Communication initializes but the hand does not move | `init_hand(False, False, 0.0)` does not enable motion; enabling and homing require a separate explicit procedure |
+| Changing init parameters after initialization fails | Call `deinit_hand()`, then recreate/reinitialize; repeated init is not a state transition |
+| ROS cannot find `configure_feedback` | The inspected ROS package does not provide it; use the SDK's `roboparty-dexhand-config` |
+| ROS has no `/joint_states` | Publication is not implemented in the current CAN-FD ROS package; vendor EtherCAT examples do not apply |
+| Feishu attachments cannot open | Original resources require access; check Downloads for a GitHub mirror. An access problem is not a driver fault |
 
-## 收集诊断信息
+## Collect diagnostics
 
-以下命令不发送运动命令：
+These commands do not send motion commands:
 
 ```bash
 uname -m
@@ -30,6 +30,6 @@ ip -details -statistics link show can0
 /usr/bin/python3 -c 'import dexhand_py; print(dexhand_py.__file__)'
 ```
 
-最后一条命令需先加载对应软件环境。将 `can0` 替换为目标接口，记录硬件型号/左右手、固件、驱动版本、系统镜像、node ID、执行步骤及完整错误信息。
+Load the matching software environment before the final command. Replace `can0` with the target interface. Record hardware model/left or right hand, firmware, driver version, system image, node ID, steps performed and complete errors.
 
-getter 读数是缓存，不能仅凭“读数为零”判断设备不在线，也不能仅凭“有读数”判断反馈仍在更新。软件故障、通信异常与机械运动结果需要分别核对。
+Getter readings are cached. A zero reading alone does not prove a device is offline; a nonempty reading alone does not prove feedback is updating. Check software faults, communication failures and mechanical motion outcomes separately.
