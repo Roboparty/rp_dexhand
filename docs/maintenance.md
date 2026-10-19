@@ -1,10 +1,21 @@
 # 资料来源与维护
 
-[返回首页](../README.zh-CN.md)
+[首页](../README.zh-CN.md) · [下载](downloads.md) · [版本兼容](compatibility.md)
 
-## 当前基线
+## 版本与资源
 
-资料快照日期：2026-10-05。仓库名称为 `rp_dexhand`，产品名称为 RP Hand，维护的 SDK 为 `roboparty_dexhand`。资料入口和 12 个原始附件的版本化归档已完成；关节映射、公开发布许可和完整 ROS 组合验收仍有后续工作。
+| 内容 | 版本 / 入口 |
+| --- | --- |
+| SDK 与配套 ROS | [eb923ac](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) |
+| 软件、模型及协议文件 | [resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) |
+| 原始文件名、大小及 SHA-256 | [manifest.json](../resources/resources-2026.10.05/manifest.json) |
+| 下载文件校验值 | [SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt) |
+| 资源格式检查 | [validation.json](../resources/resources-2026.10.05/validation.json) |
+| DH116S 模型结构与资源引用 | [模型记录](../resources/model-inspection-2026.10.19.json) |
+
+软件接入使用上表中的 SDK 版本。下面的来源表记录产品资料与配套应用的原始版本；SDK 与 ROS 的开发入口统一为 `roboparty_dexhand`。
+
+## 产品资料来源
 
 | 来源 | 版本 | 使用位置 |
 | --- | --- | --- |
@@ -17,44 +28,22 @@
 | [手势软件下载页](https://roboparty.feishu.cn/docx/UDyrdMlzyoJ1YaxHlb8cwkFenXg) | revision 67 | Windows/Linux 包名和版本 |
 | [CAN-FD 协议](https://roboparty.feishu.cn/docx/NofXd7ZqKovElLxfgr8cWMegnxg) | revision 14，相关章节 | 行程单位及通信说明 |
 | [SDK](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105) | `046108e` | 软件支持范围、API、安装和验收入口 |
-| [ROS 包](https://github.com/Roboparty/roboparty_dexhand_ros/tree/bfc325f2d5d7bf33d3a64ebdc79b01ed3641f227) | `bfc325f` | 集成状态与限制 |
 | [公司首页](https://github.com/Roboparty/rptest_repo/tree/f1ca45288a61985d2372cbe38d767869d818eb8d) | `f1ca452` | `assets/readme/rp1-hand.gif` 产品动图 |
 
-原始飞书页面和公司首页仓库可能要求访问权限；本仓库内的硬件图示与正文不依赖远端图片 token 渲染。
+## 图片来源
 
-## 素材对应
-
-| 本地文件 | 来源 |
+| 文件 | 来源 |
 | --- | --- |
-| `assets/dimensions.png` | 用户手册图片 `IJRgbzn0PotT42x6EyHcbG7Qn9e`，保持原始内容 |
-| `assets/pinout.png` | 用户手册图片 `NPObb1VGQo1CpZxsHzScTKBwnVe`，保持原始内容 |
-| `assets/rp-hand.gif` | 公司首页 `assets/readme/rp1-hand.gif`，保持原始内容 |
+| `assets/dimensions.png` | RP Hand 用户手册尺寸图 |
+| `assets/pinout.png` | RP Hand 用户手册引脚图 |
+| `assets/rp-hand.gif` | RoboParty 项目页面安装动图 |
 
-仓库内三份素材的校验值见 [SHA256SUMS.txt](../assets/SHA256SUMS.txt)。在仓库根目录执行 `sha256sum -c assets/SHA256SUMS.txt` 可核验文件完整性。
+图片校验值见 [assets/SHA256SUMS.txt](../assets/SHA256SUMS.txt)。
 
-## 资源归档
+## 更新文档
 
-[resources-2026.10.05](https://github.com/Roboparty/rp_dexhand/releases/tag/resources-2026.10.05) 是私有资料预发布版，对应 12 个飞书原件，原始合计 1,409,480,165 字节。2026-10-06 将尚未发布的左右手 CAD 无损封装为 XZ，下载文件合计缩减到 975,103,906 字节。该标签表示资料快照日期，不覆盖各附件的独立版本。已逐项核对原件大小；清单同时记录 CAD 压缩包与原件的大小和 SHA-256，并验证解压后字节一致。
-
-Git 中的 [manifest.json](../resources/resources-2026.10.05/manifest.json)、[SHA256SUMS.txt](../resources/resources-2026.10.05/SHA256SUMS.txt) 和 [validation.json](../resources/resources-2026.10.05/validation.json) 与 Release 同名附件一致。大文件不进入 Git 历史，SDK v0.5.0 二进制仍由 SDK 仓库维护。
-
-后续资料更新创建新快照，不覆盖已发布附件；同步更新来源 revision、文件大小、哈希和检查记录。解压与格式检查不代表软件安全性、目标系统兼容性或真实硬件动作验收。
-
-## 更新流程
-
-1. 在飞书完成产品内容核对，记录文档 revision 和附件版本。
-2. 将确认后的正文整理到对应 Markdown，图片下载到 `assets/`，大附件按版本进入 Release。
-3. 检查本地链接、图片、代码示例语法；涉及设备行为时记录实际软硬件组合和验收结果。
-4. 使用 PR 审阅变更，再更新下载表与中英文首页。SDK API 的修改回到 SDK 仓库维护。
-
-不把飞书文档 token 当作公开下载链接；不在本仓库存储访问凭据。下载状态以实际发布结果为准。
-
-## 下一阶段
-
-- 确认公开发布的资料范围和仓库可见性，并补齐适用的文档/素材许可声明。
-- 核验六主动轴、左右手、DH116/DH116S 与模型的对应关系。
-- 确定发布的镜像/SDK/ROS 组合，修正上游安装入口与回零行为差异。
-- 维护后续资源快照，确认新版本适用范围后更新清单与校验值。
-- 补全详细英文手册，依据实际测试记录更新兼容状态。
-
-本版没有进行真实硬件运动测试，不以文档检查代替设备验收。
+1. 更新产品参数或接口时，注明对应硬件、固件和软件版本。
+2. 同步修改中英文指南；新旧 API 的区别写入版本兼容页。
+3. 大型软件包与 CAD 按版本发布至 Release，并更新文件清单与校验值。
+4. 新增资源检查记录，保留已发布版本的原始清单。
+5. 按 [CONTRIBUTING.md](../CONTRIBUTING.md) 运行文档检查并提交 PR。

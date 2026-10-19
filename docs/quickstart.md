@@ -1,92 +1,94 @@
 # 单手 CAN-FD 快速开始
 
-[返回首页](../README.zh-CN.md) · [接线](hardware.md) · [排障](troubleshooting.md)
+[首页](../README.zh-CN.md) · [English](en/quickstart.md) · [硬件](hardware.md) · [兼容](compatibility.md)
 
-本流程采用当前维护的 `roboparty_dexhand`，适用于 RP Hand 六主动轴。示例中的 `can0` 和 node ID `1` 必须与实物对应。先阅读硬件接线说明，停止其他控制同一只手的程序。
+本指南使用 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) 的 `rphand` 接口。命令在目标 Linux 计算机的 Bash 中执行。先完成无硬件构建，再接入单手，最后扩展到双手或 ROS。
 
-## 1. 选择安装方式
+## 1. 准备与构建
 
-| 环境 | 入口 |
-| --- | --- |
-| RoboParty 镜像已内置驱动 | 直接执行下一节的环境检查 |
-| 已确认适配系统、Python 和 CPU 架构的软件包 | 从 [下载页](downloads.md) 获取；同时需要 `roboparty-base` 提供公共环境入口 |
-| 需要开发或适配其他环境 | 按 [SDK 构建说明](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/build.md) 从源码构建 |
-
-当前 SDK 文档基线是 Ubuntu 24.04、系统 Python 3.12。Python 扩展需要与解释器版本和 CPU 架构匹配。源码构建不提供仓库根目录的 `setup.bash`，应使用构建文档中的路径配置方式。驱动可以脱离 ROS 使用。
-
-## 2. 检查镜像中的软件环境
-
-以下命令在板端 Bash 运行，不会连接、使能或回零灵巧手：
+需要 Linux、CMake ≥ 3.20、C++17 编译器及 Git。Python 另需 Python ≥ 3.9、对应开发头文件与 pybind11。Ubuntu 可安装：
 
 ```bash
-source /opt/roboparty/setup.bash
-/usr/bin/python3 -c 'import dexhand_py; print(dexhand_py.__file__)'
-/usr/bin/python3 -c 'from dexhand_py import HandModel; print(HandModel.RP_HAND_6DOF.value)'
-roboparty-dexhand-config --help
-dpkg-query -W roboparty-dexhand roboparty-base
+sudo apt update
+sudo apt install build-essential cmake git python3-dev pybind11-dev can-utils
 ```
 
-预期模块来自 `/opt/roboparty/`，模型值为 `0`，配置工具可用。缺少环境脚本时先检查安装，不能把 SDK 的 `.so` 单独复制到另一套 Python 环境中。
+```bash
+git clone https://github.com/Roboparty/roboparty_dexhand.git
+cd roboparty_dexhand
+git checkout eb923acf61a02febabc9db90ad4d5eed84ffbc39
+bash build.sh cpp
+RPHAND_PYTHON=/usr/bin/python3 bash build.sh python
+RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
+/usr/bin/python3 -c 'from rphand import Hand; print(Hand)'
+```
 
-## 3. 检查接口
+若 CMake 未找到 pybind11，按目标环境安装其 CMake 包；使用 pip 安装时可通过 `pybind11_DIR` 指向 `python3 -m pybind11 --cmakedir` 的输出。构建和运行使用同一解释器，切勿混用旧版扩展文件。
+
+
+上游纯 C++ 工程声明的最低版本为 3.16，但本指南还使用了 Python Development.Module（CMake 3.18 起）和 `ctest --test-dir`（3.20 起），完整流程需使用 CMake 3.20 或以上版本。参见 [CMake 3.20 发布说明](https://cmake.org/cmake/help/v3.20/release/3.20.html#ctest)。
+
+## 2. 无硬件检查
+
+在 SDK 根目录执行：
+
+```bash
+cmake -S . -B build/check -DRPHAND_BUILD_SMOKE=ON -DRPHAND_BUILD_DEMO=ON
+cmake --build build/check --parallel 2
+ctest --test-dir build/check --output-on-failure
+```
+
+上述测试使用模拟设备检查 SDK 的控制流程。通过后，继续完成设备接线、通信与运动检查。
+
+## 3. 接线与 CAN-FD
+
+断电连接 VDC、GND、CANH、CANL，按[引脚图](hardware.md)辨认插头和插座视角。`can0`、节点 ID `1` 是示例，需与实际设备一致。总线和终端配置应符合整机接线方案。
 
 ```bash
 ip -details -statistics link show can0
 ```
 
-目标接口应处于 `UP`，启用 CAN-FD，显示 `bitrate 1000000`、`dbitrate 5000000`。未配置时按 [SDK CAN-FD 配置步骤](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md) 操作。重新配置接口会中断该接口上的通信。
-
-## 4. 配置并验证反馈周期
-
-新设备、更换设备、恢复出厂或配置未知时执行。这个步骤会修改手本体参数，配置期间不能同时运行手控制程序。
+目标接口应为 UP、CAN-FD，参考部署采用仲裁段 1 Mbit/s、数据段 5 Mbit/s。仅在接口尚未配置、且已停止共享该接口的控制程序后配置：
 
 ```bash
-roboparty-dexhand-config feedback-period apply --interface can0 --node-id 1 --milliseconds 20 --save
+sudo ip link set can0 down
+sudo ip link set can0 type can bitrate 1000000 dbitrate 5000000 fd on
+sudo ip link set can0 up
 ```
 
-给手本体断电再上电，然后查询：
+SDK 不创建系统接口或修改总线速率。当前 `connect()` 会配置并检查六轴的 20 ms 反馈周期；不再执行旧版 `roboparty-dexhand-config` 步骤。
+
+## 4. 首次连接与状态读取
+
+停止其他控制同一只手的程序。在新终端先进入 SDK 目录，加载 `setup_python.sh`：
 
 ```bash
-roboparty-dexhand-config feedback-period show --interface can0 --node-id 1
+RPHAND_PYTHON=/usr/bin/python3 source setup_python.sh
 ```
-
-六轴 raw value 都应为 `200`。如果 `apply` 返回 `already-compliant`，仍需完成断电后的读回确认。正常的 `init_hand()` 不负责持久化反馈周期。
-
-20 ms 表示两类反馈各约 50 Hz，合计约 100 帧/秒/手；不是 100 Hz 的单类状态采样率，也不是整机 500 Hz 控制环的承诺。
-
-## 5. 只初始化通信
-
-以下示例会向设备发送初始化配置，但不会请求使能或回零。先完成上面的供电、接口与反馈配置：
 
 ```python
-from dexhand_py import HandDriver, HandModel
+from rphand import Hand
 
-hand = HandDriver.create_hand(
-    "RP_Hand", "canfd", "can0", HandModel.RP_HAND_6DOF, 1
-)
+hand = Hand()
 try:
-    if not hand.init_hand(False, False, 0.0):
-        raise RuntimeError("Communication initialization failed")
-    hand.check_health()
-    print("total DOF, active DOF:", hand.get_dof())
+    if not hand.connect("can0", 1):
+        raise RuntimeError("Hand connection failed")
+    state = hand.get_state()
+    print("feedback_valid:", state.feedback_valid)
+    print("positions:", state.positions)
+    print("fault_codes:", state.fault_codes)
 finally:
-    hand.deinit_hand()
+    hand.disconnect()
 ```
 
-期望 DOF 为 `(11, 6)`。这只完成驱动初始化检查，不代表真实运动、回零或反馈新鲜度验收通过。运行结束后，先确认程序退出，再进入运动步骤。
+本例不主动使能或回零，但 `connect()` 会写入通信配置，并可能失能和恢复遗留软件急停；它不是只读查询。状态有效性必须与数组一起检查，详见 [SDK](sdk.md)。
 
-## 6. 使能、回零与单手运动
+## 5. 运动与双手接入
 
-这一阶段会产生真实运动。确认运动范围内无障碍物，准备硬件停止手段，并根据机构及负载确认目标值与速度。
+完成接口、机械范围和停止措施确认后，使用 SDK 的 [C++ / Python wave 示例](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39/examples)。它们会连接、配置、使能、回零并持续发送目标；拇指阶段包含全行程目标，不宜直接用于受限安装空间或带载首次调试。
 
-使用 SDK 维护的 [完整 Python / C++ 示例](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/api.md)。当前示例包含使能、回零、到目标位置、返回零位及资源释放。初始化失败时停止排查，不要设置 `set_move_no_home(1)` 绕过回零。
+正常运动流程为 `connect → disable → 配置 → enable → home → 位置控制 → stop / disable → disconnect`。逐步检查返回值、有效反馈和实际动作。`disconnect()` 只释放本地资源，不自动停止或失能。
 
-`home_wait_time=5.0` 是最大等待秒数；成功会提前返回。新创建实例在回零后需要收到新鲜的位置与状态反馈，才会确认回零结果。仅进程重启且本体没有掉电、零位可信的恢复场景，应按 SDK 文档处理，不能将此假设用于冷启动。
+双手推荐使用配套 [ROS 2 launch](ros2.md)。当前 SDK 不再依赖旧版进程级厂商回调；不要让多个进程同时控制同一个接口和节点 ID。
 
-## 7. 验收与双手扩展
-
-按 [SDK 部署与验收 SOP](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/VALIDATION.md) 检查实际动作、位置反馈、报警、帧率和参数持久化。getter 返回缓存，固定等待时间不能证明动作已经完成。
-
-记录设备型号/左右手、固件、系统/Python、SDK 版本、CAN 接口与 node ID，再记录运行结果。这里的步骤是整理后的流程，未声明已经在你的设备上实测通过。
-
-双手保持一手一 OS 进程。进入 ROS 前阅读 [ROS 版本与当前限制](ros2.md)。
+完成接入后，记录硬件/固件版本、左右手、接口、节点 ID、SDK commit、系统与 Python 版本，便于后续复现配置和排查问题。

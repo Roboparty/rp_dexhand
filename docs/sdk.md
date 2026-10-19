@@ -1,50 +1,63 @@
-# SDK 接入
+# C++ / Python SDK
 
-[返回首页](../README.zh-CN.md) · [快速开始](quickstart.md) · [下载](downloads.md)
+[首页](../README.zh-CN.md) · [English](en/sdk.md) · [快速开始](quickstart.md) · [ROS 2](ros2.md)
 
-## 选择哪套 SDK
+当前指南对应 [roboparty_dexhand `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)。C++ 使用 `rphand::Hand`，Python 使用 `rphand.Hand`，协议处理直接从源码构建。旧版 `HandDriver`、`dexhand_py` 与厂商二进制封装见[迁移说明](compatibility.md)。
 
-| 路线 | 使用场景 | 入口 |
-| --- | --- | --- |
-| RoboParty 维护的封装 | Linux CAN-FD、RP Hand 六主动轴、C++ / Python 应用和机器人集成 | [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand) |
-| 厂商原版 SDK | 使用厂商 Windows/Linux 包及其 EtherCAT、CAN-FD、RS485 示例；具体组合以原版说明为准 | [原版资源列表](downloads.md) |
+## API 与构建产物
 
-本项目默认推荐第一条路线。旧 `roboparty_hand` 的 `hand_py`、`connect_by_config()` 与当前 `dexhand_py` 不是同一套接口，不应混用教程。
-
-## 封装结构
-
-Python 应用通过 `dexhand_py` 调用公共 `HandDriver`；C++ 应用直接使用 `HandDriver`。私有 `LHandProDriver` 将厂商 SDK 适配器、SocketCAN 传输、回调和生命周期管理连接起来。厂商 `libLHandProLib.so` 仍属于底层依赖。
-
-| 名称 | 含义 |
+| 入口 | 用途 |
 | --- | --- |
-| `roboparty_dexhand` | SDK 源码项目 |
-| `roboparty-dexhand` | Debian 软件包 |
-| `dexhand_py` | Python 扩展模块 |
-| `HandDriver` | 公共 C++ / Python 驱动接口 |
-| `roboparty-dexhand-config` | 反馈参数配置工具 |
-| `roboparty-base` | 提供 `/opt/roboparty/setup.bash` 的基础环境包 |
+| `<rphand/hand.hpp>` / `rphand::Hand` | C++ 设备连接、控制和状态快照 |
+| `from rphand import Hand` | Python 绑定，共用 C++ 实现 |
+| `rphand_ros` | 同仓库内的 Jazzy ROS 2 适配 |
+| `bash build.sh cpp / python / ros` | 分别构建到 `install/cpp`、`install/python`、`install/ros` |
 
-## API 与使用边界
+外部 CMake 项目在安装 SDK 后使用：
 
-- 新程序使用产品名 `RP_Hand`、接口 `canfd` 和 `HandModel.RP_HAND_6DOF`。
-- 构造工厂不执行通信；`init_hand()` 才建立设备会话，可明确选择是否使能、回零。
-- 成功创建后使用 `try/finally` 或对应 C++ 异常处理调用 `deinit_hand()`。
-- 同一进程仅允许一个活动手实例，双手部署为两个进程。
-- 读取轴 ID 为 `1..6`；允许广播的控制方法中 `0` 代表全部轴，不能将其当作第一个手指。
-- `get_now_*()` 读取缓存，`check_health()` 不能替代带时间信息的反馈新鲜度判断。
-- 当前公共 API 没有触觉读取，也不能由保留的旧枚举推断 RP Hand 支持 16 个主动轴。
+```cmake
+find_package(rphand CONFIG REQUIRED)
+add_executable(hand_app main.cpp)
+target_link_libraries(hand_app PRIVATE rphand::rphand)
+```
 
-SDK 接口将位置标注为编码器计数、速度为计数/秒、角度为度、电流为 mA。原始 CAN-FD 协议另有“总行程系数，默认 10000”的表述。将其接入弧度制模型前，应核验具体设备的转换和逐轴范围，不能直接使用通用线性换算假设。
+配置时把 `CMAKE_PREFIX_PATH` 指向 SDK 的 `install/cpp`。完整构建、安装和例程见[上游 API 文档](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)。
 
-## 权威文档
+## 六轴顺序与单位
 
-本版接入说明基于 SDK commit `046108e7ba800763a096ca1c99b04a8414797105`。完整内容维护在 SDK 仓库中：
+| 数组下标 | 单轴 ID | 软件通道 |
+| --- | --- | --- |
+| 0 | 1 | 拇指侧摆 |
+| 1 | 2 | 拇指屈伸 |
+| 2 | 3 | 食指 |
+| 3 | 4 | 中指 |
+| 4 | 5 | 无名指 |
+| 5 | 6 | 小指 |
 
-- [Python / C++ API 与示例](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/api.md)
-- [CAN-FD 与反馈配置](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/hardware-setup.md)
-- [源码构建与 Debian 打包](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/docs/build.md)
-- [硬件验收](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/VALIDATION.md)
-- [已发布软件包](https://github.com/Roboparty/roboparty_dexhand/releases)
-- [厂商二进制版本和许可说明](https://github.com/Roboparty/roboparty_dexhand/blob/046108e7ba800763a096ca1c99b04a8414797105/thirdparty/README.md)
+此顺序来自当前公共头文件与 API，尚不等于已标定的左右手 URDF 关节对应表。
 
-源码文档基线与 Release 是不同的版本标识。安装时同时记录包版本、目标系统和 Python ABI，不用 main 分支日期替代软件包的兼容信息。
+| 数据 | 单位 / 范围 |
+| --- | --- |
+| 位置目标 | 绝对行程当量，`0..10000`；不是角度或弧度 |
+| 速度设置 | 行程当量/秒；ROS 接口约束 `1..20000` |
+| 电流限制 | 额定电流千分比，`0..3000`；不是 mA |
+| 反馈电流 | 协议解码值；不能直接当作力或力矩 |
+| 单轴 ID | `1..6`，当前单轴公共接口不接受广播 ID 0 |
+
+## 控制流程
+
+`connect → disable → 配置速度/电流/到位模式 → enable → home → 位置控制 → stop / disable → disconnect`
+
+`set_positions()` 一次下发六轴目标，成功不代表已经到位；SDK 不做轨迹插值或周期重发。上层应用应检查返回值与设备反馈。`connect()` 会写通信配置，并可能恢复遗留急停，不是只读操作。位置 API 不提供完整的健康门控，应用需要自行确保初始化和状态条件。
+
+Python 清理应分别调用并检查 `stop()`、`disable()`，再 `disconnect()`；不能因 stop 失败而跳过 disable。C++ 另有 `prepare_disconnect()`，停止、失能各最多尝试一次。断开和析构本身不发送停止指令。
+
+## 状态反馈
+
+`get_state()` 返回最新缓存快照：`positions`、`velocities`、`currents`、`enabled`、`homed`、`torque_reached`、`fault_codes` 均为六元素数组，另有 `feedback_valid`。
+
+只有连接正常且位置组、状态组均已接收、各自年龄小于 100 ms 时，`feedback_valid` 才为 true。两组并非同时采样，过期后数组可能保留旧值。`is_connected()` 不代表反馈仍在更新。
+
+ROS 发布对应状态，也提供采集入口，见 [ROS 2](ros2.md)。电流反馈采用协议值，使用时按设备定义解释。
+
+线程、重试次数、并发约束和完整方法签名由[上游架构](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/architecture.md)与 [API](https://github.com/Roboparty/roboparty_dexhand/blob/eb923acf61a02febabc9db90ad4d5eed84ffbc39/docs/api.md)维护。本仓库仅维护产品集成说明。
