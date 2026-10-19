@@ -16,6 +16,8 @@ Migration requires application changes. `Hand()` and `connect()` replace the old
 
 Do not replace old extensions in place or mix old/new environment scripts. The old v0.5.0 `.deb` does not install the current `rphand` API. Record source commit and target Python ABI separately from package versions.
 
-Source requirements are not a tested-hardware matrix. Current documents were checked against public headers, bindings, messages and build scripts. Linux SocketCAN, Jazzy runtime and device motion were not executed in this documentation update. Verify the actual OS/architecture, firmware, Python and motion conditions during deployment.
+Source requirements are not a tested-hardware matrix. Current documents were checked against public headers, bindings, messages and build scripts. The pinned SDK's C++ / Python build, installation, offline tests and external CMake consumer were checked on GitHub-hosted Ubuntu 24.04 x86-64; see the [CI record](https://github.com/Roboparty/rp_dexhand/actions/runs/39203726788).
+
+This check does not cover ARM64, ROS 2 builds/runtime, a real CAN bus or device motion. Verify the actual OS/architecture, firmware, Python and motion conditions during deployment.
 
 Historical evidence: [SDK 046108e](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105), [legacy ROS bfc325f](https://github.com/Roboparty/roboparty_dexhand_ros/tree/bfc325f2d5d7bf33d3a64ebdc79b01ed3641f227).

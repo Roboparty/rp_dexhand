@@ -12,7 +12,7 @@
 - 推荐源码切换为 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39)：`rphand::Hand`、`rphand.Hand` 及同仓库内 `rphand_ros`。
 - 根据公共头文件、Python 类型声明、ROS 消息、launch 与 API 文档核对轴顺序、单位、反馈有效性和运行行为。
 - 下载 DH116S 模型归档并核对原始哈希，解析左右手 URDF/MJCF，检查关节树、mimic 和 mesh 文件引用；结果见[静态检查记录](../resources/model-inspection-2026.10.19.json)。
-- 不声明本次在 Linux/Jazzy 上构建运行或完成真实设备动作验收。
+- 固定 SDK 基线在 GitHub 托管的 Ubuntu 24.04 x86-64 上完成 C++ / Python 构建、离线测试和外部 CMake 工程检查，见 [CI 记录](https://github.com/Roboparty/rp_dexhand/actions/runs/39203726788)。不覆盖 ARM64、ROS 2 构建/运行或真实设备验收。
 
 以下来源表记录 2026-10-05 资料快照；其中 SDK/旧 ROS 行已由当前源码路线替代，仍保留作来源追溯。
 

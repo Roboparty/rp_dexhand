@@ -27,6 +27,8 @@
 
 ## 验证状态
 
-本仓库核对了源码、消息定义、构建入口和资料记录；不将声明的系统要求等同于实机验证。当前环境未运行 Linux SocketCAN、Jazzy 或真实手部动作。产品硬件/固件、目标架构、Python ABI 和动作工况应记录在部署验收中。
+本仓库核对了源码、消息定义、构建入口和资料记录。固定 SDK 基线已在 GitHub 托管的 Ubuntu 24.04 x86-64 环境完成 C++ / Python 构建、安装、离线测试及外部 CMake 工程链接检查，见 [CI 记录](https://github.com/Roboparty/rp_dexhand/actions/runs/39203726788)。
+
+该检查不覆盖 ARM64、ROS 2 构建/运行、真实 CAN 总线或手部动作。产品硬件/固件、目标架构、Python ABI 和动作工况仍应记录在部署验收中。
 
 旧版证据：[SDK `046108e`](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105)、[ROS `bfc325f`](https://github.com/Roboparty/roboparty_dexhand_ros/tree/bfc325f2d5d7bf33d3a64ebdc79b01ed3641f227)。旧 v0.5.0 软件包仍可从上游 Release 获取，但不提供当前 `rphand` API。

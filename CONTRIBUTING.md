@@ -23,7 +23,9 @@ python3 -m unittest discover -s tests -v
 python3 tools/check_docs.py
 ```
 
-The checker validates local links/heading fragments, Python snippet syntax, product-asset checksums and consistency of resource filenames/hashes. It does not execute device examples, fetch external links or revalidate archived application binaries. GitHub Actions runs these same checks.
+The checker validates local links/heading fragments, Python snippet syntax, product-asset checksums, resource filenames/hashes and model-inspection archive references. It rejects malformed SHA-256 and duplicate checksum filenames. It does not execute device examples, fetch external links or revalidate archived application binaries.
+
+GitHub Actions runs these checks and a separate pinned-SDK job on Ubuntu 24.04 x86-64. That job builds and installs C++ / Python components, runs the SDK's offline tests and checks an external CMake consumer. It does not build ROS or test ARM64, physical CAN traffic or device motion. Keep the SDK commit and commands in the workflow synchronized with the guides when changing the recommended baseline.
 
 ## Device issue reports
 
