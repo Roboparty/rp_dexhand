@@ -8,7 +8,6 @@
 | --- | --- |
 | Product documentation, wiring, resources and examples on these pages | [rp_dexhand](https://github.com/Roboparty/rp_dexhand/issues) |
 | Current SDK, Python bindings and bundled rphand_ros runtime | [roboparty_dexhand](https://github.com/Roboparty/roboparty_dexhand/issues) |
-| Existing legacy Humble nodes | [roboparty_dexhand_ros](https://github.com/Roboparty/roboparty_dexhand_ros/issues) |
 
 ## Documentation changes
 

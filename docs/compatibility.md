@@ -9,7 +9,6 @@
 | 当前源码 SDK | `rphand::Hand` / `rphand.Hand`；Linux、C++17、CMake ≥ 3.20、Python ≥ 3.9 | 推荐用于新项目，按目标计算机与解释器构建 |
 | 当前配套 ROS | `rphand_ros`；ROS 2 Jazzy | 与当前 SDK 同仓库构建，已实现 state 发布 |
 | 旧版 SDK `046108e` / v0.5.0 包 | `HandDriver` / `dexhand_py`；Debian 包与镜像入口 | 仅用于已有系统维护，不与当前 API 混用 |
-| 旧 ROS `bfc325f` | `roboparty_dexhand_ros`；文档基线 Humble、Python 3.10 | 依赖旧版 SDK，只有命令和生命周期服务 |
 | 原版软件及 EtherCAT 示例 | 独立 SDK / 应用包 | 保留在[资源下载](downloads.md)，不视为当前 CAN-FD 路线的功能 |
 
 ## 主要变化
@@ -31,4 +30,4 @@ SDK 在 Ubuntu 24.04 x86-64 的 C++ / Python 构建、安装、离线测试及�
 
 ARM64、ROS 2 和实机部署需在目标设备上完成对应检查，并记录硬件/固件、系统、Python ABI 与动作工况。
 
-旧版证据：[SDK `046108e`](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105)、[ROS `bfc325f`](https://github.com/Roboparty/roboparty_dexhand_ros/tree/bfc325f2d5d7bf33d3a64ebdc79b01ed3641f227)。旧 v0.5.0 软件包仍可从上游 Release 获取，但不提供当前 `rphand` API。
+已有系统的 SDK 参考版本为 [`046108e`](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105)。旧 v0.5.0 软件包不提供当前 `rphand` API。ROS 接入统一使用当前 SDK 中的 `ros2/rphand_ros`。

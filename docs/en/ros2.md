@@ -2,7 +2,7 @@
 
 [Home](../../README.md) · [中文](../ros2.md) · [SDK](sdk.md) · [Compatibility](compatibility.md)
 
-Use `ros2/rphand_ros` from the [same SDK baseline](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). This C++ node includes dual-hand launch, target commands, reset and state feedback. The separate legacy Humble repository is not the current recommended path.
+Use `ros2/rphand_ros` from the [same SDK baseline](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39). This C++ node includes dual-hand launch, target commands, reset and state feedback. ROS integration uses the same source tree as the SDK; no separate driver repository is needed.
 
 ## Build and launch
 

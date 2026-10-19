@@ -13,7 +13,7 @@
 | 资源格式检查 | [validation.json](../resources/resources-2026.10.05/validation.json) |
 | DH116S 模型结构与资源引用 | [模型记录](../resources/model-inspection-2026.10.19.json) |
 
-软件接入使用上表中的 SDK 版本。下面的来源表记录产品资料与配套应用的原始版本，其中旧 SDK 和 ROS 条目供已有系统维护时查阅。
+软件接入使用上表中的 SDK 版本。下面的来源表记录产品资料与配套应用的原始版本；SDK 与 ROS 的开发入口统一为 `roboparty_dexhand`。
 
 ## 产品资料来源
 
@@ -28,7 +28,6 @@
 | [手势软件下载页](https://roboparty.feishu.cn/docx/UDyrdMlzyoJ1YaxHlb8cwkFenXg) | revision 67 | Windows/Linux 包名和版本 |
 | [CAN-FD 协议](https://roboparty.feishu.cn/docx/NofXd7ZqKovElLxfgr8cWMegnxg) | revision 14，相关章节 | 行程单位及通信说明 |
 | [SDK](https://github.com/Roboparty/roboparty_dexhand/tree/046108e7ba800763a096ca1c99b04a8414797105) | `046108e` | 软件支持范围、API、安装和验收入口 |
-| [ROS 包](https://github.com/Roboparty/roboparty_dexhand_ros/tree/bfc325f2d5d7bf33d3a64ebdc79b01ed3641f227) | `bfc325f` | 集成状态与限制 |
 | [公司首页](https://github.com/Roboparty/rptest_repo/tree/f1ca45288a61985d2372cbe38d767869d818eb8d) | `f1ca452` | `assets/readme/rp1-hand.gif` 产品动图 |
 
 ## 图片来源

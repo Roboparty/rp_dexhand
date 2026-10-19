@@ -2,7 +2,7 @@
 
 [首页](../README.zh-CN.md) · [English](en/ros2.md) · [SDK](sdk.md) · [旧版迁移](compatibility.md)
 
-推荐使用 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) 内置的 `ros2/rphand_ros`。节点直接调用 C++ SDK，提供双手 launch、位置命令、reset 服务和状态反馈。旧仓库 `roboparty_dexhand_ros` 的 Humble / `dexhand_py` 路线单独保留作历史参考。
+推荐使用 [SDK `eb923ac`](https://github.com/Roboparty/roboparty_dexhand/tree/eb923acf61a02febabc9db90ad4d5eed84ffbc39) 内置的 `ros2/rphand_ros`。节点直接调用 C++ SDK，提供双手 launch、位置命令、reset 服务和状态反馈。ROS 接入与 SDK 使用同一份源码，无需额外克隆驱动仓库。
 
 ## 构建与启动
 

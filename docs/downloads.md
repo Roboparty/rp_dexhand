@@ -12,9 +12,9 @@
 | [快速开始](quickstart.md) | 目标 Linux 环境源码构建与单手连接 |
 | [版本兼容](compatibility.md) | 新旧 API 与环境区别 |
 
-新项目按[快速开始](quickstart.md)构建 `rphand`。使用旧版 `dexhand_py` 的系统可在 [v0.5.0 Release](https://github.com/Roboparty/roboparty_dexhand/releases/tag/v0.5.0) 获取对应软件包，升级步骤见[版本兼容](compatibility.md)。
+按[快速开始](quickstart.md)构建 `rphand`，C++、Python 与 ROS 2 使用同一 SDK 仓库。
 
-## 配套应用与原版 SDK
+## 配套应用
 
 | 资源 | 版本 / 大小（十进制 MB） | Release 下载 |
 | --- | --- | --- |
@@ -22,11 +22,8 @@
 | 上位机原始更新日志 | 来源文档 revision 6 / 0.07 MB | [TXT](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_Host_changelog.txt) |
 | 手势软件 Windows | 1.1.1 / 299.84 MB | [EXE](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP-Hand-Gesture-Setup-1.1.1.exe) |
 | 手势软件 Linux amd64 | 1.1.1 / 309.22 MB | [DEB](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP-Hand-Gesture-1.1.1-amd64.deb) |
-| 原版 Linux SDK | 2026-07-27 / 13.43 MB | [tar.gz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Linux-20260727.tar.gz) |
-| 原版 Windows SDK | 2026-07-27 / 7.63 MB | [7z](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Windows-20260727.7z) |
-| 原版 ROS 示例 | Humble / EtherCAT；来源文档 revision 4 / 33.35 MB | [ZIP](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/hand_control_ws_rp_hand.zip) |
 
-上位机、手势软件和原版 SDK 按各自软件包内的说明安装。机器人程序开发使用上方的 `rphand` 源码入口；原版 EtherCAT 示例单独提供。
+上位机和手势软件按各自软件包内的说明安装；机器人程序开发使用上方的 `rphand` SDK。
 
 ## 模型与协议
 
@@ -39,6 +36,21 @@
 | EtherCAT / CAN-FD / RS485 协议表格 | 来源手册 revision 13 / 0.37 MB | [XLSX](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_Protocols_EtherCAT_CAN-FD_RS485.xlsx) |
 
 安装尺寸与接线见[硬件手册](hardware.md)，模型选择与关节说明见[模型文档](models.md)。
+
+<details>
+<summary>旧版 SDK 与原版示例</summary>
+
+以下软件包供已有系统维护时使用；当前 CAN-FD 开发使用本页顶部的 SDK。
+
+| 资源 | 版本 / 大小（十进制 MB） | Release 下载 |
+| --- | --- | --- |
+| 原版 Linux SDK | 2026-07-27 / 13.43 MB | [tar.gz](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Linux-20260727.tar.gz) |
+| 原版 Windows SDK | 2026-07-27 / 7.63 MB | [7z](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/RP_Hand_SDK-API-Windows-20260727.7z) |
+| 原版 ROS 示例 | Humble / EtherCAT；来源文档 revision 4 / 33.35 MB | [ZIP](https://github.com/Roboparty/rp_dexhand/releases/download/resources-2026.10.05/hand_control_ws_rp_hand.zip) |
+
+旧版 `dexhand_py` 软件包见 [v0.5.0 Release](https://github.com/Roboparty/roboparty_dexhand/releases/tag/v0.5.0)，接口差异见[版本兼容](compatibility.md)。
+
+</details>
 
 ## 清单与完整性校验
 
